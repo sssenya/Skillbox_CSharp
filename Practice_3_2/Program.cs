@@ -18,26 +18,33 @@ namespace Practice_3_2
 
             for (int i = 0; i < cardsAmount; i++)
             {
-                Console.WriteLine("Введите номинал карты:");
-                string cardUserInput = Console.ReadLine();
-
-                switch (cardUserInput)
+                int cardValue = 0;
+                while (cardValue == 0)
                 {
-                    case "6":
-                    case "7":
-                    case "8":
-                    case "9":
-                    case "10":
-                        sum += int.Parse(cardUserInput);
-                        break;
+                    Console.WriteLine("Введите номинал карты:");
+                    string cardUserInput = Console.ReadLine();
+                    switch (cardUserInput)
+                    {
+                        case "6":
+                        case "7":
+                        case "8":
+                        case "9":
+                        case "10":
+                            cardValue  = int.Parse(cardUserInput);
+                            break;
 
-                    case "J":
-                    case "Q":
-                    case "K":
-                    case "T":
-                        sum += 10;
-                        break;
+                        case "J":
+                        case "Q":
+                        case "K":
+                        case "T":
+                            cardValue = 10;
+                            break;
+                        default:
+                            Console.WriteLine("Карты с таким номиналом не существует! Попробуйте еще раз.");
+                            break;
+                    }
                 }
+                sum += cardValue;
             }
             Console.WriteLine($"Сумма ваших карт {sum}");
             Console.ReadKey();
