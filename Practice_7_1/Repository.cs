@@ -19,7 +19,7 @@ namespace Practice_7_1
 
             if (!File.Exists(_filePath))
             {
-                File.Create(_filePath);
+                File.Create(_filePath).Close();
             }
         }
 
@@ -91,7 +91,7 @@ namespace Practice_7_1
 
             foreach (var worker in workers)
             {
-                if (worker.CreationTime > dateFrom || worker.CreationTime < dateTo)
+                if (worker.CreationTime > dateFrom && worker.CreationTime < dateTo)
                 {
                     filteredWorkers.Add(worker);
                 }

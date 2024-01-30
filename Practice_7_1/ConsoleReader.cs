@@ -45,6 +45,8 @@ namespace Practice_7_1
             Console.Write("Место рождения: ");
             lines[6] = Console.ReadLine();
 
+            Console.WriteLine();
+
             return string.Join("#", lines);
         }
 

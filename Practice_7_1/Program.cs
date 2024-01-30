@@ -17,7 +17,7 @@ namespace Practice_7_1
 
             while(userCommand != 0)
             {
-                Console.WriteLine("Здравствуйте! Введите команду:");
+                Console.WriteLine("Введите команду:");
                 Console.WriteLine("1 - вывести все записи на экран");
                 Console.WriteLine("2 - добавить новую запись");
                 Console.WriteLine("3 - удалить существующую запись");
@@ -32,7 +32,31 @@ namespace Practice_7_1
                 switch (userCommand)
                 {
                     case 1:
+                        Console.WriteLine(" Введите поле для сортировки записей"); 
+                        Console.WriteLine("1 - ID");
+                        Console.WriteLine("2 - ФИО");
+                        Console.WriteLine("3 - дата добавления записи");
+                        int sortOrder = reader.ReadIntInput();
+
                         Worker[] workers = repository.GetAllWorkers();
+
+                        switch (sortOrder)
+                        {
+                            case 1:
+                                workers = workers.OrderBy(x => x.Id).ToArray();
+                                break;
+                            case 2:
+                                workers = workers.OrderBy(x => x.FIO).ToArray();
+                                break;
+                            case 3:
+                                workers = workers.OrderBy(x => x.CreationTime).ToArray();
+                                break;
+                            default:
+                                Console.WriteLine("Команда введена не верно");
+                                break;
+
+                        }
+
                         reader.PrintAllWorkers(workers);
                         break;                 
                     case 2:
@@ -61,7 +85,11 @@ namespace Practice_7_1
                         DateTime dateFrom = reader.ReadDateInput();
                         Console.Write("Введите вторую дату: ");
                         DateTime dateTo = reader.ReadDateInput();
-                        repository.GetWorkersBetweenTwoDates(dateFrom, dateTo);
+
+                        Worker[] filteredWorkers = repository.GetWorkersBetweenTwoDates(dateFrom, dateTo);
+
+                        reader.PrintAllWorkers(filteredWorkers);
+
                         break;
                     default:
                         Console.WriteLine("Команда введена не верно");
