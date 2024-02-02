@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_2_Dictionary", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_3_HashSet", "Practice_8_3\Practice_8_3_HashSet.csproj", "{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_4_xml", "Practice_8_4\Practice_8_4_xml.csproj", "{E353FA63-2CD3-47BA-A7C6-31410DC2282F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -127,6 +129,10 @@ Global
 		{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E353FA63-2CD3-47BA-A7C6-31410DC2282F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E353FA63-2CD3-47BA-A7C6-31410DC2282F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E353FA63-2CD3-47BA-A7C6-31410DC2282F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E353FA63-2CD3-47BA-A7C6-31410DC2282F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -149,6 +155,7 @@ Global
 		{D44DBA84-35C2-4294-983A-FADCDD59FA6D} = {3863C7A0-E72F-4C87-A277-EC908F813F02}
 		{A217DDE7-9CEF-4FEC-95FC-D867E9D8AF84} = {3863C7A0-E72F-4C87-A277-EC908F813F02}
 		{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B} = {3863C7A0-E72F-4C87-A277-EC908F813F02}
+		{E353FA63-2CD3-47BA-A7C6-31410DC2282F} = {3863C7A0-E72F-4C87-A277-EC908F813F02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B16CD704-F645-4992-8163-971EF38C6A91}
