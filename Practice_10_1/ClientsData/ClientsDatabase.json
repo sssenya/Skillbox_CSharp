@@ -1,0 +1,58 @@
+[
+  {
+    "FirstName": "Ильин",
+    "SecondName": "Даниил",
+    "MiddleName": "Глебович",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "1111222333"
+  },
+  {
+    "FirstName": "Ковалева",
+    "SecondName": "Кира",
+    "MiddleName": "Максимовна",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "1111222444"
+  },
+  {
+    "FirstName": "Белов",
+    "SecondName": "Роман",
+    "MiddleName": "Ростиславович",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "111122255"
+  },
+  {
+    "FirstName": "Карпов",
+    "SecondName": "Константин",
+    "MiddleName": "Артёмович",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "1111227333"
+  },
+  {
+    "FirstName": "Кондратьев",
+    "SecondName": "Иван",
+    "MiddleName": "Макарович",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "1911222444"
+  },
+  {
+    "FirstName": "Николаев",
+    "SecondName": "Сергей",
+    "MiddleName": "Дмитриевич",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "111126255"
+  },
+  {
+    "FirstName": "Зайцева",
+    "SecondName": "Мария",
+    "MiddleName": "Олеговна",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "112122255"
+  },
+  {
+    "FirstName": "Астафьев",
+    "SecondName": "Егор",
+    "MiddleName": "Никитич",
+    "PhoneNumber": "89997775060",
+    "PassportNumber": "1101222673"
+  }
+]

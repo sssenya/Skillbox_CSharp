@@ -1,0 +1,92 @@
+﻿<Window x:Class="Practice_10_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice_10_1"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="450" Width="800"
+        MinHeight="450" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10"
+            ItemsSource="{Binding Clients}"
+            SelectedItem="{Binding SelectedClient}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                <Binding Path="FirstName" />
+                                <Binding Path="SecondName" />
+                                <Binding Path="MiddleName" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Orientation="Vertical"
+            DataContext="{Binding SelectedClient}">
+            <UniformGrid>
+                <Label
+                    Content="Фамилия"/>
+                <TextBox
+                    IsReadOnly="True"
+                    Text="{Binding FirstName}"/>
+            </UniformGrid>
+
+            <UniformGrid>
+                <Label
+                    Content="Имя"/>
+                <TextBox
+                    IsReadOnly="True"                    
+                    Text="{Binding SecondName}"/>
+            </UniformGrid>
+
+            <UniformGrid>
+                <Label
+                    Content="Отчество"/>
+                <TextBox
+                    IsReadOnly="True"
+                    Text="{Binding MiddleName}"/>
+            </UniformGrid>
+
+            <UniformGrid>
+                <Label
+                    Content="Номер телефона"/>
+                <TextBox
+                    IsReadOnly="True"
+                    Text="{Binding PhoneNumber}"/>
+            </UniformGrid>
+
+            <UniformGrid>
+                <Label
+                    Content="Серия и номер паспорта"/>
+                <TextBox
+                    IsReadOnly="True"
+                    Text="{Binding PassportNumber}"/>
+            </UniformGrid>
+        </StackPanel>
+    </Grid>
+</Window>
