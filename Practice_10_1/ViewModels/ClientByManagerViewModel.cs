@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Practice_10_1.ViewModels
 {
-    internal class ClientInfoViewModel : BaseViewModel
+    internal class ClientByManagerViewModel : BaseViewModel, IClientInfo
     {
         private readonly Client _client;
         private string _firstName;
@@ -15,7 +15,7 @@ namespace Practice_10_1.ViewModels
         private string _phoneNumber;
         private string _passportNumber;
 
-        public ClientInfoViewModel(Client client)
+        public ClientByManagerViewModel(Client client)
         {
             _client = client;
 
@@ -23,31 +23,25 @@ namespace Practice_10_1.ViewModels
             _secondName = client.SecondName;
             _middleName = client.MiddleName;
             _phoneNumber = client.PhoneNumber;
-            if (!string.IsNullOrEmpty(client.PassportNumber))
-            {
-                _passportNumber = "******************";
-            }
-            else
-            {
-                _passportNumber = "";
-            }
+            _passportNumber = client.PassportNumber;
+
         }
 
         public string FirstName
         {
             get => _firstName;
-            set { }
-        } 
+            set => RaiseAndSetIfChanged(ref _firstName, value);
+        }
         public string SecondName
         {
             get => _secondName;
-            set { }
+            set => RaiseAndSetIfChanged(ref _secondName, value);
         }
 
         public string MiddleName
         {
             get => _middleName;
-            set { }
+            set => RaiseAndSetIfChanged(ref _middleName, value);
         }
 
         public string PhoneNumber
@@ -59,8 +53,12 @@ namespace Practice_10_1.ViewModels
         public string PassportNumber
         {
             get => _passportNumber;
-            set { }
+            set => RaiseAndSetIfChanged(ref _passportNumber, value);
         }
+
+        public bool CanChangeName => true;
+        public bool CanChangePassport => true;
+        public bool CanChangePhone => true;
 
         public Client GetClient()
         {

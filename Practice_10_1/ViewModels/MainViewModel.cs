@@ -1,6 +1,4 @@
-﻿using Practice_10_1.Commands;
-using Practice_10_1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,36 +6,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+using Practice_10_1.Commands;
+using Practice_10_1.Models;
+
 namespace Practice_10_1.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
-        private ObservableCollection<ClientInfoViewModel> _clients;
-        private ClientInfoViewModel _selectedClient;
+        private ObservableCollection<IClientInfo> _clients;
+        private ObservableCollection<IBankEmployee> _employees;
         private Repository _repository;
+        private IBankEmployee _selectedEmployee;
 
         public MainViewModel()
         {
-            _clients = new ObservableCollection<ClientInfoViewModel>();
             _repository = new Repository();
 
-            foreach(Client client in _repository.GetClients())
+            _employees = new ObservableCollection<IBankEmployee>()
             {
-                _clients.Add(new ClientInfoViewModel(client));
-            }
+                new ConsultantViewModel(_repository) { Name = "Консультант"},
+                new ManagerViewModel(_repository) { Name = "Менеджер"}
+            };
 
             UpdateCommand = new RelayCommand(obj => UpdateClientsInfo(), obj => CanExecute());
         }
 
         public ICommand UpdateCommand { get; }
 
-        public ClientInfoViewModel SelectedClient
+        public IBankEmployee SelectedEmployee
         {
-            get => _selectedClient;
-            set => RaiseAndSetIfChanged(ref _selectedClient, value);
+            get => _selectedEmployee;
+            set => RaiseAndSetIfChanged(ref _selectedEmployee, value);
         }
 
-        public ObservableCollection<ClientInfoViewModel> Clients => _clients;
+        public ObservableCollection<IBankEmployee> Employees => _employees;
 
         public void UpdateClientsInfo()
         {
@@ -46,13 +48,13 @@ namespace Practice_10_1.ViewModels
 
         private bool CanExecute()
         {
-            foreach(var client in Clients)
-            {
-                if (string.IsNullOrEmpty(client.PhoneNumber))
-                {
-                    return false;
-                }
-            }
+            //foreach(var client in Clients)
+            //{
+            //    if (string.IsNullOrEmpty(client.PhoneNumber))
+            //    {
+            //        return false;
+            //    }
+            //}
 
             return true;
         } 
