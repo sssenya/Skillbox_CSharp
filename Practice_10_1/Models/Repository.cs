@@ -40,7 +40,7 @@ namespace Practice_10_1.Models
             return clients;
         }
         
-        public void UpdateDatabase(ObservableCollection<ClientInfoViewModel> clients)
+        public void UpdateDatabase(ObservableCollection<IClientInfo> clients)
         {
             List<Client> clientsToJson = new List<Client>();
             foreach(var client in clients)

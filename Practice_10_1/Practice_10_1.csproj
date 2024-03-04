@@ -70,8 +70,14 @@
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\ClientInfoViewModel.cs" />
+    <Compile Include="ViewModels\ClientByManagerViewModel.cs" />
+    <Compile Include="ViewModels\ClientByConsViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeViewModel.cs" />
+    <Compile Include="ViewModels\Interfaces\IClientInfo.cs" />
+    <Compile Include="ViewModels\Interfaces\IBankEmployee.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\ConsultantViewModel.cs" />
+    <Compile Include="ViewModels\ManagerViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
