@@ -68,7 +68,7 @@ namespace Practice_10_1.ViewModels
                 SecondName = _secondName,
                 MiddleName = _middleName,
                 PhoneNumber = _phoneNumber,
-                PassportNumber = _client.PassportNumber
+                PassportNumber = PassportNumber
             };
         }
     }
