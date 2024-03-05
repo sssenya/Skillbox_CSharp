@@ -14,7 +14,7 @@ namespace Practice_10_1.ViewModels
         private readonly string _middleName;
         private string _phoneNumber;
 
-        public ClientByConsViewModel(Client client)
+        public ClientByConsViewModel(Client client, EmployeeViewModel employee)
         {
             _client = client;
 
@@ -24,6 +24,7 @@ namespace Practice_10_1.ViewModels
             _phoneNumber = client.PhoneNumber;
         }
 
+        public Client Client => _client;
         public string FirstName
         {
             get => _firstName;
@@ -57,7 +58,7 @@ namespace Practice_10_1.ViewModels
         public bool CanChangePassport => false;
         public bool CanChangePhone => true;
 
-        public Client GetClient()
+        public Client GetUpdatedClient()
         {
             return new Client()
             {

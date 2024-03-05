@@ -19,7 +19,7 @@ namespace Practice_10_1.ViewModels
 
             foreach (Client client in repository.GetClients())
             {
-                _clients.Add(new ClientByManagerViewModel(client));
+                _clients.Add(new ClientByManagerViewModel(client, this));
             }
 
             UpdateCommand = new RelayCommand(obj => UpdateClientsInfo(), obj => CanExecute());

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Practice_10_1.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Practice_10_1.ViewModels
 {
@@ -14,10 +16,12 @@ namespace Practice_10_1.ViewModels
         private string _middleName;
         private string _phoneNumber;
         private string _passportNumber;
+        private EmployeeViewModel _employee;
 
-        public ClientByManagerViewModel(Client client)
+        public ClientByManagerViewModel(Client client, EmployeeViewModel employee)
         {
             _client = client;
+            _employee = employee;
 
             _firstName = client.FirstName;
             _secondName = client.SecondName;
@@ -25,8 +29,12 @@ namespace Practice_10_1.ViewModels
             _phoneNumber = client.PhoneNumber;
             _passportNumber = client.PassportNumber;
 
+            UpdateClientCommand = new RelayCommand(obj => UpdateClient(), obj => CanExecute());
         }
 
+        public ICommand UpdateClientCommand { get; set; }
+
+        public Client Client => _client;
         public string FirstName
         {
             get => _firstName;
@@ -60,7 +68,7 @@ namespace Practice_10_1.ViewModels
         public bool CanChangePassport => true;
         public bool CanChangePhone => true;
 
-        public Client GetClient()
+        public Client GetUpdatedClient()
         {
             return new Client()
             {
@@ -70,6 +78,16 @@ namespace Practice_10_1.ViewModels
                 PhoneNumber = _phoneNumber,
                 PassportNumber = _passportNumber
             };
+        }
+
+        public void UpdateClient()
+        {
+            _employee.UpdateClient(this);
+        }
+
+        public bool CanExecute()
+        {
+            return true;
         }
     }
 }

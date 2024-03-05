@@ -114,7 +114,7 @@
             Height="30"
             Margin="10"
             Content="Сохранить изменения"
-            DataContext="{Binding SelectedEmployee}"
-            Command="{Binding UpdateCommand}"/>
+            DataContext="{Binding SelectedEmployee.SelectedClient}"
+            Command="{Binding UpdateClientCommand}"/>
     </Grid>
 </Window>
