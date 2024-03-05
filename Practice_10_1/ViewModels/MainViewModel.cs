@@ -25,6 +25,8 @@ namespace Practice_10_1.ViewModels
                 new ConsultantViewModel(repository) { Name = "Консультант"},
                 new ManagerViewModel(repository) { Name = "Менеджер"}
             };
+
+            SelectedEmployee = _employees[0];
         }
 
         public IBankEmployee SelectedEmployee
