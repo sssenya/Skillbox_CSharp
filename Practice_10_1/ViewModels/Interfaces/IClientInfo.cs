@@ -8,6 +8,7 @@ namespace Practice_10_1.ViewModels
 {
     internal interface IClientInfo
     {
+        Client Client { get; }
         string FirstName { get; }
         string SecondName { get; }
         string MiddleName { get; }
@@ -17,6 +18,6 @@ namespace Practice_10_1.ViewModels
         bool CanChangePassport { get; }
         bool CanChangePhone { get; }
 
-        Client GetClient();
+        Client GetUpdatedClient();
     }
 }

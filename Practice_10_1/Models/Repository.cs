@@ -45,7 +45,7 @@ namespace Practice_10_1.Models
             List<Client> clientsToJson = new List<Client>();
             foreach(var client in clients)
             {
-                clientsToJson.Add(client.GetClient());
+                clientsToJson.Add(client.GetUpdatedClient());
             }
             
             using (StreamWriter file = File.CreateText(_filePath))
