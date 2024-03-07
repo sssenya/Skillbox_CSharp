@@ -40,18 +40,18 @@ namespace Practice_10_1.Models
             return clients;
         }
         
-        public void UpdateDatabase(ObservableCollection<IClientInfo> clients)
+        public void UpdateDatabase(ObservableCollection<Client> clients)
         {
-            List<Client> clientsToJson = new List<Client>();
-            foreach(var client in clients)
-            {
-                clientsToJson.Add(client.GetUpdatedClient());
-            }
+            //List<Client> clientsToJson = new List<Client>();
+            //foreach(var client in clients)
+            //{
+            //    clientsToJson.Add(client.GetUpdatedClient());
+            //}
             
             using (StreamWriter file = File.CreateText(_filePath))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, clientsToJson);
+                serializer.Serialize(file, clients);
             }
         }
     }

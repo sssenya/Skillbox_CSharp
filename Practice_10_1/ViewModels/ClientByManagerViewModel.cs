@@ -87,6 +87,27 @@ namespace Practice_10_1.ViewModels
 
         public bool CanExecute()
         {
+            if (string.IsNullOrEmpty(FirstName))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(SecondName))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(MiddleName))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(PhoneNumber))
+            {
+                return false;
+            }
+            if (string.IsNullOrEmpty(PassportNumber))
+            {
+                return false;
+            }
+
             return true;
         }
     }

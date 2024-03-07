@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Practice_10_1.Commands;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Practice_10_1.ViewModels
 {
@@ -13,16 +15,22 @@ namespace Practice_10_1.ViewModels
         private readonly string _secondName;
         private readonly string _middleName;
         private string _phoneNumber;
+        private EmployeeViewModel _employee;
 
         public ClientByConsViewModel(Client client, EmployeeViewModel employee)
         {
             _client = client;
+            _employee = employee;
 
             _firstName = client.FirstName;
             _secondName = client.SecondName;
             _middleName = client.MiddleName;
             _phoneNumber = client.PhoneNumber;
+
+            UpdateClientCommand = new RelayCommand(obj => UpdateClient(), obj => CanExecute());
         }
+
+        public ICommand UpdateClientCommand { get; set; }
 
         public Client Client => _client;
         public string FirstName
@@ -68,6 +76,21 @@ namespace Practice_10_1.ViewModels
                 PhoneNumber = _phoneNumber,
                 PassportNumber = _client.PassportNumber
             };
+        }
+
+        public void UpdateClient()
+        {
+            _employee.UpdateClient(this);
+        }
+
+        public bool CanExecute()
+        {
+            if (string.IsNullOrEmpty(PhoneNumber))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

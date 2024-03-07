@@ -12,54 +12,50 @@ namespace Practice_10_1.ViewModels
 {
     internal class EmployeeViewModel : BaseViewModel, IBankEmployee
     {
-        protected ObservableCollection<IClientInfo> _clients;
-        protected IClientInfo _selectedClient;
+        protected ObservableCollection<Client> _clients;
+        protected Client _selectedClient;
+        protected IClientInfo _selectedClientInfo;
         protected Repository _repository;
+
+        public EmployeeViewModel(Repository repository)
+        {
+            _repository = repository;
+            _clients = new ObservableCollection<Client>();
+
+            foreach (Client client in repository.GetClients())
+            {
+                _clients.Add(client);
+            }
+        }
 
         protected ICommand UpdateCommand { get; set; }
 
         public string Name { get; set; }
 
-        public IClientInfo SelectedClient
+        public IClientInfo SelectedClientInfo
         {
-            get => _selectedClient;
-            set => RaiseAndSetIfChanged(ref _selectedClient, value);
+            get => _selectedClientInfo;
+            set => RaiseAndSetIfChanged(ref _selectedClientInfo, value);
         }
 
-        public ObservableCollection<IClientInfo> Clients {
+        public ObservableCollection<Client> Clients {
             get => _clients;
             set => RaiseAndSetIfChanged(ref _clients, value);
         }
 
-        public void UpdateClientsInfo()
-        {
-            _repository.UpdateDatabase(_clients);
-        }
-
-        protected bool CanExecute()
-        {
-            foreach (var client in Clients)
-            {
-                if (string.IsNullOrEmpty(client.PhoneNumber))
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
-
         public void UpdateClient(IClientInfo client)
-        {
-            List<Client> clients = _repository.GetClients();
-            clients.Remove(client.Client);
-            clients.Add(client.GetUpdatedClient());
+        {          
+            _clients.Remove(client.Client);
+            _clients.Add(client.GetUpdatedClient());
             _repository.UpdateDatabase(_clients);
-            _clients = new ObservableCollection<IClientInfo>();
-            foreach (Client client2 in clients)
+
+            ObservableCollection<Client> _clients2 = new ObservableCollection<Client>();
+            foreach (Client client2 in _repository.GetClients())
             {
-                _clients.Add(new ClientByConsViewModel(client2, this));
+                _clients2.Add(client2);
             }
+
+            Clients = _clients2;
         }
     }
 }

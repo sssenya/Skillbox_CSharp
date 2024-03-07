@@ -66,7 +66,7 @@
             Grid.Column="1"
             Margin="10"
             Orientation="Vertical"
-            DataContext="{Binding SelectedEmployee.SelectedClient}">
+            DataContext="{Binding SelectedEmployee.SelectedClientInfo}">
             <UniformGrid>
                 <Label
                     Content="Фамилия"/>
@@ -114,7 +114,7 @@
             Height="30"
             Margin="10"
             Content="Сохранить изменения"
-            DataContext="{Binding SelectedEmployee.SelectedClient}"
+            DataContext="{Binding SelectedEmployee.SelectedClientInfo}"
             Command="{Binding UpdateClientCommand}"/>
     </Grid>
 </Window>

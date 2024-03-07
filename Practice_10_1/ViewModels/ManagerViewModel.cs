@@ -12,17 +12,22 @@ namespace Practice_10_1.ViewModels
 {
     internal class ManagerViewModel : EmployeeViewModel
     {
-        public ManagerViewModel(Repository repository)
+        public ManagerViewModel(Repository repository) : base(repository)
         {
-            _repository = repository;
-            _clients = new ObservableCollection<IClientInfo>();
+        }
 
-            foreach (Client client in repository.GetClients())
+        public Client SelectedClient
+        {
+            get => _selectedClient;
+            set
             {
-                _clients.Add(new ClientByManagerViewModel(client, this));
+                RaiseAndSetIfChanged(ref _selectedClient, value);
+                if (_selectedClient != null)
+                {
+                    SelectedClientInfo = new ClientByManagerViewModel(_selectedClient, this);
+                    OnPropertyChanged("SelectedClientInfo");
+                }
             }
-
-            UpdateCommand = new RelayCommand(obj => UpdateClientsInfo(), obj => CanExecute());
         }
     }
 }
