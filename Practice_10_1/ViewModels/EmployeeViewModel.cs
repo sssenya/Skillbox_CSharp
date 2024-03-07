@@ -19,13 +19,8 @@ namespace Practice_10_1.ViewModels
 
         public EmployeeViewModel(Repository repository)
         {
-            _repository = repository;
-            _clients = new ObservableCollection<Client>();
-
-            foreach (Client client in repository.GetClients())
-            {
-                _clients.Add(client);
-            }
+            _repository = repository;            
+            UpdateClientsFromDB();
         }
 
         protected ICommand UpdateCommand { get; set; }
@@ -49,14 +44,12 @@ namespace Practice_10_1.ViewModels
             _clients.Remove(client.Client);
             _clients.Add(client.GetUpdatedClient());
             _repository.UpdateDatabase(_clients);
+            UpdateClientsFromDB();
+        }
 
-            ObservableCollection<Client> newClients = new ObservableCollection<Client>();
-            foreach (Client newClient in _repository.GetClients())
-            {
-                newClients.Add(newClient);
-            }
-
-            Clients = newClients;
+        public void UpdateClientsFromDB()
+        {
+            Clients = new ObservableCollection<Client>(_repository.GetClients());
         }
     }
 }

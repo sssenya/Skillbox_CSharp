@@ -32,7 +32,11 @@ namespace Practice_10_1.ViewModels
         public IBankEmployee SelectedEmployee
         {
             get => _selectedEmployee;
-            set => RaiseAndSetIfChanged(ref _selectedEmployee, value);
+            set
+            {
+                RaiseAndSetIfChanged(ref _selectedEmployee, value);
+                _selectedEmployee.UpdateClientsFromDB();
+            }
         }
 
         public ObservableCollection<IBankEmployee> Employees => _employees;

@@ -9,5 +9,7 @@ namespace Practice_10_1.ViewModels
     internal interface IBankEmployee
     {
         string Name { get; set; }
+
+        void UpdateClientsFromDB();
     }
 }
