@@ -35,7 +35,7 @@
             Margin="10"
             Height="30"
             ItemsSource="{Binding Employees}"
-            DisplayMemberPath="Name"
+            DisplayMemberPath="Name"          
             SelectedItem="{Binding SelectedEmployee}"/>
 
         <ListBox

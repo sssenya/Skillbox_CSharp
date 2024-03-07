@@ -29,7 +29,7 @@ namespace Practice_10_1.Models
 
         public List<Client> GetClients()
         {
-            List<Client> clients;
+            List<Client> clients = new List<Client>();
 
             using (StreamReader file = File.OpenText(_filePath))
             {
@@ -42,12 +42,6 @@ namespace Practice_10_1.Models
         
         public void UpdateDatabase(ObservableCollection<Client> clients)
         {
-            //List<Client> clientsToJson = new List<Client>();
-            //foreach(var client in clients)
-            //{
-            //    clientsToJson.Add(client.GetUpdatedClient());
-            //}
-            
             using (StreamWriter file = File.CreateText(_filePath))
             {
                 JsonSerializer serializer = new JsonSerializer();

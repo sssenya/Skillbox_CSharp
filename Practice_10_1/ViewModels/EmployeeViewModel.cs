@@ -38,7 +38,8 @@ namespace Practice_10_1.ViewModels
             set => RaiseAndSetIfChanged(ref _selectedClientInfo, value);
         }
 
-        public ObservableCollection<Client> Clients {
+        public ObservableCollection<Client> Clients
+        {
             get => _clients;
             set => RaiseAndSetIfChanged(ref _clients, value);
         }
@@ -49,13 +50,13 @@ namespace Practice_10_1.ViewModels
             _clients.Add(client.GetUpdatedClient());
             _repository.UpdateDatabase(_clients);
 
-            ObservableCollection<Client> _clients2 = new ObservableCollection<Client>();
-            foreach (Client client2 in _repository.GetClients())
+            ObservableCollection<Client> newClients = new ObservableCollection<Client>();
+            foreach (Client newClient in _repository.GetClients())
             {
-                _clients2.Add(client2);
+                newClients.Add(newClient);
             }
 
-            Clients = _clients2;
+            Clients = newClients;
         }
     }
 }
