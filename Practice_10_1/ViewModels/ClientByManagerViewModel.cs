@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Practice_10_1.ViewModels
@@ -11,12 +12,12 @@ namespace Practice_10_1.ViewModels
     internal class ClientByManagerViewModel : BaseViewModel, IClientInfo
     {
         private readonly Client _client;
+        private readonly EmployeeViewModel _employee;
         private string _firstName;
         private string _secondName;
         private string _middleName;
         private string _phoneNumber;
         private string _passportNumber;
-        private EmployeeViewModel _employee;
 
         public ClientByManagerViewModel(Client client, EmployeeViewModel employee)
         {
@@ -45,19 +46,16 @@ namespace Practice_10_1.ViewModels
             get => _secondName;
             set => RaiseAndSetIfChanged(ref _secondName, value);
         }
-
         public string MiddleName
         {
             get => _middleName;
             set => RaiseAndSetIfChanged(ref _middleName, value);
         }
-
         public string PhoneNumber
         {
             get => _phoneNumber;
             set => RaiseAndSetIfChanged(ref _phoneNumber, value);
         }
-
         public string PassportNumber
         {
             get => _passportNumber;
@@ -70,14 +68,48 @@ namespace Practice_10_1.ViewModels
 
         public Client GetUpdatedClient()
         {
-            return new Client()
+            Client newClient = new Client
             {
                 FirstName = _firstName,
                 SecondName = _secondName,
                 MiddleName = _middleName,
                 PhoneNumber = _phoneNumber,
-                PassportNumber = _passportNumber
+                PassportNumber = _passportNumber,
+                DataChangeAuthor = _employee.Name,
+                DataChangeTime = DateTime.Now
             };
+
+            List<string> fieldsUpdates = new List<string>();
+
+            if (_client.FirstName != _firstName)
+            {
+                string changedInfo = $"{nameof(FirstName)} : '{_client.FirstName}' > '{_firstName}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+            if (_client.SecondName != SecondName)
+            {
+                string changedInfo = $"{nameof(SecondName)} : '{_client.SecondName}' > '{_secondName}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+            if (_client.MiddleName != _middleName)
+            {
+                string changedInfo = $"{nameof(MiddleName)} : '{_client.MiddleName}' > '{_middleName}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+            if (_client.PassportNumber != _passportNumber)
+            {
+                string changedInfo = $"{nameof(PassportNumber)} : '{_client.PassportNumber}' > '{_passportNumber}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+            if (_client.PhoneNumber != _phoneNumber)
+            {
+                string changedInfo = $"{nameof(PhoneNumber)} : '{_client.PhoneNumber}' > '{_phoneNumber}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+
+            newClient.DataChangeInfo = fieldsUpdates;
+
+            return newClient;
         }
 
         public void UpdateClient()

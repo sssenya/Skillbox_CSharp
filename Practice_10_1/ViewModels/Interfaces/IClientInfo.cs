@@ -14,6 +14,7 @@ namespace Practice_10_1.ViewModels
         string MiddleName { get; }
         string PhoneNumber { get; }
         string PassportNumber { get; }
+
         bool CanChangeName { get; }
         bool CanChangePassport { get; }
         bool CanChangePhone { get; }

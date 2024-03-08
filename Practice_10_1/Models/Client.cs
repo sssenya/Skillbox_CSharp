@@ -15,6 +15,10 @@ namespace Practice_10_1
         public string PhoneNumber { get; set; }
         public string PassportNumber { get; set; }
 
+        public string DataChangeAuthor { get; set; }
+        public DateTime DataChangeTime { get; set; }
+        public List<string> DataChangeInfo { get; set; }
+
         public override bool Equals(object obj)
         {
             if (obj is Client client)

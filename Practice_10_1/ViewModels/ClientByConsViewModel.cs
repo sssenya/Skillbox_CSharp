@@ -11,11 +11,11 @@ namespace Practice_10_1.ViewModels
     internal class ClientByConsViewModel : BaseViewModel, IClientInfo
     {
         private readonly Client _client;
+        private readonly EmployeeViewModel _employee;
         private readonly string _firstName;
         private readonly string _secondName;
         private readonly string _middleName;
         private string _phoneNumber;
-        private EmployeeViewModel _employee;
 
         public ClientByConsViewModel(Client client, EmployeeViewModel employee)
         {
@@ -43,19 +43,16 @@ namespace Practice_10_1.ViewModels
             get => _secondName;
             set { }
         }
-
         public string MiddleName
         {
             get => _middleName;
             set { }
         }
-
         public string PhoneNumber
         {
             get => _phoneNumber;
             set => RaiseAndSetIfChanged(ref _phoneNumber, value);
         }
-
         public string PassportNumber
         {
             get => "******************";
@@ -68,14 +65,28 @@ namespace Practice_10_1.ViewModels
 
         public Client GetUpdatedClient()
         {
-            return new Client()
+            Client newClient = new Client
             {
                 FirstName = _firstName,
                 SecondName = _secondName,
                 MiddleName = _middleName,
                 PhoneNumber = _phoneNumber,
-                PassportNumber = _client.PassportNumber
+                PassportNumber = _client.PassportNumber,
+                DataChangeAuthor = _employee.Name,
+                DataChangeTime = DateTime.Now
             };
+
+            List<string> fieldsUpdates = new List<string>();
+            if (_client.PhoneNumber != _phoneNumber)
+            {
+                string changedInfo = $"{nameof(PhoneNumber)} : '{_client.PhoneNumber}' > '{_phoneNumber}'";
+                fieldsUpdates.Add(changedInfo);
+            }
+
+            newClient.DataChangeInfo = fieldsUpdates;
+
+            return newClient;
+
         }
 
         public void UpdateClient()
