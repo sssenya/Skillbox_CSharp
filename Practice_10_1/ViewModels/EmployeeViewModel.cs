@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace Practice_10_1.ViewModels
 {
-    internal class EmployeeViewModel : BaseViewModel, IBankEmployee
+    internal class EmployeeViewModel : BaseViewModel
     {
         protected ObservableCollection<Client> _clients;
         protected Client _selectedClient;

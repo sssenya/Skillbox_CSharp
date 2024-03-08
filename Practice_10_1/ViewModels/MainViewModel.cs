@@ -13,14 +13,14 @@ namespace Practice_10_1.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
-        private ObservableCollection<IBankEmployee> _employees;
-        private IBankEmployee _selectedEmployee;
+        private ObservableCollection<EmployeeViewModel> _employees;
+        private EmployeeViewModel _selectedEmployee;
 
         public MainViewModel()
         {
             Repository repository = new Repository();
 
-            _employees = new ObservableCollection<IBankEmployee>()
+            _employees = new ObservableCollection<EmployeeViewModel>()
             {
                 new ConsultantViewModel(repository) { Name = "Консультант"},
                 new ManagerViewModel(repository) { Name = "Менеджер"}
@@ -29,7 +29,7 @@ namespace Practice_10_1.ViewModels
             SelectedEmployee = _employees[0];
         }
 
-        public IBankEmployee SelectedEmployee
+        public EmployeeViewModel SelectedEmployee
         {
             get => _selectedEmployee;
             set
@@ -39,6 +39,6 @@ namespace Practice_10_1.ViewModels
             }
         }
 
-        public ObservableCollection<IBankEmployee> Employees => _employees;
+        public ObservableCollection<EmployeeViewModel> Employees => _employees;
     }
 }

@@ -74,7 +74,6 @@
     <Compile Include="ViewModels\ClientByConsViewModel.cs" />
     <Compile Include="ViewModels\EmployeeViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\IClientInfo.cs" />
-    <Compile Include="ViewModels\Interfaces\IBankEmployee.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ConsultantViewModel.cs" />
     <Compile Include="ViewModels\ManagerViewModel.cs" />
