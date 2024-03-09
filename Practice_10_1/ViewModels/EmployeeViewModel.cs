@@ -47,6 +47,22 @@ namespace Practice_10_1.ViewModels
             UpdateClientsFromDB();
         }
 
+        public void AddNewClient()
+        {
+            Client newClient = new Client
+            {
+                FirstName = "New",
+                SecondName = "Client",
+                MiddleName = "Name",
+                PhoneNumber = "00000000000",
+                PassportNumber = "0000000000"
+            };
+
+            _clients.Add(newClient);
+            _repository.UpdateDatabase(_clients);
+            UpdateClientsFromDB();
+        }
+
         public void UpdateClientsFromDB()
         {
             Clients = new ObservableCollection<Client>(_repository.GetClients());

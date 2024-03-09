@@ -30,10 +30,12 @@ namespace Practice_10_1.ViewModels
             _phoneNumber = client.PhoneNumber;
             _passportNumber = client.PassportNumber;
 
-            UpdateClientCommand = new RelayCommand(obj => UpdateClient(), obj => CanExecute());
+            UpdateClientCommand = new RelayCommand(obj => UpdateClient(), obj => CanUpdateClient());
+            AddNewClientCommand = new RelayCommand(obj => AddNewClient(), obj => CanAddClient());
         }
 
         public ICommand UpdateClientCommand { get; set; }
+        public ICommand AddNewClientCommand { get; set; }
 
         public Client Client => _client;
         public string FirstName
@@ -117,7 +119,7 @@ namespace Practice_10_1.ViewModels
             _employee.UpdateClient(this);
         }
 
-        public bool CanExecute()
+        public bool CanUpdateClient()
         {
             if (string.IsNullOrEmpty(FirstName))
             {
@@ -140,6 +142,16 @@ namespace Practice_10_1.ViewModels
                 return false;
             }
 
+            return true;
+        }
+
+        public void AddNewClient()
+        {
+            _employee.AddNewClient();
+        }
+
+        public bool CanAddClient()
+        {
             return true;
         }
     }
