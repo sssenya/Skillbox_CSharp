@@ -19,6 +19,17 @@ namespace Practice_10_1
         public DateTime DataChangeTime { get; set; }
         public List<string> DataChangeInfo { get; set; }
 
+        public class SortByName : IComparer<Client>
+        {
+            public int Compare(Client x, Client y)
+            {
+                Client X = x as Client;
+                Client Y = y as Client;
+                
+                return string.Compare(X.FirstName, Y.FirstName);
+            }
+        }
+
         public override bool Equals(object obj)
         {
             if (obj is Client client)

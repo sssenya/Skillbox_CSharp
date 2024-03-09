@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Newtonsoft.Json;
 using Practice_10_1.ViewModels;
+using static Practice_10_1.Client;
 
 namespace Practice_10_1.Models
 {
@@ -36,6 +37,8 @@ namespace Practice_10_1.Models
                 JsonSerializer serializer = new JsonSerializer();
                 clients = (List<Client>)serializer.Deserialize(file, typeof(List<Client>));
             }
+
+            clients.Sort(new SortByName());
 
             return clients;
         }
