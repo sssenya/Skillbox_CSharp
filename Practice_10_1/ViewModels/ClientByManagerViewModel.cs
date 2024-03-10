@@ -1,4 +1,5 @@
 ﻿using Practice_10_1.Commands;
+using Practice_10_1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,10 +33,12 @@ namespace Practice_10_1.ViewModels
 
             UpdateClientCommand = new RelayCommand(obj => UpdateClient(), obj => CanUpdateClient());
             AddNewClientCommand = new RelayCommand(obj => AddNewClient(), obj => CanAddClient());
+            RemoveClientCommand = new RelayCommand(obj => RemoveClient(), obj => CanRemoveClient());
         }
 
         public ICommand UpdateClientCommand { get; set; }
         public ICommand AddNewClientCommand { get; set; }
+        public ICommand RemoveClientCommand { get; set; }
 
         public Client Client => _client;
         public string FirstName
@@ -151,6 +154,15 @@ namespace Practice_10_1.ViewModels
         }
 
         public bool CanAddClient()
+        {
+            return true;
+        }
+        public virtual void RemoveClient()
+        {
+            _employee.RemoveClient(this);
+        }
+
+        public virtual bool CanRemoveClient()
         {
             return true;
         }

@@ -14,6 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -108,14 +109,25 @@
             </UniformGrid>
         </StackPanel>
 
-        <Button
+        <StackPanel
             Grid.Row="3"
             Grid.Column="0"
-            Height="30"
-            Margin="10"
-            Content="Добавить клиента"
-            DataContext="{Binding SelectedEmployee.SelectedClientInfo}"
-            Command="{Binding AddNewClientCommand}"/>
+            Orientation="Horizontal">
+            <Button
+                Height="30"
+                Margin="10"
+                Width="80"
+                Content="Добавить"
+                DataContext="{Binding SelectedEmployee.SelectedClientInfo}"
+                Command="{Binding AddNewClientCommand}"/>
+            <Button
+                Height="30"
+                Margin="10"
+                Width="80"
+                Content="Удалить"
+                DataContext="{Binding SelectedEmployee.SelectedClientInfo}"
+                Command="{Binding RemoveClientCommand}"/>
+        </StackPanel>
 
         <Button
             Grid.Row="3"

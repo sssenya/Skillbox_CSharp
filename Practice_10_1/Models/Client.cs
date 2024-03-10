@@ -23,10 +23,7 @@ namespace Practice_10_1
         {
             public int Compare(Client x, Client y)
             {
-                Client X = x as Client;
-                Client Y = y as Client;
-                
-                return string.Compare(X.FirstName, Y.FirstName);
+                return string.Compare(x.FirstName, y.FirstName);
             }
         }
 

@@ -12,9 +12,7 @@ namespace Practice_10_1.ViewModels
 {
     internal class ConsultantViewModel : EmployeeViewModel
     {
-        public ConsultantViewModel(Repository repository) : base(repository) 
-        {
-        }
+        public ConsultantViewModel(Repository repository) : base(repository) { }
 
         public Client SelectedClient
         {

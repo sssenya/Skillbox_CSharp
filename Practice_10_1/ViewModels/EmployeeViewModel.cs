@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using Practice_10_1.Commands;
 using Practice_10_1.Models;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,8 @@ namespace Practice_10_1.ViewModels
         public EmployeeViewModel(Repository repository)
         {
             _repository = repository;            
-            UpdateClientsFromDB();
+            UpdateClientsFromDB();            
         }
-
-        protected ICommand UpdateCommand { get; set; }
 
         public string Name { get; set; }
 
@@ -62,6 +61,14 @@ namespace Practice_10_1.ViewModels
             _repository.UpdateDatabase(_clients);
             UpdateClientsFromDB();
         }
+
+        public virtual void RemoveClient(IClientInfo client)
+        {
+            _clients.Remove(client.Client);
+            _repository.UpdateDatabase(_clients);
+            UpdateClientsFromDB();
+        }
+
 
         public void UpdateClientsFromDB()
         {
