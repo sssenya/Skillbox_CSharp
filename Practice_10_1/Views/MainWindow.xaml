@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Practice_10_1"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="600"
-        MinHeight="450" MinWidth="600">
+        Height="420" Width="650"
+        MinHeight="420" MinWidth="650">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -33,8 +33,7 @@
         <ComboBox
             Grid.Row="1"
             Grid.Column="0"
-            Margin="10"
-            Height="30"
+            Margin="10, 5"
             ItemsSource="{Binding Employees}"
             DisplayMemberPath="Name"          
             SelectedItem="{Binding SelectedEmployee}"/>
@@ -42,7 +41,7 @@
         <ListBox
             Grid.Row="2"
             Grid.Column="0"
-            Margin="10"
+            Margin="10,5"
             DataContext="{Binding SelectedEmployee}"
             ItemsSource="{Binding Clients}"
             SelectedItem="{Binding SelectedClient}">
@@ -65,7 +64,7 @@
         <StackPanel
             Grid.Row="2"
             Grid.Column="1"
-            Margin="10"
+            Margin="10, 5"
             Orientation="Vertical"
             DataContext="{Binding SelectedEmployee.SelectedClientInfo}">
             <UniformGrid>

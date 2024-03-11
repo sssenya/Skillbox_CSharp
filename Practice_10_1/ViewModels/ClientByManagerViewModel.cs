@@ -1,12 +1,8 @@
-﻿using Practice_10_1.Commands;
-using Practice_10_1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+
+using Practice_10_1.Commands;
 
 namespace Practice_10_1.ViewModels
 {
@@ -157,12 +153,13 @@ namespace Practice_10_1.ViewModels
         {
             return true;
         }
-        public virtual void RemoveClient()
+
+        public void RemoveClient()
         {
             _employee.RemoveClient(this);
         }
 
-        public virtual bool CanRemoveClient()
+        public bool CanRemoveClient()
         {
             return true;
         }

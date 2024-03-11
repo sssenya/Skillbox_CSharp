@@ -1,14 +1,9 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+
 using Newtonsoft.Json;
-using Practice_10_1.ViewModels;
-using static Practice_10_1.Client;
 
 namespace Practice_10_1.Models
 {
@@ -38,7 +33,7 @@ namespace Practice_10_1.Models
                 clients = (List<Client>)serializer.Deserialize(file, typeof(List<Client>));
             }
 
-            clients.Sort(new SortByName());
+            clients.Sort(new Client.SortByName());
 
             return clients;
         }

@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json.Linq;
-using Practice_10_1.Commands;
-using Practice_10_1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+
+using Practice_10_1.Models;
 
 namespace Practice_10_1.ViewModels
 {
@@ -62,13 +57,12 @@ namespace Practice_10_1.ViewModels
             UpdateClientsFromDB();
         }
 
-        public virtual void RemoveClient(IClientInfo client)
+        public void RemoveClient(IClientInfo client)
         {
             _clients.Remove(client.Client);
             _repository.UpdateDatabase(_clients);
             UpdateClientsFromDB();
         }
-
 
         public void UpdateClientsFromDB()
         {
