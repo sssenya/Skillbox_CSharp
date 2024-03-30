@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practice_12_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -39,6 +39,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -115,6 +116,25 @@
                 Grid.Column="4"
                 Margin="10"
                 Content="Пополнить"/>
+
+            <Label
+                Grid.Row="4"
+                Grid.Column="0"
+                Content="Перевод клиенту"/>
+            <ComboBox
+                Grid.Row="4"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="10"/>
+            <TextBox
+                Grid.Row="4"
+                Grid.Column="3"
+                Margin="10"/>
+            <Button
+                Grid.Row="4"
+                Grid.Column="4"
+                Margin="10"
+                Content="Перевести"/>
         </Grid>
 
         <Grid
