@@ -1,0 +1,50 @@
+[
+  {
+    "FirstName": "Ильин",
+    "SecondName": "Даниил",
+    "MiddleName": "Глебович",
+    "PassportNumber": "1111222333"
+  },
+  {
+    "FirstName": "Ковалева",
+    "SecondName": "Кира",
+    "MiddleName": "Максимовна",
+    "PassportNumber": "1111222444"
+  },
+  {
+    "FirstName": "Белов",
+    "SecondName": "Роман",
+    "MiddleName": "Ростиславович",
+    "PassportNumber": "111122255"
+  },
+  {
+    "FirstName": "Карпов",
+    "SecondName": "Константин",
+    "MiddleName": "Артёмович",
+    "PassportNumber": "1111227333"
+  },
+  {
+    "FirstName": "Кондратьев",
+    "SecondName": "Иван",
+    "MiddleName": "Макарович",
+    "PassportNumber": "1911222444"
+  },
+  {
+    "FirstName": "Николаев",
+    "SecondName": "Сергей",
+    "MiddleName": "Дмитриевич",
+    "PassportNumber": "111126255"
+  },
+  {
+    "FirstName": "Зайцева",
+    "SecondName": "Мария",
+    "MiddleName": "Олеговна",
+    "PassportNumber": "112122255"
+  },
+  {
+    "FirstName": "Астафьев",
+    "SecondName": "Егор",
+    "MiddleName": "Никитич",
+    "PassportNumber": "1101222673"
+  }
+]
