@@ -8,5 +8,9 @@ namespace Practice_12_1.Models
 {
     internal class Client
     {
+        public string FirstName { get; set; }
+        public string SecondName { get; set; }
+        public string MiddleName { get; set; }
+        public string PassportNumber { get; set; }
     }
 }
