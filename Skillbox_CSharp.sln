@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_1_1", "Practice_1\Practice_1_1.csproj", "{1E8F5F5E-5AB1-48E6-B6F1-EBCD9DDA6F77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_01_1", "Practice_1\Practice_01_1.csproj", "{1E8F5F5E-5AB1-48E6-B6F1-EBCD9DDA6F77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_1_2", "Practice_1.2\Practice_1_2.csproj", "{757E202A-EAFD-4A47-8E74-2CC8A20C78F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_01_2", "Practice_1.2\Practice_01_2.csproj", "{757E202A-EAFD-4A47-8E74-2CC8A20C78F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_2_1", "Practice_2_1\Practice_2_1.csproj", "{9AF18B56-FA6E-49D3-93BC-A04CB888552A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_02_1", "Practice_2_1\Practice_02_1.csproj", "{9AF18B56-FA6E-49D3-93BC-A04CB888552A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_3_1", "Practice_3_1\Practice_3_1.csproj", "{5867C936-2A55-4BA3-AF86-D6645F30E08D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_03_1", "Practice_3_1\Practice_03_1.csproj", "{5867C936-2A55-4BA3-AF86-D6645F30E08D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_03", "Practice_03", "{4545D911-BA13-4FD1-A5FD-6DB76E1184CC}"
 EndProject
@@ -17,47 +17,47 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_01", "Practice_01"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_02", "Practice_02", "{035EF94D-2A77-4C8D-97A4-D5CBEE5CA574}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_3_2", "Practice_3_2\Practice_3_2.csproj", "{35017AAC-7647-45CF-B593-24244725FD48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_03_2", "Practice_3_2\Practice_03_2.csproj", "{35017AAC-7647-45CF-B593-24244725FD48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_3_3", "Practice_3_3\Practice_3_3.csproj", "{F6C2C67E-290B-4B36-8244-26A89166B4F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_03_3", "Practice_3_3\Practice_03_3.csproj", "{F6C2C67E-290B-4B36-8244-26A89166B4F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_3_4", "Practice_3_4\Practice_3_4.csproj", "{B2B6ABE5-AAD9-4174-9DE9-1C407F3DE6E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_03_4", "Practice_3_4\Practice_03_4.csproj", "{B2B6ABE5-AAD9-4174-9DE9-1C407F3DE6E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_3_5", "Practice_3_5\Practice_3_5.csproj", "{8EEEED16-22D6-463B-B9B2-1907E27906F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_03_5", "Practice_3_5\Practice_03_5.csproj", "{8EEEED16-22D6-463B-B9B2-1907E27906F0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_04", "Practice_04", "{146D9055-A1B3-4B0E-B8A5-AB5261F4795E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_4_1", "Practice_4_1\Practice_4_1.csproj", "{FE83937C-D39F-4AB2-A822-A8C2CB4A0B17}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_04_1", "Practice_4_1\Practice_04_1.csproj", "{FE83937C-D39F-4AB2-A822-A8C2CB4A0B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_4_2", "Practice_4_2\Practice_4_2.csproj", "{4FBBF89B-0F7A-4389-BB17-1B4A54A78675}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_04_2", "Practice_4_2\Practice_04_2.csproj", "{4FBBF89B-0F7A-4389-BB17-1B4A54A78675}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_05", "Practice_05", "{4249AD36-DBBC-4803-9E66-403D412AB65D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_5_1", "Practice_5_1\Practice_5_1.csproj", "{447E9CA9-4A15-4B44-A2EC-E4A34F288216}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_05_1", "Practice_5_1\Practice_05_1.csproj", "{447E9CA9-4A15-4B44-A2EC-E4A34F288216}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_5_2", "Practice_5_2\Practice_5_2.csproj", "{3B044DC0-64AB-4A1B-946E-5323A316B713}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_05_2", "Practice_5_2\Practice_05_2.csproj", "{3B044DC0-64AB-4A1B-946E-5323A316B713}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_06", "Practice_06", "{E3F61AB7-C6C7-40E0-90E8-9AA7E8AA0B82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_6_1_Files", "Practice_6_1\Practice_6_1_Files.csproj", "{C6199F67-BAB8-4182-9428-E45C31D17BDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_06_1_Files", "Practice_6_1\Practice_06_1_Files.csproj", "{C6199F67-BAB8-4182-9428-E45C31D17BDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_7_1_Structures", "Practice_7_1\Practice_7_1_Structures.csproj", "{B44614C4-8E0D-43A8-9F3D-E64CBFE0237E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_07_1_Structures", "Practice_7_1\Practice_07_1_Structures.csproj", "{B44614C4-8E0D-43A8-9F3D-E64CBFE0237E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_07", "Practice_07", "{2FCBC73B-7264-47BB-839F-5D9EE7F24A70}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_08_Collections", "Practice_08_Collections", "{3863C7A0-E72F-4C87-A277-EC908F813F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_1_List", "Practice_8_1\Practice_8_1_List.csproj", "{D44DBA84-35C2-4294-983A-FADCDD59FA6D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_08_1_List", "Practice_8_1\Practice_08_1_List.csproj", "{D44DBA84-35C2-4294-983A-FADCDD59FA6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_2_Dictionary", "Practice_8_2_Collections\Practice_8_2_Dictionary.csproj", "{A217DDE7-9CEF-4FEC-95FC-D867E9D8AF84}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_08_2_Dictionary", "Practice_8_2_Collections\Practice_08_2_Dictionary.csproj", "{A217DDE7-9CEF-4FEC-95FC-D867E9D8AF84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_3_HashSet", "Practice_8_3\Practice_8_3_HashSet.csproj", "{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_08_3_HashSet", "Practice_8_3\Practice_08_3_HashSet.csproj", "{8F9A4090-9F56-45E6-A8B2-D52EC4EADB5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_8_4_xml", "Practice_8_4\Practice_8_4_xml.csproj", "{E353FA63-2CD3-47BA-A7C6-31410DC2282F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_08_4_xml", "Practice_8_4\Practice_08_4_xml.csproj", "{E353FA63-2CD3-47BA-A7C6-31410DC2282F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_09_WPF", "Practice_09_WPF", "{1A9185E1-CFED-4018-A2A6-9B53C12E40EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_9_1_WPF", "Practice_9_1_WPF\Practice_9_1_WPF.csproj", "{254B729F-2D6F-4350-8574-5A62B1267DDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_09_1_WPF", "Practice_9_1_WPF\Practice_09_1_WPF.csproj", "{254B729F-2D6F-4350-8574-5A62B1267DDD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_10", "Practice_10", "{60875D46-4263-4DAA-B988-00E6F8796455}"
 EndProject
