@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Practice_12_1"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="600" Width="800">
+        Height="600" Width="800"
+        MinHeight="600" MinWidth="800">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -25,7 +26,8 @@
             Grid.Row="0"
             Grid.RowSpan="3"
             Margin="10"
-            ItemsSource="{Binding Clients}">
+            ItemsSource="{Binding Clients}"
+            SelectedItem="{Binding SelectedClient}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock>
@@ -44,7 +46,8 @@
         <Grid
             Grid.Row="0"
             Grid.Column="1"
-            Margin="10">
+            Margin="10"
+            DataContext="{Binding SelectedClient}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition/>
@@ -155,7 +158,8 @@
         <Grid
             Grid.Row="1"
             Grid.Column="1"
-            Margin="10">
+            Margin="10"
+            DataContext="{Binding SelectedClient}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -179,24 +183,42 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Content="Статус счета:"/>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding DepAccountStatus}"/>
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
                 Content="Баланс счета:"/>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding DepAccountSum}"/>
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
                 Content="Дата открытия:"/>
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding DepAccountDate}"/>
             <Label
                 Grid.Row="4"
                 Grid.Column="0"
                 Content="Процент счета:"/>
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding DepAccountPercent}"/>
+
         </Grid>
 
         <Grid
             Grid.Row="2"
             Grid.Column="1"
-            Margin="10">
+            Margin="10"
+            DataContext="{Binding SelectedClient}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

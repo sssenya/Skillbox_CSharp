@@ -12,5 +12,8 @@ namespace Practice_12_1.Models
         public string SecondName { get; set; }
         public string MiddleName { get; set; }
         public string PassportNumber { get; set; }
+
+        public DepositAccount DepositAccount { get; set; }
+        public NonDepositAccount NonDepositAccount { get; set; }
     }
 }

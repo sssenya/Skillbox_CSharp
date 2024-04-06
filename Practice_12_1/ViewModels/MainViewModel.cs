@@ -10,19 +10,26 @@ namespace Practice_12_1.ViewModels
 {
     internal class MainViewModel : BaseViewModel
     {
-        private ObservableCollection<Client> _clients;
+        private ObservableCollection<ClientViewModel> _clients;
+        private ClientViewModel _selectedClient;
 
         public MainViewModel()
         {
             Repository repository = new Repository();
 
-            _clients = new ObservableCollection<Client>(repository.GetClients());
+            _clients = new ObservableCollection<ClientViewModel>(repository.GetClients().Select(x => new ClientViewModel(x)));
         }
 
-        public ObservableCollection<Client> Clients
+        public ObservableCollection<ClientViewModel> Clients
         {
             get => _clients;
             set => RaiseAndSetIfChanged(ref _clients, value);
+        }
+
+        public ClientViewModel SelectedClient
+        {
+            get => _selectedClient;
+            set => RaiseAndSetIfChanged(ref _selectedClient, value);
         }
     }
 }

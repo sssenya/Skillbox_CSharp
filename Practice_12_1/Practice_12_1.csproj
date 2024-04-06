@@ -67,7 +67,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Base\BaseViewModel.cs" />
+    <Compile Include="Models\Interfaces\IBankAccount.cs" />
+    <Compile Include="Models\NonDepositAccount.cs" />
     <Compile Include="Models\Repository.cs" />
+    <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -75,7 +78,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\BancAccount.cs" />
+    <Compile Include="Models\DepositAccount.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

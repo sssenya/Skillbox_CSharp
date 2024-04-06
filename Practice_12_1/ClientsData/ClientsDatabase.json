@@ -3,7 +3,11 @@
     "FirstName": "Ильин",
     "SecondName": "Даниил",
     "MiddleName": "Глебович",
-    "PassportNumber": "1111222333"
+    "PassportNumber": "1111222333",
+    "DepositAccount": {
+      "Balance": 100,
+      "Percent":  12
+    }
   },
   {
     "FirstName": "Ковалева",
