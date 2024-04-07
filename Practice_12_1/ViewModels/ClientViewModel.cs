@@ -1,10 +1,11 @@
-﻿using Practice_12_1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+
+using Practice_12_1.Models;
 
 namespace Practice_12_1.ViewModels
 {
@@ -27,14 +28,14 @@ namespace Practice_12_1.ViewModels
         public string SecondName => _client.SecondName;
         public string MiddleName => _client.MiddleName;
 
-        public string DepAccountStatus => _client.DepositAccount == null ? "Счет не открыт" : "Открыт";
+        public string DepAccountStatus => _client.DepositAccount == null ? "Не открыт" : "Открыт";
         public double DepAccountSum => _client.DepositAccount == null ? 0 : _client.DepositAccount.Balance;
-        public DateTime DepAccountDate { get; set; }
-        public string DepAccountPercent { get; set; }
+        public string DepAccountDate => _client.DepositAccount == null ? "" : _client.DepositAccount.OpeningDate.ToShortDateString();
+        public double DepAccountPercent => _client.DepositAccount == null ? 0 : _client.DepositAccount.Percent;
 
-        public string NonDepAccountStatus { get; set; }
-        public double NonDepAccountSum { get; set; }
-        public DateTime NonDepAccountDate { get; set; }
-        public string NonDepAccountPercent { get; set; }
+        public string NonDepAccountStatus => _client.NonDepositAccount == null ? "Не открыт" : "Открыт";
+        public double NonDepAccountSum => _client.NonDepositAccount == null ? 0 : _client.NonDepositAccount.Balance;
+        public string NonDepAccountDate => _client.NonDepositAccount == null ? "" : _client.NonDepositAccount.OpeningDate.ToShortDateString();
+        public double NonDepAccountPercent => _client.NonDepositAccount == null ? 0 : _client.NonDepositAccount.Percent;
     }
 }

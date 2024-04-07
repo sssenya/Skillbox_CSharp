@@ -242,18 +242,34 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 Content="Статус счета:"/>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Text="{Binding NonDepAccountStatus}"/>
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
                 Content="Баланс счета:"/>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Text="{Binding NonDepAccountSum}"/>
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
                 Content="Дата открытия:"/>
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Text="{Binding NonDepAccountDate}"/>
             <Label
                 Grid.Row="4"
                 Grid.Column="0"
                 Content="Процент счета:"/>
+            <TextBlock
+                Grid.Row="4"
+                Grid.Column="1"
+                Text="{Binding NonDepAccountPercent}"/>
         </Grid>
 
 
