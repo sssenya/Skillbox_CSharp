@@ -6,6 +6,7 @@ using Practice_12_1.Commands;
 using System.Windows.Documents;
 using System.Collections.Generic;
 using Practice_12_1.Models.Accounts;
+using System.Windows;
 
 namespace Practice_12_1.ViewModels
 {
@@ -15,7 +16,11 @@ namespace Practice_12_1.ViewModels
         private List<BankAccount> _accounts;
 
         private IBankAccount _selectedAddMoneyAccount;
+        private IBankAccount _selectedMoveMoneyAccFrom;
+        private IBankAccount _selectedMoveMoneyAccTo;
+
         private string _moneyToAdd;
+        private string _moneyToMove;
 
 
         public ClientViewModel(Client client)
@@ -29,13 +34,14 @@ namespace Practice_12_1.ViewModels
             CloseNonDepAccCommand = new RelayCommand(obj => CloseNonDepositAccount(), obj => CanCloseNonDepositAcc());
 
             AddMoneyCommand = new RelayCommand(obj => AddMoneyToAccount());
+            MoveBetweenAccsCommand = new RelayCommand(obj => MoveMoney());
         }
 
         public ICommand OpenDepAccCommand{ get; set; }
         public ICommand OpenNonDepAccCommand{ get; set; }
         public ICommand CloseDepAccCommand { get; set; }
         public ICommand CloseNonDepAccCommand { get; set; }
-        public ICommand MoveBetweenAccounts { get; set; }
+        public ICommand MoveBetweenAccsCommand { get; set; }
         public ICommand AddMoneyCommand { get; set; }
         public ICommand MoveToClient { get; set; }
 
@@ -58,6 +64,11 @@ namespace Practice_12_1.ViewModels
             get => _moneyToAdd;
             set => RaiseAndSetIfChanged(ref _moneyToAdd, value);
         }
+        public string MoneyToMove
+        {
+            get => _moneyToMove;
+            set => RaiseAndSetIfChanged(ref _moneyToMove, value);
+        }
 
         public List<BankAccount> Accounts
         {
@@ -70,6 +81,19 @@ namespace Practice_12_1.ViewModels
             get => _selectedAddMoneyAccount;
             set => RaiseAndSetIfChanged(ref _selectedAddMoneyAccount, value);
         }
+
+        public IBankAccount SelectedMoveMoneyAccFrom
+        {
+            get => _selectedMoveMoneyAccFrom;
+            set => RaiseAndSetIfChanged(ref _selectedMoveMoneyAccFrom, value);
+        }
+
+        public IBankAccount SelectedMoveMoneyAccTo
+        {
+            get => _selectedMoveMoneyAccTo;
+            set => RaiseAndSetIfChanged(ref _selectedMoveMoneyAccTo, value);
+        }
+
 
         public void OpenNewDepositAccount()
         {
@@ -103,6 +127,7 @@ namespace Practice_12_1.ViewModels
             return false;
         }
 
+
         public void CloseDepositAccount()
         {
             _client.DepositAccount = null;
@@ -135,6 +160,7 @@ namespace Practice_12_1.ViewModels
             return false;
         }
 
+
         public void AddMoneyToAccount()
         {
             bool result = double.TryParse(MoneyToAdd, out double moneyAmount);
@@ -143,6 +169,19 @@ namespace Practice_12_1.ViewModels
                 AccountCalculator<IBankAccount>.AddMoney(SelectedAddMoneyAccount, moneyAmount);
                 OnPropertyChanged(nameof(DepAccountSum));
                 OnPropertyChanged(nameof(NonDepAccountSum));
+                MessageBox.Show("Счет пополнен");
+            }
+        }
+
+        public void MoveMoney()
+        {
+            bool result = double.TryParse(MoneyToMove, out double moneyAmount);
+            if(result)
+            {
+                AccountCalculator<IBankAccount>.MoveMoney(SelectedMoveMoneyAccFrom, SelectedMoveMoneyAccTo, moneyAmount);
+                OnPropertyChanged(nameof(DepAccountSum));
+                OnPropertyChanged(nameof(NonDepAccountSum));
+                MessageBox.Show("Перевод выполнен");
             }
         }
 
