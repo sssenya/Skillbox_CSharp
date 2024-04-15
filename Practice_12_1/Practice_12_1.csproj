@@ -67,12 +67,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Models\AccountCalculator.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Base\BaseViewModel.cs" />
     <Compile Include="Models\Interfaces\IBankAccount.cs" />
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />
     <Compile Include="Models\Repository.cs" />
+    <Compile Include="ViewModels\BankAccountViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\MainWindow.xaml.cs">

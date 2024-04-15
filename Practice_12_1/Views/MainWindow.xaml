@@ -59,7 +59,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
-                <RowDefinition/>
             </Grid.RowDefinitions>
 
             <Label
@@ -91,29 +90,6 @@
                 Command="{Binding MoveBetweenAccsCommand}"/>
 
             <Label
-                Grid.Row="1"
-                Grid.Column="0"
-                Content="Пополнение счета"/>
-            <ComboBox
-                Grid.Row="1"
-                Grid.Column="1"
-                Grid.ColumnSpan="2"
-                Margin="10"
-                ItemsSource="{Binding Accounts}"
-                SelectedItem="{Binding SelectedAddMoneyAccount}"/>
-            <TextBox
-                Grid.Row="1"
-                Grid.Column="3"
-                Margin="10"
-                Text="{Binding MoneyToAdd}"/>
-            <Button
-                Grid.Row="1"
-                Grid.Column="4"
-                Margin="10"
-                Content="Пополнить"
-                Command="{Binding AddMoneyCommand}"/>
-
-            <Label
                 Grid.Row="2"
                 Grid.Column="0"
                 Content="Перевод клиенту"/>
@@ -137,7 +113,7 @@
             Grid.Row="1"
             Grid.Column="1"
             Margin="10"
-            DataContext="{Binding SelectedClient}">
+            DataContext="{Binding SelectedClient.DepAccountVM}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -145,6 +121,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -162,13 +139,13 @@
                 Grid.Column="1"
                 Margin="5"
                 Content="Открыть"
-                Command="{Binding OpenDepAccCommand}"/>
+                Command="{Binding OpeAccCommand}"/>
             <Button
                 Grid.Row="0"
                 Grid.Column="2"
                 Margin="5"
                 Content="Закрыть"
-                Command="{Binding CloseDepAccCommand}"/>
+                Command="{Binding CloseAccCommand}"/>
 
             <Label
                 Grid.Row="1"
@@ -177,7 +154,7 @@
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding DepAccountStatus}"/>
+                Text="{Binding AccountStatus}"/>
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
@@ -185,7 +162,7 @@
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="1"
-                Text="{Binding DepAccountSum}"/>
+                Text="{Binding AccountSum}"/>
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
@@ -193,7 +170,7 @@
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="{Binding DepAccountDate}"/>
+                Text="{Binding AccountDate}"/>
             <Label
                 Grid.Row="4"
                 Grid.Column="0"
@@ -201,7 +178,23 @@
             <TextBlock
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding DepAccountPercent}"/>
+                Text="{Binding AccountPercent}"/>
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Content="Пополнение счета"/>
+            <TextBox
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding MoneyToAdd}"/>
+            <Button
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="5"
+                Content="Пополнить"
+                Command="{Binding AddMoneyCommand}"/>
 
         </Grid>
 
@@ -209,7 +202,7 @@
             Grid.Row="2"
             Grid.Column="1"
             Margin="10"
-            DataContext="{Binding SelectedClient}">
+            DataContext="{Binding SelectedClient.NonDepAccountVM}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -217,6 +210,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
+                <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -234,13 +228,13 @@
                 Grid.Column="1"
                 Margin="5"
                 Content="Открыть"
-                Command="{Binding OpenNonDepAccCommand}"/>
+                Command="{Binding OpeAccCommand}"/>
             <Button
                 Grid.Row="0"
                 Grid.Column="2"
                 Margin="5"
                 Content="Закрыть"
-                Command="{Binding CloseNonDepAccCommand}"/>
+                Command="{Binding CloseAccCommand}"/>
 
             <Label
                 Grid.Row="1"
@@ -249,7 +243,7 @@
             <TextBlock
                 Grid.Row="1"
                 Grid.Column="1"
-                Text="{Binding NonDepAccountStatus}"/>
+                Text="{Binding AccountStatus}"/>
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
@@ -257,7 +251,7 @@
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="1"
-                Text="{Binding NonDepAccountSum}"/>
+                Text="{Binding AccountSum}"/>
             <Label
                 Grid.Row="3"
                 Grid.Column="0"
@@ -265,7 +259,7 @@
             <TextBlock
                 Grid.Row="3"
                 Grid.Column="1"
-                Text="{Binding NonDepAccountDate}"/>
+                Text="{Binding AccountDate}"/>
             <Label
                 Grid.Row="4"
                 Grid.Column="0"
@@ -273,7 +267,23 @@
             <TextBlock
                 Grid.Row="4"
                 Grid.Column="1"
-                Text="{Binding NonDepAccountPercent}"/>
+                Text="{Binding AccountPercent}"/>
+
+            <Label
+                Grid.Row="5"
+                Grid.Column="0"
+                Content="Пополнение счета"/>
+            <TextBox
+                Grid.Row="5"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding MoneyToAdd}"/>
+            <Button
+                Grid.Row="5"
+                Grid.Column="2"
+                Margin="5"
+                Content="Пополнить"
+                Command="{Binding AddMoneyCommand}"/>
         </Grid>
 
 

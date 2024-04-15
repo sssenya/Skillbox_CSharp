@@ -18,6 +18,7 @@ namespace Practice_12_1.ViewModels
             Repository repository = new Repository();
 
             _clients = new ObservableCollection<ClientViewModel>(repository.GetClients().Select(x => new ClientViewModel(x)));
+            SelectedClient = _clients.FirstOrDefault();
         }
 
         public ObservableCollection<ClientViewModel> Clients
