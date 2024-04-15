@@ -15,6 +15,7 @@ namespace Practice_12_1.ViewModels
         private List<BankAccount> _accounts;
 
         private IBankAccount _selectedAddMoneyAccount;
+        private string _moneyToAdd;
 
 
         public ClientViewModel(Client client)
@@ -24,12 +25,16 @@ namespace Practice_12_1.ViewModels
 
             OpenDepAccCommand = new RelayCommand(obj => OpenNewDepositAccount(), obj => CanOpenDepositAcc());
             OpenNonDepAccCommand = new RelayCommand(obj => OpenNewNonDepositAccount(), obj => CanOpenNonDepositAcc());
+            CloseDepAccCommand = new RelayCommand(obj => CloseDepositAccount(), obj => CanCloseDepositAcc());
+            CloseNonDepAccCommand = new RelayCommand(obj => CloseNonDepositAccount(), obj => CanCloseNonDepositAcc());
+
             AddMoneyCommand = new RelayCommand(obj => AddMoneyToAccount());
         }
 
         public ICommand OpenDepAccCommand{ get; set; }
         public ICommand OpenNonDepAccCommand{ get; set; }
-        public ICommand CloseAccount { get; set; }
+        public ICommand CloseDepAccCommand { get; set; }
+        public ICommand CloseNonDepAccCommand { get; set; }
         public ICommand MoveBetweenAccounts { get; set; }
         public ICommand AddMoneyCommand { get; set; }
         public ICommand MoveToClient { get; set; }
@@ -47,6 +52,12 @@ namespace Practice_12_1.ViewModels
         public double NonDepAccountSum => _client.NonDepositAccount == null ? 0 : _client.NonDepositAccount.Balance;
         public string NonDepAccountDate => _client.NonDepositAccount == null ? "" : _client.NonDepositAccount.OpeningDate.ToShortDateString();
         public double NonDepAccountPercent => _client.NonDepositAccount == null ? 0 : _client.NonDepositAccount.Percent;
+
+        public string MoneyToAdd
+        {
+            get => _moneyToAdd;
+            set => RaiseAndSetIfChanged(ref _moneyToAdd, value);
+        }
 
         public List<BankAccount> Accounts
         {
@@ -92,11 +103,47 @@ namespace Practice_12_1.ViewModels
             return false;
         }
 
+        public void CloseDepositAccount()
+        {
+            _client.DepositAccount = null;
+            UpdateAccountsList();
+            OnPropertyChanged(nameof(Accounts));
+        }
+
+        public bool CanCloseDepositAcc()
+        {
+            if (_client.DepositAccount != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public void CloseNonDepositAccount()
+        {
+            _client.NonDepositAccount = null;
+            UpdateAccountsList();
+            OnPropertyChanged(nameof(Accounts));
+        }
+
+        public bool CanCloseNonDepositAcc()
+        {
+            if (_client.NonDepositAccount != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public void AddMoneyToAccount()
         {
-            AccountCalculator<IBankAccount>.AddMoney(SelectedAddMoneyAccount, 100);
-            OnPropertyChanged(nameof(DepAccountSum));
-            OnPropertyChanged(nameof(NonDepAccountSum));
+            bool result = double.TryParse(MoneyToAdd, out double moneyAmount);
+            if (result)
+            {
+                AccountCalculator<IBankAccount>.AddMoney(SelectedAddMoneyAccount, moneyAmount);
+                OnPropertyChanged(nameof(DepAccountSum));
+                OnPropertyChanged(nameof(NonDepAccountSum));
+            }
         }
 
         private void UpdateAccountsList()
