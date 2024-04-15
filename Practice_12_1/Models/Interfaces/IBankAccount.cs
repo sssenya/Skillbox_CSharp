@@ -11,5 +11,9 @@ namespace Practice_12_1.Models.Interfaces
         double Balance { get; set; }
         double Percent { get; set; }
         DateTime OpeningDate { get; set; }
+
+        void AddMoney(double sum);
+
+        bool RemoveMoney(double sum);
     }
 }

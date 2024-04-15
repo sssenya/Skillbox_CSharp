@@ -25,7 +25,7 @@ namespace Practice_12_1.ViewModels
 
             OpeAccCommand = new RelayCommand(obj => OpenAccount(), obj => CanOpenAcc());
             CloseAccCommand = new RelayCommand(obj => CloseAccount(), obj => CanCloseAcc());
-            AddMoneyCommand = new RelayCommand(obj => AddMoney(), obj => CanCloseAcc());
+            AddMoneyCommand = new RelayCommand(obj => AddMoney(MoneyToAdd), obj => CanCloseAcc());
         }
 
         public ICommand OpeAccCommand { get; set; }
@@ -49,23 +49,15 @@ namespace Practice_12_1.ViewModels
             set => RaiseAndSetIfChanged(ref _moneyToAdd, value);
         }
 
-        public void AddMoney()
+        public void AddMoney(string sum)
         {
-            bool result = double.TryParse(MoneyToAdd, out double moneyAmount);
+            bool result = double.TryParse(sum, out double moneyAmount);
             if (result)
             {
-                _bankAccount.Balance += moneyAmount;
-                OnPropertyChanged(nameof(AccountSum));
-                MessageBox.Show("Счет пополнен");
+                _bankAccount.AddMoney(moneyAmount);
             }
-        }
-
-        public void RemoveMoney(double sum)
-        {
-            if (_bankAccount.Balance >= sum)
-            {
-                _bankAccount.Balance -= sum;
-            }
+            UpdateProperties();
+            MessageBox.Show("Счет пополнен");
         }
 
         public void OpenAccount()
@@ -96,9 +88,9 @@ namespace Practice_12_1.ViewModels
                 return true;
             }
             return false;
-        }
+        }   
 
-        private void UpdateProperties()
+        public void UpdateProperties()
         {
             OnPropertyChanged(nameof(AccountStatus));
             OnPropertyChanged(nameof(AccountSum));

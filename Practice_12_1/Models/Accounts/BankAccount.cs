@@ -12,5 +12,20 @@ namespace Practice_12_1.Models.Accounts
         public double Balance { get; set; }
         public double Percent { get; set; }
         public DateTime OpeningDate { get; set; }
+
+        public void AddMoney(double sum) 
+        {
+            Balance += sum;
+        }
+
+        public bool RemoveMoney(double sum) 
+        {
+            if (Balance >= sum)
+            {
+                Balance -= sum;
+                return true;
+            }
+            return false;
+        }
     }
 }

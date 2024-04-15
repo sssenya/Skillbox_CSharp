@@ -7,13 +7,13 @@ using System.Windows.Documents;
 using System.Collections.Generic;
 using Practice_12_1.Models.Accounts;
 using System.Windows;
+using Newtonsoft.Json.Linq;
 
 namespace Practice_12_1.ViewModels
 {
     internal class ClientViewModel : BaseViewModel
     {
         private readonly Client _client;
-        private List<BankAccount> _accounts;
 
         private IBankAccount _selectedMoveMoneyAccFrom;
         private IBankAccount _selectedMoveMoneyAccTo;
@@ -26,10 +26,12 @@ namespace Practice_12_1.ViewModels
         public ClientViewModel(Client client)
         {
             _client = client;
-            UpdateAccountsList();
 
             _depAccountVM = new BankAccountViewModel<DepositAccount>(_client.DepositAccount);
             _nonDepAccountVM = new BankAccountViewModel<NonDepositAccount>(_client.NonDepositAccount);
+
+            _depAccountVM.PropertyChanged += (s, e) => OnPropertyChanged(nameof(Accounts));
+            _nonDepAccountVM.PropertyChanged += (s, e) => OnPropertyChanged(nameof(Accounts));
 
             MoveBetweenAccsCommand = new RelayCommand(obj => MoveMoney());
         }
@@ -44,10 +46,21 @@ namespace Practice_12_1.ViewModels
         public BankAccountViewModel<DepositAccount> DepAccountVM => _depAccountVM;
         public BankAccountViewModel<NonDepositAccount> NonDepAccountVM => _nonDepAccountVM;
 
-        public List<BankAccount> Accounts
+        public List<IBankAccount> Accounts
         {
-            get => _accounts;
-            set => RaiseAndSetIfChanged(ref _accounts, value);
+            get
+            {
+                List<IBankAccount> accounts = new List<IBankAccount>();
+                if (DepAccountVM.BankAccount != null)
+                {
+                    accounts.Add(DepAccountVM.BankAccount);
+                }
+                if (NonDepAccountVM.BankAccount != null)
+                {
+                    accounts.Add(NonDepAccountVM.BankAccount);
+                }
+                return accounts;
+            }
         }
 
         public string MoneyToMove
@@ -73,23 +86,11 @@ namespace Practice_12_1.ViewModels
             bool result = double.TryParse(MoneyToMove, out double moneyAmount);
             if(result)
             {
-            //    AccountCalculator<IBankAccount>.MoveMoney(SelectedMoveMoneyAccFrom, SelectedMoveMoneyAccTo, moneyAmount);
-            //    OnPropertyChanged(nameof(DepAccountSum));
-            //    OnPropertyChanged(nameof(NonDepAccountSum));
-            //    MessageBox.Show("Перевод выполнен");
-            }
-        }
-
-        private void UpdateAccountsList()
-        {
-            _accounts = new List<BankAccount>();
-            if (_client.DepositAccount != null)
-            {
-                _accounts.Add(_client.DepositAccount);
-            }
-            if (_client.NonDepositAccount != null)
-            {
-                _accounts.Add(_client.NonDepositAccount);
+                SelectedMoveMoneyAccFrom.RemoveMoney(moneyAmount);
+                SelectedMoveMoneyAccTo.AddMoney(moneyAmount);
+                DepAccountVM.UpdateProperties();
+                NonDepAccountVM.UpdateProperties();
+                MessageBox.Show("Перевод выполнен");
             }
         }
     }
