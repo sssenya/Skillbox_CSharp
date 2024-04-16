@@ -1,5 +1,6 @@
 ﻿using Practice_12_1.Commands;
 using Practice_12_1.Models;
+using Practice_12_1.Models.Accounts;
 using Practice_12_1.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,7 @@ namespace Practice_12_1.ViewModels
         public void OpenAccount()
         {
             _bankAccount = new T();
+            //_bankAccount.Name = "dsd";
             UpdateProperties();
         }
 

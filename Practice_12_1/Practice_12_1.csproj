@@ -69,7 +69,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Base\BaseViewModel.cs" />
-    <Compile Include="Models\Interfaces\IBankAccount.cs" />
+    <Compile Include="Models\Accounts\IBankAccount.cs" />
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="ViewModels\BankAccountViewModel.cs" />

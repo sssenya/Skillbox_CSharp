@@ -10,6 +10,6 @@ namespace Practice_12_1.Models
 {
     internal class DepositAccount : BankAccount
     {
-
+        public string Name => "Депозитный счет";
     }
 }

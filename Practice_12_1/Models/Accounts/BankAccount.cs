@@ -9,6 +9,7 @@ namespace Practice_12_1.Models.Accounts
 {
     internal class BankAccount : IBankAccount
     {
+        public string Name { get; }
         public double Balance { get; set; }
         public double Percent { get; set; }
         public DateTime OpeningDate { get; set; }

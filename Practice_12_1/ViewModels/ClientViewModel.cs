@@ -16,8 +16,8 @@ namespace Practice_12_1.ViewModels
     {
         private readonly Client _client;
 
-        private IBankAccount _selectedMoveMoneyAccFrom;
-        private IBankAccount _selectedMoveMoneyAccTo;
+        private BankAccount _selectedMoveMoneyAccFrom;
+        private BankAccount _selectedMoveMoneyAccTo;
 
         private BankAccountViewModel<DepositAccount> _depAccountVM;
         private BankAccountViewModel<NonDepositAccount> _nonDepAccountVM;
@@ -74,13 +74,13 @@ namespace Practice_12_1.ViewModels
             set => RaiseAndSetIfChanged(ref _moneyToMove, value);
         }
 
-        public IBankAccount SelectedMoveMoneyAccFrom
+        public BankAccount SelectedMoveMoneyAccFrom
         {
             get => _selectedMoveMoneyAccFrom;
             set => RaiseAndSetIfChanged(ref _selectedMoveMoneyAccFrom, value);
         }
 
-        public IBankAccount SelectedMoveMoneyAccTo
+        public BankAccount SelectedMoveMoneyAccTo
         {
             get => _selectedMoveMoneyAccTo;
             set => RaiseAndSetIfChanged(ref _selectedMoveMoneyAccTo, value);
@@ -90,12 +90,19 @@ namespace Practice_12_1.ViewModels
         {
             bool result = double.TryParse(MoneyToMove, out double moneyAmount);
             if(result)
-            {
-                SelectedMoveMoneyAccFrom.RemoveMoney(moneyAmount);
-                SelectedMoveMoneyAccTo.AddMoney(moneyAmount);
-                DepAccountVM.UpdateProperties();
-                NonDepAccountVM.UpdateProperties();
-                MessageBox.Show("Перевод выполнен");
+            {                
+                bool canRemove = SelectedMoveMoneyAccFrom.RemoveMoney(moneyAmount);
+                if(canRemove)
+                {
+                    SelectedMoveMoneyAccTo.AddMoney(moneyAmount);
+                    DepAccountVM.UpdateProperties();
+                    NonDepAccountVM.UpdateProperties();
+                    MessageBox.Show("Перевод выполнен");
+                }
+                else
+                {
+                    MessageBox.Show("Недостаточно средств для перевода");
+                }
             }
         }
     }
