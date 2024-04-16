@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Practice_12_1.Models.Accounts;
 using System.Windows;
 using Newtonsoft.Json.Linq;
+using System.Linq;
 
 namespace Practice_12_1.ViewModels
 {
@@ -46,20 +47,24 @@ namespace Practice_12_1.ViewModels
         public BankAccountViewModel<DepositAccount> DepAccountVM => _depAccountVM;
         public BankAccountViewModel<NonDepositAccount> NonDepAccountVM => _nonDepAccountVM;
 
-        public List<IBankAccount> Accounts
+        public List<BankAccount> Accounts
         {
             get
             {
-                List<IBankAccount> accounts = new List<IBankAccount>();
+                List<DepositAccount> depAccounts = new List<DepositAccount>();
+                List<NonDepositAccount> nonDepAccounts = new List<NonDepositAccount>();
                 if (DepAccountVM.BankAccount != null)
                 {
-                    accounts.Add(DepAccountVM.BankAccount);
+                    depAccounts.Add(DepAccountVM.BankAccount);
                 }
                 if (NonDepAccountVM.BankAccount != null)
                 {
-                    accounts.Add(NonDepAccountVM.BankAccount);
+                    nonDepAccounts.Add(NonDepAccountVM.BankAccount);
                 }
-                return accounts;
+
+                IEnumerable<BankAccount> accounts = depAccounts;
+
+                return accounts.Union(nonDepAccounts).ToList();
             }
         }
 
