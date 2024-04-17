@@ -67,7 +67,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
+    <Compile Include="Models\Accounts\IMoneyMover.cs" />
     <Compile Include="Models\Base\BaseViewModel.cs" />
     <Compile Include="Models\Accounts\IBankAccount.cs" />
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />

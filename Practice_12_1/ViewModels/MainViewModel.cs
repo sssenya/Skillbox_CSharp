@@ -17,7 +17,9 @@ namespace Practice_12_1.ViewModels
         {
             Repository repository = new Repository();
 
-            _clients = new ObservableCollection<ClientViewModel>(repository.GetClients().Select(x => new ClientViewModel(x)));
+            _clients = new ObservableCollection<ClientViewModel>(repository
+                                                                    .GetClients()
+                                                                    .Select(x => new ClientViewModel(x, this)));
             SelectedClient = _clients.FirstOrDefault();
         }
 
@@ -32,5 +34,9 @@ namespace Practice_12_1.ViewModels
             get => _selectedClient;
             set => RaiseAndSetIfChanged(ref _selectedClient, value);
         }
+
+        public List<ClientViewModel> ClientsWithDepAccounts => _clients             
+                    .Where(x => x.DepAccountVM.BankAccount != null)
+                    .ToList();
     }
 }
