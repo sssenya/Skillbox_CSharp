@@ -35,7 +35,7 @@ namespace Practice_12_1.ViewModels
             _depAccountVM.PropertyChanged += (s, e) => OnPropertyChanged(nameof(OtherClients));
 
             MoveAccToAccCommand = new RelayCommand(obj => MoveMoneyAccToAcc());
-            MoveClientToClientCommand = new RelayCommand(obj => MoveMoneyClientToClient());
+            MoveClientToClientCommand = new RelayCommand(obj => MoveMoneyClientToClient(), obj => CanMoveMoneyClientToClient());
         }
 
         public ICommand MoveAccToAccCommand { get; set; }
@@ -130,6 +130,16 @@ namespace Practice_12_1.ViewModels
                 DepAccountVM.UpdateProperties();
                 NonDepAccountVM.UpdateProperties();
             }
+        }
+
+        public bool CanMoveMoneyClientToClient()
+        {
+            if(DepAccountVM.BankAccount == null)
+            {
+                return false;
+            }
+            
+            return true;
         }
     }
 }
