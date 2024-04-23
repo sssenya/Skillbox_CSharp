@@ -112,19 +112,22 @@ namespace Practice_12_1.ViewModels
                 IMoneyMover<DepositAccount> moneyMoverDep = moneyMover;
 
                 moneyMover.SetAccounts(SelectedMoveMoneyAccFrom, SelectedMoveMoneyAccTo);
-                moneyMover.MoveMoney(moneyAmount);
+                bool isMoved = moneyMover.MoveMoney(moneyAmount);
 
-                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                if (isMoved)
                 {
-                    Time = DateTime.Now,
-                    AuthorName = "Manager",
-                    TransactionType = "Moving money between client's accounts",
-                    TransactionSum = moneyAmount
-                };
-                CreateLog(this, logInfo);
+                    LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                    {
+                        Time = DateTime.Now,
+                        AuthorName = "Manager",
+                        TransactionType = "Moving money between client's accounts",
+                        TransactionSum = moneyAmount
+                    };
+                    CreateLog(this, logInfo);
 
-                DepAccountVM.UpdateProperties();
-                NonDepAccountVM.UpdateProperties();
+                    DepAccountVM.UpdateProperties();
+                    NonDepAccountVM.UpdateProperties();
+                }
             }
         }
 
@@ -136,19 +139,22 @@ namespace Practice_12_1.ViewModels
                 MoneyMover<BankAccount> moneyMover = new MoneyMover<BankAccount>();
 
                 moneyMover.SetAccounts(DepAccountVM.BankAccount, SelectedClient.DepAccountVM.BankAccount);
-                moneyMover.MoveMoney(moneyAmount);
+                bool isMoved = moneyMover.MoveMoney(moneyAmount);
 
-                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                if (isMoved)
                 {
-                    Time = DateTime.Now,
-                    AuthorName = "Manager",
-                    TransactionType = "Moving money to another client",
-                    TransactionSum = moneyAmount
-                };
-                CreateLog(this, logInfo);
+                    LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                    {
+                        Time = DateTime.Now,
+                        AuthorName = "Manager",
+                        TransactionType = "Moving money to another client",
+                        TransactionSum = moneyAmount
+                    };
+                    CreateLog(this, logInfo);
 
-                DepAccountVM.UpdateProperties();
-                NonDepAccountVM.UpdateProperties();
+                    DepAccountVM.UpdateProperties();
+                    NonDepAccountVM.UpdateProperties();
+                }
             }
         }
 

@@ -19,17 +19,17 @@ namespace Practice_12_1.Models
             _accountTo = accountTo;
         }
 
-        public void MoveMoney(double sum)
+        public bool MoveMoney(double sum)
         {
             bool canRemove = _accountFrom.RemoveMoney(sum);
             if (canRemove)
             {
                 _accountTo.AddMoney(sum);
-                MessageBox.Show("Перевод выполнен");
+                return true;
             }
             else
             {
-                MessageBox.Show("Недостаточно средств для перевода");
+                return false;
             }
         }
     }

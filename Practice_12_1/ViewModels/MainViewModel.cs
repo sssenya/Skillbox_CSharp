@@ -1,4 +1,5 @@
-﻿using Practice_12_1.Models;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Practice_12_1.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -45,6 +46,11 @@ namespace Practice_12_1.ViewModels
             };
 
             logger.WriteLog(logInfo);
+
+            new ToastContentBuilder()
+                .AddText($"{client.FirstName} {client.SecondName} {client.MiddleName}")
+                .AddText(e.TransactionType)
+                .Show();
         }
 
         public ObservableCollection<ClientViewModel> Clients

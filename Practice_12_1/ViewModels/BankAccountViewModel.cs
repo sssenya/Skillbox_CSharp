@@ -70,7 +70,6 @@ namespace Practice_12_1.ViewModels
                 CreateLog(_accountOwner, logInfo);
 
                 UpdateProperties();
-                MessageBox.Show("Счет пополнен");
             }
         }
 

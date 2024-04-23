@@ -11,6 +11,6 @@ namespace Practice_12_1.Models
     {
         void SetAccounts(T accountFrom, T accountTo);
 
-        void MoveMoney(double sum);
+        bool MoveMoney(double sum);
     }
 }
