@@ -70,7 +70,10 @@
     <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Accounts\IMoneyMover.cs" />
-    <Compile Include="Models\Base\BaseViewModel.cs" />
+    <Compile Include="Models\Logging\Logger.cs" />
+    <Compile Include="Models\Logging\LogInfo.cs" />
+    <Compile Include="Models\Logging\LogInfoEventArgs.cs" />
+    <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Models\Accounts\IBankAccount.cs" />
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />
     <Compile Include="Models\Repository.cs" />
@@ -104,6 +107,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="ClientsData\ClientsDatabase.json" />
+    <None Include="ClientsData\Logs.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
