@@ -11,6 +11,7 @@ namespace Practice_12_1.Models
     internal class Logger
     {
         private readonly string _filePath;
+        private readonly JsonConverter<LogInfo> _converter;
 
         public Logger()
         {
@@ -22,26 +23,16 @@ namespace Practice_12_1.Models
             {
                 File.Create(_filePath).Close();
             }
+
+            _converter = new JsonConverter<LogInfo>(_filePath);
         }
 
         public void WriteLog(LogInfo logInfo)
         {
-            TextReader text = File.OpenText(_filePath);
-            JsonSerializer serializer = new JsonSerializer();
-            List<LogInfo> logs = (List<LogInfo>)serializer.Deserialize(text, typeof(List<LogInfo>));
-            text.Close();
-
-            if (logs == null)
-            {
-                logs = new List<LogInfo>();
-            }
-
+            List<LogInfo> logs = _converter.GetElements() ?? new List<LogInfo>();
             logs.Add(logInfo);
 
-            using (StreamWriter file = File.CreateText(_filePath))
-            {
-                serializer.Serialize(file, logs);
-            }
+            _converter.UpdateElements(logs);
         }
     }
 }

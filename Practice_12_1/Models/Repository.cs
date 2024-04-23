@@ -10,6 +10,7 @@ namespace Practice_12_1.Models
     internal class Repository
     {
         private readonly string _filePath;
+        private readonly JsonConverter<Client> _converter;
 
         public Repository()
         {
@@ -21,28 +22,18 @@ namespace Practice_12_1.Models
             {
                 File.Create(_filePath).Close();
             }
+
+            _converter = new JsonConverter<Client>(_filePath);
         }
 
         public List<Client> GetClients()
         {
-            List<Client> clients = new List<Client>();
-
-            using (StreamReader file = File.OpenText(_filePath))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                clients = (List<Client>)serializer.Deserialize(file, typeof(List<Client>));
-            }
-
-            return clients;
+            return _converter.GetElements();
         }
         
         public void UpdateDatabase(ObservableCollection<Client> clients)
         {
-            using (StreamWriter file = File.CreateText(_filePath))
-            {
-                JsonSerializer serializer = new JsonSerializer();
-                serializer.Serialize(file, clients);
-            }
+            _converter.UpdateElements(clients);
         }
     }
 }

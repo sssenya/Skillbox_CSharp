@@ -70,6 +70,7 @@
     <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Accounts\IMoneyMover.cs" />
+    <Compile Include="Models\JsonConverter.cs" />
     <Compile Include="Models\Logging\Logger.cs" />
     <Compile Include="Models\Logging\LogInfo.cs" />
     <Compile Include="Models\Logging\LogInfoEventArgs.cs" />
