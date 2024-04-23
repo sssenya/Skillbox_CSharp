@@ -16,12 +16,14 @@ namespace Practice_12_1.ViewModels
         where T : IBankAccount, new()
     {
         private T _bankAccount;
+        private ClientViewModel _accountOwner;
 
         private string _moneyToAdd;
 
-        public BankAccountViewModel(T bankAccount)
+        public BankAccountViewModel(T bankAccount, ClientViewModel accountOwner)
         {
             _bankAccount = bankAccount;
+            _accountOwner = accountOwner;
 
             OpeAccCommand = new RelayCommand(obj => OpenAccount(), obj => CanOpenAcc());
             CloseAccCommand = new RelayCommand(obj => CloseAccount(), obj => CanCloseAcc());
@@ -31,6 +33,8 @@ namespace Practice_12_1.ViewModels
         public ICommand OpeAccCommand { get; set; }
         public ICommand CloseAccCommand { get; set; }
         public ICommand AddMoneyCommand { get; set; }
+
+        public event EventHandler<LogInfoEventArgs> CreateLog;
 
         public T BankAccount
         {
@@ -55,14 +59,33 @@ namespace Practice_12_1.ViewModels
             if (result)
             {
                 _bankAccount.AddMoney(moneyAmount);
+
+                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                {
+                    Time = DateTime.Now,
+                    AuthorName = "Manager",
+                    TransactionType = "Account replenishment",
+                    TransactionSum = moneyAmount
+                };
+                CreateLog(_accountOwner, logInfo);
+
+                UpdateProperties();
+                MessageBox.Show("Счет пополнен");
             }
-            UpdateProperties();
-            MessageBox.Show("Счет пополнен");
         }
 
         public void OpenAccount()
         {
-            _bankAccount = new T();            
+            _bankAccount = new T();
+
+            LogInfoEventArgs logInfo = new LogInfoEventArgs()
+            {
+                Time = DateTime.Now,
+                AuthorName = "Manager",
+                TransactionType = "Account opening",
+                TransactionSum = 0
+            };
+            CreateLog(_accountOwner, logInfo);
             UpdateProperties();
         }
 
@@ -78,6 +101,14 @@ namespace Practice_12_1.ViewModels
         public void CloseAccount()
         {
             _bankAccount = default;
+            LogInfoEventArgs logInfo = new LogInfoEventArgs()
+            {
+                Time = DateTime.Now,
+                AuthorName = "Manager",
+                TransactionType = "Account closing",
+                TransactionSum = 0
+            };
+            CreateLog(_accountOwner, logInfo);
             UpdateProperties();
         }
 

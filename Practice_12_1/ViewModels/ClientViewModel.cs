@@ -27,8 +27,8 @@ namespace Practice_12_1.ViewModels
             _client = client;
             _mainVM = mainVM;
 
-            _depAccountVM = new BankAccountViewModel<DepositAccount>(_client.DepositAccount);
-            _nonDepAccountVM = new BankAccountViewModel<NonDepositAccount>(_client.NonDepositAccount);
+            _depAccountVM = new BankAccountViewModel<DepositAccount>(_client.DepositAccount, this);
+            _nonDepAccountVM = new BankAccountViewModel<NonDepositAccount>(_client.NonDepositAccount, this);
 
             _depAccountVM.PropertyChanged += (s, e) => OnPropertyChanged(nameof(Accounts));
             _nonDepAccountVM.PropertyChanged += (s, e) => OnPropertyChanged(nameof(Accounts));

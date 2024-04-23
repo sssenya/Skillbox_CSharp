@@ -24,6 +24,8 @@ namespace Practice_12_1.ViewModels
             foreach(var client in _clients)
             {
                 client.CreateLog += Client_CreateLog;
+                client.DepAccountVM.CreateLog += Client_CreateLog;
+                client.NonDepAccountVM.CreateLog += Client_CreateLog;
             }
 
             SelectedClient = _clients.FirstOrDefault();
