@@ -20,7 +20,29 @@ namespace Practice_12_1.ViewModels
             _clients = new ObservableCollection<ClientViewModel>(repository
                                                                     .GetClients()
                                                                     .Select(x => new ClientViewModel(x, this)));
+
+            foreach(var client in _clients)
+            {
+                client.CreateLog += Client_CreateLog;
+            }
+
             SelectedClient = _clients.FirstOrDefault();
+        }
+
+        private void Client_CreateLog(object sender, LogInfoEventArgs e)
+        {
+            ClientViewModel client = sender as ClientViewModel;
+            Logger logger = new Logger();
+            LogInfo logInfo = new LogInfo()
+            {
+                Time = e.Time,
+                AuthorName = e.AuthorName,
+                ClientName = $"{client.FirstName} {client.SecondName} {client.MiddleName}",
+                TransactionType = e.TransactionType,
+                TransactionSum = e.TransactionSum
+            };
+
+            logger.WriteLog(logInfo);
         }
 
         public ObservableCollection<ClientViewModel> Clients

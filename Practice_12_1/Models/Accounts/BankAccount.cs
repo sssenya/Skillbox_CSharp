@@ -8,6 +8,11 @@ namespace Practice_12_1.Models
 {
     internal class BankAccount : IBankAccount
     {
+        public BankAccount()
+        {
+            OpeningDate = DateTime.Now;
+        }
+
         public string Name { get; }
         public double Balance { get; set; }
         public double Percent { get; set; }

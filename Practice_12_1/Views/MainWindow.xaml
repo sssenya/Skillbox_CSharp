@@ -96,7 +96,7 @@
                 Grid.Column="3"
                 Margin="10"
                 Content="Перевести"
-                Command="{Binding MoveBetweenAccsCommand}"/>
+                Command="{Binding MoveAccToAccCommand}"/>
 
             <Label
                 Grid.Row="2"

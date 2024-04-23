@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
@@ -10,17 +11,16 @@ namespace Practice_12_1.ViewModels
     internal class ClientViewModel : BaseViewModel
     {
         private readonly Client _client;
+        private readonly MainViewModel _mainVM;
+
+        private readonly BankAccountViewModel<DepositAccount> _depAccountVM;
+        private readonly BankAccountViewModel<NonDepositAccount> _nonDepAccountVM;
 
         private BankAccount _selectedMoveMoneyAccFrom;
         private BankAccount _selectedMoveMoneyAccTo;
         private ClientViewModel _selectedClient;
 
-        private BankAccountViewModel<DepositAccount> _depAccountVM;
-        private BankAccountViewModel<NonDepositAccount> _nonDepAccountVM;
-
         private string _moneyToMove;
-
-        private MainViewModel _mainVM;
 
         public ClientViewModel(Client client, MainViewModel mainVM)
         {
@@ -40,6 +40,8 @@ namespace Practice_12_1.ViewModels
 
         public ICommand MoveAccToAccCommand { get; set; }
         public ICommand MoveClientToClientCommand { get; set; }
+
+        public event EventHandler<LogInfoEventArgs> CreateLog;
 
         public Client Client => _client;
         public string FirstName => _client.FirstName;
@@ -112,6 +114,15 @@ namespace Practice_12_1.ViewModels
                 moneyMover.SetAccounts(SelectedMoveMoneyAccFrom, SelectedMoveMoneyAccTo);
                 moneyMover.MoveMoney(moneyAmount);
 
+                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                {
+                    Time = DateTime.Now,
+                    AuthorName = "Manager",
+                    TransactionType = "Moving money between client's accounts",
+                    TransactionSum = moneyAmount
+                };
+                CreateLog(this, logInfo);
+
                 DepAccountVM.UpdateProperties();
                 NonDepAccountVM.UpdateProperties();
             }
@@ -126,6 +137,15 @@ namespace Practice_12_1.ViewModels
 
                 moneyMover.SetAccounts(DepAccountVM.BankAccount, SelectedClient.DepAccountVM.BankAccount);
                 moneyMover.MoveMoney(moneyAmount);
+
+                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                {
+                    Time = DateTime.Now,
+                    AuthorName = "Manager",
+                    TransactionType = "Moving money to another client",
+                    TransactionSum = moneyAmount
+                };
+                CreateLog(this, logInfo);
 
                 DepAccountVM.UpdateProperties();
                 NonDepAccountVM.UpdateProperties();

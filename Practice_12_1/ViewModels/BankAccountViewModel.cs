@@ -62,7 +62,7 @@ namespace Practice_12_1.ViewModels
 
         public void OpenAccount()
         {
-            _bankAccount = new T();
+            _bankAccount = new T();            
             UpdateProperties();
         }
 
