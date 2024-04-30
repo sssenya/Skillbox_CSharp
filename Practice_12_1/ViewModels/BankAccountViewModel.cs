@@ -34,7 +34,7 @@ namespace Practice_12_1.ViewModels
         public ICommand CloseAccCommand { get; set; }
         public ICommand AddMoneyCommand { get; set; }
 
-        public event EventHandler<LogInfoEventArgs> CreateLog;
+        public event EventHandler<LogInfoEventArgs> AccountUpdate;
 
         public T BankAccount
         {
@@ -67,7 +67,7 @@ namespace Practice_12_1.ViewModels
                     TransactionType = "Account replenishment",
                     TransactionSum = moneyAmount
                 };
-                CreateLog(_accountOwner, logInfo);
+                AccountUpdate(_accountOwner, logInfo);
 
                 UpdateProperties();
             }
@@ -84,7 +84,7 @@ namespace Practice_12_1.ViewModels
                 TransactionType = "Account opening",
                 TransactionSum = 0
             };
-            CreateLog(_accountOwner, logInfo);
+            AccountUpdate(_accountOwner, logInfo);
             UpdateProperties();
         }
 
@@ -107,7 +107,7 @@ namespace Practice_12_1.ViewModels
                 TransactionType = "Account closing",
                 TransactionSum = 0
             };
-            CreateLog(_accountOwner, logInfo);
+            AccountUpdate(_accountOwner, logInfo);
             UpdateProperties();
         }
 
@@ -126,6 +126,11 @@ namespace Practice_12_1.ViewModels
             OnPropertyChanged(nameof(AccountSum));
             OnPropertyChanged(nameof(AccountDate));
             OnPropertyChanged(nameof(AccountPercent));
+        }
+
+        public T GetBankAccount()
+        {
+            return _bankAccount;
         }
     }
 }

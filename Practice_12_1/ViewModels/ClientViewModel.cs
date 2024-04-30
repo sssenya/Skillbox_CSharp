@@ -41,7 +41,7 @@ namespace Practice_12_1.ViewModels
         public ICommand MoveAccToAccCommand { get; set; }
         public ICommand MoveClientToClientCommand { get; set; }
 
-        public event EventHandler<LogInfoEventArgs> CreateLog;
+        public event EventHandler<LogInfoEventArgs> AccountUpdate;
 
         public Client Client => _client;
         public string FirstName => _client.FirstName;
@@ -102,6 +102,19 @@ namespace Practice_12_1.ViewModels
             set => RaiseAndSetIfChanged(ref _selectedClient, value);
         }
 
+        public Client GetClient()
+        {
+            return new Client
+            {
+                FirstName = _client.FirstName,
+                SecondName = _client.SecondName,
+                MiddleName = _client.MiddleName,
+                PassportNumber = _client.PassportNumber,
+                DepositAccount = _depAccountVM.GetBankAccount(),
+                NonDepositAccount = _nonDepAccountVM.GetBankAccount()
+            };
+        }
+
         public void MoveMoneyAccToAcc()
         {
             bool result = double.TryParse(MoneyToMove, out double moneyAmount);
@@ -124,7 +137,7 @@ namespace Practice_12_1.ViewModels
                         TransactionType = "Moving money between client's accounts",
                         TransactionSum = moneyAmount
                     };
-                    CreateLog(this, logInfo);
+                    AccountUpdate(this, logInfo);
 
                     DepAccountVM.UpdateProperties();
                     NonDepAccountVM.UpdateProperties();
@@ -151,7 +164,7 @@ namespace Practice_12_1.ViewModels
                         TransactionType = "Moving money to another client",
                         TransactionSum = moneyAmount
                     };
-                    CreateLog(this, logInfo);
+                    AccountUpdate(this, logInfo);
 
                     DepAccountVM.UpdateProperties();
                     NonDepAccountVM.UpdateProperties();

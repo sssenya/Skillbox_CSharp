@@ -14,19 +14,25 @@ namespace Practice_12_1.ViewModels
         private ObservableCollection<ClientViewModel> _clients;
         private ClientViewModel _selectedClient;
 
+        private Repository _repository;
+
         public MainViewModel()
         {
-            Repository repository = new Repository();
+            _repository = new Repository();
 
-            _clients = new ObservableCollection<ClientViewModel>(repository
+            _clients = new ObservableCollection<ClientViewModel>(_repository
                                                                     .GetClients()
                                                                     .Select(x => new ClientViewModel(x, this)));
 
             foreach(var client in _clients)
             {
-                client.CreateLog += Client_CreateLog;
-                client.DepAccountVM.CreateLog += Client_CreateLog;
-                client.NonDepAccountVM.CreateLog += Client_CreateLog;
+                client.AccountUpdate += Client_CreateLog;
+                client.DepAccountVM.AccountUpdate += Client_CreateLog;
+                client.NonDepAccountVM.AccountUpdate += Client_CreateLog;
+
+                client.AccountUpdate += Client_UpdateDB;
+                client.DepAccountVM.AccountUpdate += Client_UpdateDB;
+                client.NonDepAccountVM.AccountUpdate += Client_UpdateDB;
             }
 
             SelectedClient = _clients.FirstOrDefault();
@@ -51,6 +57,12 @@ namespace Practice_12_1.ViewModels
                 .AddText($"{client.FirstName} {client.SecondName} {client.MiddleName}")
                 .AddText(e.TransactionType)
                 .Show();
+        }
+
+        private void Client_UpdateDB(object sender, LogInfoEventArgs e)
+        {
+            var clients = _clients.Select(x => x.GetClient());
+            _repository.UpdateDatabase(clients);
         }
 
         public ObservableCollection<ClientViewModel> Clients
