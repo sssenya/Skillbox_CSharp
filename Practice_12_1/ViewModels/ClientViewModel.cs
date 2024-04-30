@@ -47,6 +47,7 @@ namespace Practice_12_1.ViewModels
         public string FirstName => _client.FirstName;
         public string SecondName => _client.SecondName;
         public string MiddleName => _client.MiddleName;
+        public string PassportNumber => _client.PassportNumber;
 
         public BankAccountViewModel<DepositAccount> DepAccountVM => _depAccountVM;
         public BankAccountViewModel<NonDepositAccount> NonDepAccountVM => _nonDepAccountVM;

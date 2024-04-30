@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Practice_12_1"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="650" Width="800"
-        MinHeight="650" MinWidth="800">
+        Height="730" Width="800"
+        MinHeight="730" MinWidth="800">
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,17 +16,18 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
             <RowDefinition Height="140"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="180"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="180"/>
         </Grid.RowDefinitions>
-
+        
         <ListBox
             Grid.Column="0"
             Grid.Row="0"
-            Grid.RowSpan="5"
+            Grid.RowSpan="6"
             Margin="10"
             BorderBrush="Black"
             BorderThickness="1"
@@ -47,8 +48,49 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Border 
+        <Grid
+            Grid.Column="1"
             Grid.Row="0"
+            Margin="10"
+            DataContext="{Binding SelectedClient}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="0"
+                FontSize="20"
+                FontWeight="Bold">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="{}{0} {1} {2}">
+                        <Binding Path="FirstName" />
+                        <Binding Path="SecondName" />
+                        <Binding Path="MiddleName" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+
+            <Button
+                Grid.Row="0"
+                Grid.Column="1"
+                Command="{Binding OpenSettings}"/>
+
+            <TextBlock
+                Grid.Column="0"
+                Grid.Row="1"
+                Text="{Binding StringFormat=Номер паспорта: {0}, Path=PassportNumber}">
+            </TextBlock>
+
+        </Grid>
+
+        <Border 
+            Grid.Row="1"
             Grid.Column="1"
             Margin="10"
             BorderBrush="Black" 
@@ -144,7 +186,7 @@
         </Border>
 
         <Grid
-            Grid.Row="1"
+            Grid.Row="2"
             Grid.Column="1"
             Height="30"
             Margin="10, 0"
@@ -173,7 +215,7 @@
         </Grid>
                 
         <Border 
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="1"
             Margin="10"
             BorderBrush="Black" 
@@ -246,7 +288,7 @@
         </Border>
 
         <Grid
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="1"
             Height="30"
             Margin="10, 0"
@@ -275,7 +317,7 @@
         </Grid>
 
         <Border 
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="1"
             Margin="10"
             BorderBrush="Black" 

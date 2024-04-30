@@ -15,10 +15,7 @@ using System.Windows.Shapes;
 
 namespace Practice_12_1.Views
 {
-    /// <summary>
-    /// Interaction logic for ClientInfo.xaml
-    /// </summary>
-    public partial class ClientInfo : UserControl
+    public partial class ClientInfo : Window
     {
         public ClientInfo()
         {
