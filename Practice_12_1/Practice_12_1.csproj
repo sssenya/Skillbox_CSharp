@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ClientInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Exceptions\InputDataExceptions.cs" />
     <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Accounts\IMoneyMover.cs" />
@@ -79,8 +84,12 @@
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="ViewModels\BankAccountViewModel.cs" />
+    <Compile Include="ViewModels\ClientInfoViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\ClientInfoWindow.xaml.cs">
+      <DependentUpon>ClientInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

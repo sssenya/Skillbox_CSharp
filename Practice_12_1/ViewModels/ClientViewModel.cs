@@ -5,6 +5,7 @@ using System.Windows.Input;
 
 using Practice_12_1.Models;
 using Practice_12_1.Commands;
+using Practice_12_1.Views;
 
 namespace Practice_12_1.ViewModels
 {
@@ -36,10 +37,12 @@ namespace Practice_12_1.ViewModels
 
             MoveAccToAccCommand = new RelayCommand(obj => MoveMoneyAccToAcc());
             MoveClientToClientCommand = new RelayCommand(obj => MoveMoneyClientToClient(), obj => CanMoveMoneyClientToClient());
+            OpenClientInfoCommand = new RelayCommand(obj => OpenClientInfo());
         }
 
         public ICommand MoveAccToAccCommand { get; set; }
         public ICommand MoveClientToClientCommand { get; set; }
+        public ICommand OpenClientInfoCommand { get; set; }
 
         public event EventHandler<LogInfoEventArgs> AccountUpdate;
 
@@ -180,6 +183,13 @@ namespace Practice_12_1.ViewModels
             }
             
             return true;
+        }
+
+        private void OpenClientInfo()
+        {
+            ClientInfoViewModel clientInfoVM = new ClientInfoViewModel(this);
+            ClientInfoWindow clientInfoWindow = new ClientInfoWindow(clientInfoVM);
+            clientInfoWindow.ShowDialog();
         }
     }
 }

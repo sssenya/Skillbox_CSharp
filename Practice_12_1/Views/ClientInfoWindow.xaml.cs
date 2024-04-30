@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice_12_1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,18 @@ using System.Windows.Shapes;
 
 namespace Practice_12_1.Views
 {
-    public partial class ClientInfo : Window
+    public partial class ClientInfoWindow : Window
     {
-        public ClientInfo()
+        internal ClientInfoWindow(ClientInfoViewModel clientInfoViewModel)
         {
             InitializeComponent();
+
+            DataContext = clientInfoViewModel;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

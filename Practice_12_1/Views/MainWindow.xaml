@@ -79,7 +79,7 @@
             <Button
                 Grid.Row="0"
                 Grid.Column="1"
-                Command="{Binding OpenSettings}"/>
+                Command="{Binding OpenClientInfoCommand}"/>
 
             <TextBlock
                 Grid.Column="0"

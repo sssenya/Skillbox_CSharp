@@ -33,6 +33,7 @@ namespace Practice_12_1.ViewModels
                 client.AccountUpdate += Client_UpdateDB;
                 client.DepAccountVM.AccountUpdate += Client_UpdateDB;
                 client.NonDepAccountVM.AccountUpdate += Client_UpdateDB;
+                client.Client.AccountUpdate += Client_UpdateDB;
             }
 
             SelectedClient = _clients.FirstOrDefault();
@@ -63,6 +64,24 @@ namespace Practice_12_1.ViewModels
         {
             var clients = _clients.Select(x => x.GetClient());
             _repository.UpdateDatabase(clients);
+
+            Clients = new ObservableCollection<ClientViewModel>(_repository
+                                                        .GetClients()
+                                                        .Select(x => new ClientViewModel(x, this)));
+
+            foreach (var client in _clients)
+            {
+                client.AccountUpdate += Client_CreateLog;
+                client.DepAccountVM.AccountUpdate += Client_CreateLog;
+                client.NonDepAccountVM.AccountUpdate += Client_CreateLog;
+
+                client.AccountUpdate += Client_UpdateDB;
+                client.DepAccountVM.AccountUpdate += Client_UpdateDB;
+                client.NonDepAccountVM.AccountUpdate += Client_UpdateDB;
+                client.Client.AccountUpdate += Client_UpdateDB;
+            }
+
+            SelectedClient = _clients.FirstOrDefault();
         }
 
         public ObservableCollection<ClientViewModel> Clients
