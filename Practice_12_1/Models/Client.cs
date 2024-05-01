@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Practice_12_1.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Practice_12_1.Models
 {
@@ -23,20 +25,27 @@ namespace Practice_12_1.Models
                                string middleName, 
                                string passportNumber)
         {
-            FirstName = firstName;
-            SecondName = secondName;
-            MiddleName = middleName;
-            PassportNumber = passportNumber;
-
-            LogInfoEventArgs logInfo = new LogInfoEventArgs()
+            if(int.TryParse(passportNumber, out int number))
             {
-                Time = DateTime.Now,
-                AuthorName = "Manager",
-                TransactionType = "Updating client information",
-                TransactionSum = 0
-            };
+                FirstName = firstName;
+                SecondName = secondName;
+                MiddleName = middleName;
+                PassportNumber = passportNumber;
 
-            AccountUpdate(this, logInfo);
+                LogInfoEventArgs logInfo = new LogInfoEventArgs()
+                {
+                    Time = DateTime.Now,
+                    AuthorName = "Manager",
+                    TransactionType = "Updating client information",
+                    TransactionSum = 0
+                };
+
+                AccountUpdate(this, logInfo);
+            }
+            else
+            {
+                throw new InputDataExceptions("Номер паспорта должен быть числом");
+            }
         }
     }
 }

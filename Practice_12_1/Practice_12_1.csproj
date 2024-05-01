@@ -70,7 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Exceptions\InputDataExceptions.cs" />
+    <Compile Include="Exceptions\Exceptions.cs" />
     <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Accounts\IMoneyMover.cs" />

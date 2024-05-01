@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Practice_12_1.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Practice_12_1.Models
 {
@@ -25,12 +27,20 @@ namespace Practice_12_1.Models
 
         public bool RemoveMoney(double sum) 
         {
-            if (Balance >= sum)
+            try
             {
+                if (Balance < sum)
+                {
+                    throw new MoneyLimitException("Недостаточно средств на счете");
+                }
                 Balance -= sum;
                 return true;
             }
-            return false;
+            catch(MoneyLimitException exception)
+            {
+                MessageBox.Show(exception.Message);
+                return false;
+            }
         }
 
         public static BankAccount operator +(BankAccount account, double money)

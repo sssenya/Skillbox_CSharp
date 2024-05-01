@@ -59,7 +59,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="70"/>
             </Grid.ColumnDefinitions>
             
             <TextBlock
@@ -79,6 +79,7 @@
             <Button
                 Grid.Row="0"
                 Grid.Column="1"
+                Content="Изменить"
                 Command="{Binding OpenClientInfoCommand}"/>
 
             <TextBlock
