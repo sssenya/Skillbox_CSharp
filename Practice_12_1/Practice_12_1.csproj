@@ -74,15 +74,15 @@
     <Compile Include="Models\Accounts\MoneyMover.cs" />
     <Compile Include="Models\Accounts\BankAccount.cs" />
     <Compile Include="Models\Accounts\IMoneyMover.cs" />
-    <Compile Include="Models\BaseRepository.cs" />
-    <Compile Include="Models\JsonConverter.cs" />
+    <Compile Include="Models\Repositories\BaseRepository.cs" />
+    <Compile Include="Models\Repositories\JsonConverter.cs" />
     <Compile Include="Models\Logging\Logger.cs" />
     <Compile Include="Models\Logging\LogInfo.cs" />
     <Compile Include="Models\Logging\LogInfoEventArgs.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
     <Compile Include="Models\Accounts\IBankAccount.cs" />
     <Compile Include="Models\Accounts\NonDepositAccount.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="ViewModels\BankAccountViewModel.cs" />
     <Compile Include="ViewModels\ClientInfoViewModel.cs" />
     <Compile Include="ViewModels\ClientViewModel.cs" />
@@ -97,7 +97,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Accounts\DepositAccount.cs" />
-    <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 
-
 namespace Practice_12_1.Models
 {
     internal class Logger : BaseRepository<LogInfo>

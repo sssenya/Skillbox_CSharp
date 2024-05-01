@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
 using Practice_12_1.Commands;
-using Practice_12_1.Models;
+
 
 namespace Practice_12_1.ViewModels
 {
@@ -32,8 +27,6 @@ namespace Practice_12_1.ViewModels
         }
 
         public ICommand UpdateInfoCommand { get; set; }
-
-        
 
         public string FirstName
         {

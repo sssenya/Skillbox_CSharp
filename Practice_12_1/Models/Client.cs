@@ -1,10 +1,6 @@
-﻿using Practice_12_1.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
+﻿using System;
+
+using Practice_12_1.Exceptions;
 
 namespace Practice_12_1.Models
 {

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
 using Practice_12_1.Commands;
@@ -16,7 +11,7 @@ namespace Practice_12_1.ViewModels
         where T : IBankAccount, new()
     {
         private T _bankAccount;
-        private ClientViewModel _accountOwner;
+        private readonly ClientViewModel _accountOwner;
 
         private string _moneyToAdd;
 
@@ -68,8 +63,6 @@ namespace Practice_12_1.ViewModels
                     TransactionSum = moneyAmount
                 };
                 AccountUpdate(_accountOwner, logInfo);
-
-                UpdateProperties();
             }
         }
 
@@ -85,7 +78,6 @@ namespace Practice_12_1.ViewModels
                 TransactionSum = 0
             };
             AccountUpdate(_accountOwner, logInfo);
-            UpdateProperties();
         }
 
         public bool CanOpenAcc()
@@ -108,7 +100,6 @@ namespace Practice_12_1.ViewModels
                 TransactionSum = 0
             };
             AccountUpdate(_accountOwner, logInfo);
-            UpdateProperties();
         }
 
         public bool CanCloseAcc()
@@ -119,14 +110,6 @@ namespace Practice_12_1.ViewModels
             }
             return false;
         }   
-
-        public void UpdateProperties()
-        {
-            OnPropertyChanged(nameof(AccountStatus));
-            OnPropertyChanged(nameof(AccountSum));
-            OnPropertyChanged(nameof(AccountDate));
-            OnPropertyChanged(nameof(AccountPercent));
-        }
 
         public T GetBankAccount()
         {

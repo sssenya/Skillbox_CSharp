@@ -1,10 +1,7 @@
-﻿using Practice_12_1.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows;
+
+using Practice_12_1.Exceptions;
 
 namespace Practice_12_1.Models
 {
@@ -29,10 +26,11 @@ namespace Practice_12_1.Models
         {
             try
             {
-                if (Balance < sum)
+                if(Balance < sum)
                 {
                     throw new MoneyLimitException("Недостаточно средств на счете");
                 }
+
                 Balance -= sum;
                 return true;
             }

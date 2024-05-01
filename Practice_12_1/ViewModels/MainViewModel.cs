@@ -1,11 +1,10 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
-using Practice_12_1.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using Microsoft.Toolkit.Uwp.Notifications;
+
+using Practice_12_1.Models;
 
 namespace Practice_12_1.ViewModels
 {
