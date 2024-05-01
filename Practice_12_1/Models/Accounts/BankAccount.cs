@@ -32,5 +32,11 @@ namespace Practice_12_1.Models
             }
             return false;
         }
+
+        public static BankAccount operator +(BankAccount account, double money)
+        {
+            account.AddMoney(money);
+            return account;
+        }
     }
 }

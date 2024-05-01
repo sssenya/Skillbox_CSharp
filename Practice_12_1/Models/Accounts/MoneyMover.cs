@@ -24,7 +24,7 @@ namespace Practice_12_1.Models
             bool canRemove = _accountFrom.RemoveMoney(sum);
             if (canRemove)
             {
-                _accountTo.AddMoney(sum);
+                _accountTo = (T)(_accountTo + sum);
                 return true;
             }
             else
