@@ -2,7 +2,7 @@
 
 namespace Practice_12_1.Models
 {
-    internal class LogInfoEventArgs : EventArgs
+    public class LogInfoEventArgs : EventArgs
     {
         public DateTime Time { get; set; }
         public string AuthorName { get; set; }

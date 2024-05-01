@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Forms;
 
-using Practice_12_1.Exceptions;
+using Practice_14_1.Exceptions;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal class BankAccount : IBankAccount
+    public class BankAccount : IBankAccount
     {
         public BankAccount()
         {

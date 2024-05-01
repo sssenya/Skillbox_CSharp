@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal class DepositAccount : BankAccount
+    public class DepositAccount : BankAccount
     {
         public new string Name => "Депозитный счет";
     }

@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal interface IBankAccount
+    public interface IBankAccount
     {
         string Name { get; }
         double Balance { get; set; }

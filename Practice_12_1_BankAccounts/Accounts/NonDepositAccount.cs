@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal class NonDepositAccount : BankAccount
+    public class NonDepositAccount : BankAccount
     {
         public new string Name => "Недепозитный счет";
     }

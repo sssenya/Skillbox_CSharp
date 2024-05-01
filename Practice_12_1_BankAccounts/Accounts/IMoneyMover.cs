@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal interface IMoneyMover<in T>
+    public interface IMoneyMover<in T>
         where T : BankAccount
     {
         void SetAccounts(T accountFrom, T accountTo);

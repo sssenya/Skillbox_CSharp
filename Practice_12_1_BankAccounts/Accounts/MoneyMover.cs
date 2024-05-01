@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Practice_12_1.Models
+namespace Practice_12_1.Accounts
 {
-    internal class MoneyMover<T> : IMoneyMover<T> 
+    public class MoneyMover<T> : IMoneyMover<T> 
         where T : BankAccount
     {
         private T _accountFrom;

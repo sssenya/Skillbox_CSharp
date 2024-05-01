@@ -70,18 +70,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Exceptions\Exceptions.cs" />
-    <Compile Include="Models\Accounts\MoneyMover.cs" />
-    <Compile Include="Models\Accounts\BankAccount.cs" />
-    <Compile Include="Models\Accounts\IMoneyMover.cs" />
     <Compile Include="Models\Repositories\BaseRepository.cs" />
     <Compile Include="Models\Repositories\JsonConverter.cs" />
     <Compile Include="Models\Logging\Logger.cs" />
     <Compile Include="Models\Logging\LogInfo.cs" />
     <Compile Include="Models\Logging\LogInfoEventArgs.cs" />
     <Compile Include="ViewModels\Base\BaseViewModel.cs" />
-    <Compile Include="Models\Accounts\IBankAccount.cs" />
-    <Compile Include="Models\Accounts\NonDepositAccount.cs" />
     <Compile Include="Models\Repositories\Repository.cs" />
     <Compile Include="ViewModels\BankAccountViewModel.cs" />
     <Compile Include="ViewModels\ClientInfoViewModel.cs" />
@@ -96,7 +90,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Accounts\DepositAccount.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -132,6 +125,16 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.3</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practice_12_1_BankAccounts\Practice_12_1_BankAccounts.csproj">
+      <Project>{a563b1aa-f5c6-4031-bda5-0071e99c6a1d}</Project>
+      <Name>Practice_12_1_BankAccounts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Practice_14_1_Exceptions\Practice_14_1_Exceptions.csproj">
+      <Project>{d7f9b1ff-2512-4b97-828d-cace95dcd647}</Project>
+      <Name>Practice_14_1_Exceptions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,10 +1,11 @@
 ﻿using System;
 
-using Practice_12_1.Exceptions;
+using Practice_12_1.Accounts;
+using Practice_14_1.Exceptions;
 
 namespace Practice_12_1.Models
 {
-    internal class Client
+    public class Client
     {
         public event EventHandler<LogInfoEventArgs> AccountUpdate;
 
