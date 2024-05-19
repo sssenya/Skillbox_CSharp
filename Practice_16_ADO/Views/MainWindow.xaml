@@ -1,0 +1,43 @@
+﻿<Window x:Class="Practice_16_ADO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice_16_ADO"
+        mc:Ignorable="d"
+        Height="200" Width="400"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="10"
+            Text="Состояние подключения к MSSQLLocalDB:"/>
+        <TextBlock
+            Grid.Row="0"
+            Grid.Column="1"
+            Margin="10"
+            Text="{Binding ConnectionStateMSSQL}"/>
+
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10"
+            Text="Состояние подключения к MS Access:"/>
+        <TextBlock
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Text="{Binding ConnectionStateMSAccess}"/>
+    </Grid>
+</Window>
