@@ -11,48 +11,52 @@ namespace Practice_15_1
     {
         static void Main(string[] args)
         {
+            // 1. Запуск Thread с методом.
             ThreadStart threadStart = new ThreadStart(ThreadMethod);
             Thread thread = new Thread(threadStart);
-            //Thread thread = new Thread(ThreadMethod);
             thread.Start();
-            thread.Name = "threadName123";
 
+            // 2. Запуск Thread с методом, принимающим параметр.
             ParameterizedThreadStart paramThreadStart = new ParameterizedThreadStart(ParamThreadMethod);
             Thread paramThread = new Thread(paramThreadStart);
-            paramThread.Start("xxxxx");
+            paramThread.Start("768467");
 
-            for (int i = 0; i < 100; i ++) {
-                Console.Write("text ");
-                Thread.Sleep(10);
+            // 3. Работа в Thread основного метода.
+            Thread currentThread = Thread.CurrentThread;
+            currentThread.Name = "Thread from main method";
+            for(int i = 0; i < 50; i ++) {
+                Console.WriteLine($"MethodMessage: 12345 /// ThreadName: {currentThread.Name}");
+                Thread.Sleep(20);
             }
-            Console.WriteLine($"Thread {thread.Name} закончился");
-
-
+            Console.WriteLine($"{currentThread.Name} закончился");
 
             Console.ReadKey();
         }
 
         public static void ThreadMethod()
         {
-            for (int i = 0; i < 100; i++)
+            Thread currentThread = Thread.CurrentThread;
+            currentThread.Name = "Thread from method";
+
+            for (int i = 0; i < 50; i++)
             {
-                Console.Write("+ ");
+                Console.WriteLine($"MethodMessage: 12345 /// ThreadName: {currentThread.Name}");
                 Thread.Sleep(10);
             }
-
-            Thread currentThread = Thread.CurrentThread;
+            Console.WriteLine($"Thread {currentThread.Name} закончился");
         }
 
         public static void ParamThreadMethod(object o)
         {
-            
-            for (int i = 0; i < 100; i++)
-            {
-                Console.Write(o as string);
-                Thread.Sleep(10);
-            }
-
             Thread currentThread = Thread.CurrentThread;
+            currentThread.Name = "Parameterized thread from method";
+
+            for (int i = 0; i < 50; i++)
+            {
+                Console.WriteLine($"MethodMessage: {o as string} /// ThreadName: {currentThread.Name}");
+                Thread.Sleep(30);
+            }
+            Console.WriteLine($"Thread {currentThread.Name} закончился");
         }
     }
 }
