@@ -19,16 +19,18 @@ namespace Practice_15_1
             // 2. Запуск Thread с методом, принимающим параметр.
             ParameterizedThreadStart paramThreadStart = new ParameterizedThreadStart(ParamThreadMethod);
             Thread paramThread = new Thread(paramThreadStart);
-            paramThread.Start("768467");
+            paramThread.Start("22222");
 
             // 3. Работа в Thread основного метода.
             Thread currentThread = Thread.CurrentThread;
             currentThread.Name = "Thread from main method";
             for(int i = 0; i < 50; i ++) {
-                Console.WriteLine($"MethodMessage: 12345 /// ThreadName: {currentThread.Name}");
+                Console.WriteLine($"MethodMessage: 33333 /// ThreadName: {currentThread.Name}");
                 Thread.Sleep(20);
             }
             Console.WriteLine($"{currentThread.Name} закончился");
+
+            new PoolWithThreads();
 
             Console.ReadKey();
         }
@@ -40,7 +42,7 @@ namespace Practice_15_1
 
             for (int i = 0; i < 50; i++)
             {
-                Console.WriteLine($"MethodMessage: 12345 /// ThreadName: {currentThread.Name}");
+                Console.WriteLine($"MethodMessage: 11111 /// ThreadName: {currentThread.Name}");
                 Thread.Sleep(10);
             }
             Console.WriteLine($"Thread {currentThread.Name} закончился");
