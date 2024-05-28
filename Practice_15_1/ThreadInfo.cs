@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace Practice_15_1 {
     internal class ThreadInfo {
-        public static void PrintThreadInfo(string threadName, 
-                                           string threadMessage,
+        public static void PrintThreadInfo(string methodName, 
+                                           string methodMessage,
                                            int sleepTime) {
             Thread currentThread = Thread.CurrentThread;
-            currentThread.Name = threadName;
+            int hashCode = currentThread.GetHashCode();
+
+            Console.WriteLine($">>>>>Метод \"{methodName}\" в Thread ID {hashCode} начался\">>>>>");
 
             for(int i = 0; i < 10; i++) {
 
-                Console.WriteLine($"MethodMessage: {threadMessage} /// ThreadName: {currentThread.Name}");
+                Console.WriteLine($"{methodMessage} /// ThreadID: {hashCode}");
                 Thread.Sleep(sleepTime);
             }
 
-            Console.WriteLine($"__________Thread \"{currentThread.Name}\" закончился__________");
+            Console.WriteLine($"<<<<<Метод \"{methodName}\" в Thread ID {hashCode} закончился<<<<<");
         }
     }
 }
