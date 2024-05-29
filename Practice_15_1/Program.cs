@@ -11,54 +11,27 @@ namespace Practice_15_1
     {
         static void Main(string[] args)
         {
-            // 1. Запуск Thread с методом.
-            ThreadStart threadStart = new ThreadStart(ThreadMethod);
-            Thread thread = new Thread(threadStart);
-            thread.Start();
-
-            // 2. Запуск Thread с методом, принимающим параметр.
-            ParameterizedThreadStart paramThreadStart = new ParameterizedThreadStart(ParamThreadMethod);
-            Thread paramThread = new Thread(paramThreadStart);
-            paramThread.Start("22222");
-
-            // 3. Работа в Thread основного метода.
             Thread currentThread = Thread.CurrentThread;
-            currentThread.Name = "Thread from main method";
-            for(int i = 0; i < 50; i ++) {
-                Console.WriteLine($"MethodMessage: 33333 /// ThreadName: {currentThread.Name}");
-                Thread.Sleep(20);
-            }
-            Console.WriteLine($"{currentThread.Name} закончился");
+            Console.WriteLine($">>>>>Метод Main в потоке ID {currentThread.GetHashCode()} начался\">>>>>");
 
-            new PoolWithThreads();
+            Console.WriteLine("__________Создание потоков вручную__________");
+            new ClassForThreads().Main();
+            Console.WriteLine();
+
+            Console.WriteLine("__________Создание потоков в пуле__________");
+            new ClassForThreadPool().Main();
+            Console.WriteLine();
+
+            Console.WriteLine("__________Запуск Task__________");
+            new ClassForTasks().Main();
+            Console.WriteLine();
+
+            Console.WriteLine("__________Запуск Async методов__________");
+            new ClassForAsyncMethods().Main();
+            Console.WriteLine();
 
             Console.ReadKey();
         }
 
-        public static void ThreadMethod()
-        {
-            Thread currentThread = Thread.CurrentThread;
-            currentThread.Name = "Thread from method";
-
-            for (int i = 0; i < 50; i++)
-            {
-                Console.WriteLine($"MethodMessage: 11111 /// ThreadName: {currentThread.Name}");
-                Thread.Sleep(10);
-            }
-            Console.WriteLine($"Thread {currentThread.Name} закончился");
-        }
-
-        public static void ParamThreadMethod(object o)
-        {
-            Thread currentThread = Thread.CurrentThread;
-            currentThread.Name = "Parameterized thread from method";
-
-            for (int i = 0; i < 50; i++)
-            {
-                Console.WriteLine($"MethodMessage: {o as string} /// ThreadName: {currentThread.Name}");
-                Thread.Sleep(30);
-            }
-            Console.WriteLine($"Thread {currentThread.Name} закончился");
-        }
     }
 }
