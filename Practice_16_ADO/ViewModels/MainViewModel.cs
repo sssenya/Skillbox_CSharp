@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -11,22 +12,33 @@ namespace Practice_16_ADO.ViewModels
 {
     internal class MainViewModel
     {
+        private readonly string _filePath;
+
+        private string _connectionStringMSSQL;
+        private string _connectionStringMSAccess;
+
         public MainViewModel()
         {
+            string workingDirectory = Environment.CurrentDirectory;
+            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
+            _filePath = projectDirectory + "\\Database";
+
             SetMSSQLConnection();
             SetAccessConnection();
         }
 
         public void SetMSSQLConnection()
         {
-            SqlConnectionStringBuilder connectionStr = new SqlConnectionStringBuilder() {
+            SqlConnectionStringBuilder connectionStringBuilderMSSQL = new SqlConnectionStringBuilder() {
                 DataSource = @"(localdb)\MSSQLLocalDB",
                 InitialCatalog = "MSSQLTest",
                 IntegratedSecurity = true
             };
 
+            _connectionStringMSSQL = connectionStringBuilderMSSQL.ConnectionString;
+
             SqlConnection connection = new SqlConnection() {
-                ConnectionString = connectionStr.ConnectionString,
+                ConnectionString = _connectionStringMSSQL
             };
 
             connection.StateChange +=
@@ -44,7 +56,16 @@ namespace Practice_16_ADO.ViewModels
         }
 
         public void SetAccessConnection() {
-            OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0; Data Source=C:\AccessLocalDB\AccessLocalDB.mdb"); 
+            OleDbConnectionStringBuilder connectionStringBuilderMSAccess = new OleDbConnectionStringBuilder() {
+                DataSource = _filePath + @"\AccessLocalDB\AccessLocalDB.mdb",
+                Provider = "Microsoft.Jet.OLEDB.4.0"
+            };
+
+            _connectionStringMSAccess = connectionStringBuilderMSAccess.ConnectionString;
+
+            OleDbConnection connection = new OleDbConnection() {
+                ConnectionString = _connectionStringMSAccess
+            }; 
 
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSAccess = (s as OleDbConnection).State.ToString(); };
@@ -62,5 +83,8 @@ namespace Practice_16_ADO.ViewModels
 
         public string ConnectionStateMSSQL { get; set; }
         public string ConnectionStateMSAccess { get; set; }
+
+        public string ConnectionStringMSSQL => _connectionStringMSSQL;
+        public string ConnectionStringMSAccess => _connectionStringMSAccess;
     }
 }
