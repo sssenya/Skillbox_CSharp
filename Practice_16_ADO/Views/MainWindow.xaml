@@ -5,37 +5,81 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practice_16_ADO"
         mc:Ignorable="d"
-        Height="200" Width="400"
-        ResizeMode="NoResize">
+        Height="300" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="140"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <TextBlock
             Grid.Row="0"
             Grid.Column="0"
-            Margin="10"
-            Text="Состояние подключения к MSSQLLocalDB:"/>
-        <TextBlock
-            Grid.Row="0"
-            Grid.Column="1"
-            Margin="10"
-            Text="{Binding ConnectionStateMSSQL}"/>
+            Grid.ColumnSpan="2"
+            Margin="5"
+            FontWeight="Bold"
+            Text="Подключение к MSSQLLocalDB:"/>
 
         <TextBlock
             Grid.Row="1"
             Grid.Column="0"
             Margin="10"
-            Text="Состояние подключения к MS Access:"/>
+            Text="Строка подключения:"/>
         <TextBlock
             Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            TextWrapping="Wrap"
+            Text="{Binding ConnectionStringMSSQL}"/>
+
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="10"
+            Text="Статус подключения:"/>
+        <TextBlock
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="10"
+            Text="{Binding ConnectionStateMSSQL}"/>
+
+        
+        <TextBlock
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            FontWeight="Bold"
+            Text="Подключение к MS Access:"/>
+        
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="10"
+            Text="Строка подключения:"/>
+        <TextBlock
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="10"
+            TextWrapping="Wrap"
+            Text="{Binding ConnectionStringMSAccess}"/>
+
+        <TextBlock
+            Grid.Row="5"
+            Grid.Column="0"
+            Margin="10"
+            Text="Статус подключения:"/>
+        <TextBlock
+            Grid.Row="5"
             Grid.Column="1"
             Margin="10"
             Text="{Binding ConnectionStateMSAccess}"/>
