@@ -45,11 +45,13 @@
             Grid.Row="2"
             Grid.Column="0"
             Margin="10"
+            TextWrapping="Wrap"
             Text="Статус подключения:"/>
         <TextBlock
             Grid.Row="2"
             Grid.Column="1"
             Margin="10"
+            TextWrapping="Wrap"
             Text="{Binding ConnectionStateMSSQL}"/>
 
         
@@ -82,6 +84,7 @@
             Grid.Row="5"
             Grid.Column="1"
             Margin="10"
+            TextWrapping="Wrap"
             Text="{Binding ConnectionStateMSAccess}"/>
     </Grid>
 </Window>
