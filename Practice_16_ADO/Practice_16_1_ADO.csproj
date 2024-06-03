@@ -55,6 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\ConnectionInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -64,6 +68,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\ConnectionInfoWindow.xaml.cs">
+      <DependentUpon>ConnectionInfoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,7 +103,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Database\AccessLocalDB\" />
+    <Folder Include="Database\MSSQLLocalDB\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Practice_10_1\Practice_10_1.csproj">
+      <Project>{e43e090f-180c-4d0f-8a75-5135faebfe7d}</Project>
+      <Name>Practice_10_1</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQLQuery\SQLInsertClient.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

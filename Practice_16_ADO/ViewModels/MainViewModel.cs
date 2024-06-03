@@ -13,19 +13,6 @@ using Practice_10_1.Commands;
 
 namespace Practice_16_ADO.ViewModels
 {
-    //Первый источник данных должен содержать таблицу с полями:
-    //ID
-    //Фамилия
-    //Имя
-    //Отчество
-    //Номер телефона(может быть пустым)
-    //Email.
-    
-    //Второй источник данных содержит таблицу со следующими полями:
-    //ID
-    //Email
-    //Код товара
-    //Наименование товара
     internal class MainViewModel : BaseViewModel
     {
         private readonly string _filePath;
