@@ -26,25 +26,33 @@
         <DataGrid
             Grid.Row="1"
             Grid.ColumnSpan="2"
-            Margin="10">
+            Margin="10"
+            SelectionMode="Single" 
+            ItemsSource="{Binding ClientsDataTable}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Header="ID"
+                    Binding="{Binding Id}"
                     Width="30"/>
                 <DataGridTextColumn
                     Header="Фамилия"
+                    Binding="{Binding SecondName}"
                     Width="150"/>
                 <DataGridTextColumn
                     Header="Имя"
+                    Binding="{Binding FirstName}"
                     Width="150"/>
                 <DataGridTextColumn
                     Header="Отчество"
+                    Binding="{Binding MiddleName}"
                     Width="150"/>
                 <DataGridTextColumn
                     Header="Номер телефона"
+                    Binding="{Binding PhoneNumber}"
                     Width="150"/>
                 <DataGridTextColumn
                     Header="Email"
+                    Binding="{Binding Email}"
                     Width="150"/>
             </DataGrid.Columns>
         </DataGrid>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 using Practice_10_1.ViewModels;
 using Practice_10_1.Commands;
+using System.Data;
 
 namespace Practice_16_ADO.ViewModels
 {
@@ -34,28 +35,27 @@ namespace Practice_16_ADO.ViewModels
         {
             SqlConnectionStringBuilder connectionStringBuilderMSSQL = new SqlConnectionStringBuilder() {
                 DataSource = @"(localdb)\MSSQLLocalDB",
-                InitialCatalog = "MSSQLTest",
+                InitialCatalog = "MSQLTest",
                 IntegratedSecurity = true
             };
 
             _connectionStringMSSQL = connectionStringBuilderMSSQL.ConnectionString;
 
-            SqlConnection connection = new SqlConnection() {
-                ConnectionString = _connectionStringMSSQL
-            };
+            SqlConnection connection = new SqlConnection(_connectionStringMSSQL);
+
+            DataTable dataTable = new DataTable();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter();
+
+            string sql = @"SELECT * FROM Clients Order By Clients.Id";
+            dataAdapter.SelectCommand = new SqlCommand(sql, connection);
+
+            dataAdapter.Fill(dataTable);
+
+            ClientsDataTable = dataTable.DefaultView;
+
 
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
-
-            try {
-                connection.Open();
-            }
-            catch (Exception e) {
-                ConnectionStateMSSQL = e.Message;
-            }
-            finally {
-                connection.Close();
-            }
         }
 
         public void SetAccessConnection() {
@@ -89,5 +89,7 @@ namespace Practice_16_ADO.ViewModels
 
         public string ConnectionStringMSSQL => _connectionStringMSSQL;
         public string ConnectionStringMSAccess => _connectionStringMSAccess;
+
+        public DataView ClientsDataTable { get; set; }
     }
 }
