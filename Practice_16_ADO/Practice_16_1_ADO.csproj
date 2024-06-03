@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\ConnectionInfoViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\ConnectionInfoWindow.xaml.cs">
       <DependentUpon>ConnectionInfoWindow.xaml</DependentUpon>

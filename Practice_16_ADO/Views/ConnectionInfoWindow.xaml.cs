@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice_16_ADO.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,8 @@ namespace Practice_16_ADO.Views {
     /// Interaction logic for ConnectionInfoWindow.xaml
     /// </summary>
     public partial class ConnectionInfoWindow : Window {
-        public ConnectionInfoWindow() {
+        public ConnectionInfoWindow(ConnectionInfoViewModel viewModel) {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

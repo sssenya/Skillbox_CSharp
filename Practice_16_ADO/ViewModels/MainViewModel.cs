@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
@@ -7,14 +8,15 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 using Practice_10_1.ViewModels;
 using Practice_10_1.Commands;
-using System.Data;
+using Practice_16_ADO.Views;
 
 namespace Practice_16_ADO.ViewModels
 {
-    internal class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         private readonly string _filePath;
 
@@ -29,7 +31,11 @@ namespace Practice_16_ADO.ViewModels
 
             SetMSSQLConnection();
             SetAccessConnection();
+
+            OpenInfoWindow = new RelayCommand(obj => OpenConnectionInfoWindow());
         }
+
+        public ICommand OpenInfoWindow { get; set; }
 
         public void SetMSSQLConnection()
         {
@@ -52,7 +58,6 @@ namespace Practice_16_ADO.ViewModels
             dataAdapter.Fill(dataTable);
 
             ClientsDataTable = dataTable.DefaultView;
-
 
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
@@ -91,5 +96,11 @@ namespace Practice_16_ADO.ViewModels
         public string ConnectionStringMSAccess => _connectionStringMSAccess;
 
         public DataView ClientsDataTable { get; set; }
+
+        public void OpenConnectionInfoWindow() {
+            ConnectionInfoViewModel connectionInfoVM = new ConnectionInfoViewModel(this);
+            ConnectionInfoWindow window = new ConnectionInfoWindow(connectionInfoVM);
+            window.ShowDialog();
+        }
     }
 }
