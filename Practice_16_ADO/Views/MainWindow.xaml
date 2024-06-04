@@ -30,7 +30,8 @@
             Margin="10"
             SelectionMode="Single"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding ClientsDataTable}">
+            ItemsSource="{Binding ClientsDataTable}"
+            SelectedItem="{Binding SelectedClient}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Header="ID"
@@ -57,6 +58,20 @@
                     Binding="{Binding Email}"
                     Width="150"/>
             </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem
+                        Header="Добавить клиента"
+                        Command="{Binding AddClient}"/>
+                    <MenuItem
+                        Header="Удалить клиента"
+                        Command="{Binding DeleteClient}"/>
+                    <MenuItem
+                        Header="Показать покупки"
+                        Command="{Binding ShowPurchases}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </Grid>
 </Window>
