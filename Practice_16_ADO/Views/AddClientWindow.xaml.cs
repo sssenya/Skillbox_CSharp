@@ -19,5 +19,13 @@ namespace Practice_16_ADO.Views {
             InitializeComponent();
             DataContext = newClientViewModel;
         }
+
+        private void ButtonOk_Click(object sender, RoutedEventArgs e) {
+            DialogResult = true;
+        }
+
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
+            DialogResult = false;
+        }
     }
 }

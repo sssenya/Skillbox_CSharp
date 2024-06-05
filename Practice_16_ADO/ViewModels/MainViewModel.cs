@@ -154,8 +154,8 @@ namespace Practice_16_ADO.ViewModels
             _sqlDataAdapter.Update(_dataTable);
         }
 
-        public void OpenNewClientWindow() {
-            NewClientViewModel newClientVM = new NewClientViewModel();
+        public void OpenNewClientWindow() {            
+            NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _dataTable);
             AddClientWindow window = new AddClientWindow(newClientVM);
             window.ShowDialog();
         }
