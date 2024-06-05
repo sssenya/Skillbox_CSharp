@@ -41,10 +41,12 @@ namespace Practice_16_ADO.ViewModels
 
             OpenInfoWindow = new RelayCommand(obj => OpenConnectionInfoWindow());
             DeleteClient = new RelayCommand(obj => DeleteSelectedClient());
+            AddNewClient = new RelayCommand(obj => OpenNewClientWindow());
         }
 
         public ICommand OpenInfoWindow { get; set; }
         public ICommand DeleteClient { get; set; }
+        public ICommand AddNewClient { get; set; }
 
         public void SetMSSQLConnection()
         {
@@ -63,6 +65,17 @@ namespace Practice_16_ADO.ViewModels
 
             string sqlSelect = @"SELECT * FROM Clients Order By Clients.Id";
             _sqlDataAdapter.SelectCommand = new SqlCommand(sqlSelect, connection);
+
+            string sqlInsert = @"INSERT INTO Clients (SecondName,  FirstName, MiddleName, PhoneNumber, Email) 
+                                 VALUES (@SecondName, @FirstName, @MiddleName, @PhoneNumber, @Email); 
+                     SET @id = @@IDENTITY;";
+            _sqlDataAdapter.InsertCommand = new SqlCommand(sqlInsert, connection);
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 4, "Id");
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@SecondName", SqlDbType.NVarChar, 20, "SecondName");
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@FirstName", SqlDbType.NVarChar, 20, "FirstName");
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@MiddleName", SqlDbType.NVarChar, 20, "MiddleName");
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@PhoneNumber", SqlDbType.Int, 4, "PhoneNumber");
+            _sqlDataAdapter.InsertCommand.Parameters.Add("@Email", SqlDbType.NVarChar, 20, "Email");
 
             string sqlUpdate = @"UPDATE Clients SET 
                            SecondName = @SecondName,
@@ -139,6 +152,12 @@ namespace Practice_16_ADO.ViewModels
         public void DeleteSelectedClient() {
             SelectedClient.Row.Delete();
             _sqlDataAdapter.Update(_dataTable);
+        }
+
+        public void OpenNewClientWindow() {
+            NewClientViewModel newClientVM = new NewClientViewModel();
+            AddClientWindow window = new AddClientWindow(newClientVM);
+            window.ShowDialog();
         }
     }
 }

@@ -63,7 +63,7 @@
                 <ContextMenu>
                     <MenuItem
                         Header="Добавить клиента"
-                        Command="{Binding AddClient}"/>
+                        Command="{Binding AddNewClient}"/>
                     <MenuItem
                         Header="Удалить клиента"
                         Command="{Binding DeleteClient}"/>
