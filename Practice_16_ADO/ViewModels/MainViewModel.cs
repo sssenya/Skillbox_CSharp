@@ -42,11 +42,13 @@ namespace Practice_16_ADO.ViewModels
             OpenInfoWindow = new RelayCommand(obj => OpenConnectionInfoWindow());
             DeleteClient = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClient = new RelayCommand(obj => OpenNewClientWindow());
+            ShowPurchases = new RelayCommand(obj => ShowClientPurchases());
         }
 
         public ICommand OpenInfoWindow { get; set; }
         public ICommand DeleteClient { get; set; }
         public ICommand AddNewClient { get; set; }
+        public ICommand ShowPurchases { get; set; }
 
         public void SetMSSQLConnection()
         {
@@ -157,6 +159,12 @@ namespace Practice_16_ADO.ViewModels
         public void OpenNewClientWindow() {            
             NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _dataTable);
             AddClientWindow window = new AddClientWindow(newClientVM);
+            window.ShowDialog();
+        }
+
+        public void ShowClientPurchases() {
+            PurchasesViewModel purchasesVM = new PurchasesViewModel();
+            PurchasesWindow window = new PurchasesWindow(purchasesVM);
             window.ShowDialog();
         }
     }

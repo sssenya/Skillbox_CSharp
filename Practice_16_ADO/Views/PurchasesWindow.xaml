@@ -1,0 +1,45 @@
+﻿<Window x:Class="Practice_16_ADO.Views.PurchasesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Practice_16_ADO.Views"
+        mc:Ignorable="d"
+        Title="PurchasesWindow" Height="450" Width="500">
+        <DataGrid
+            Margin="10"
+            SelectionMode="Single"
+            AutoGenerateColumns="False"
+            ItemsSource="{Binding ClientsDataTable}"
+            SelectedItem="{Binding SelectedClient}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="ID"
+                    Binding="{Binding Id}"
+                    Width="30"/>
+                <DataGridTextColumn
+                    Header="Email"
+                    Binding="{Binding Email}"
+                    Width="150"/>
+                <DataGridTextColumn
+                    Header="Код товара"
+                    Binding="{Binding ItemCode}"
+                    Width="100"/>
+            <DataGridTextColumn
+                    Header="Наименование товара"
+                    Binding="{Binding ItemName}"
+                    Width="200"/>
+        </DataGrid.Columns>
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem
+                        Header="Добавить поупку"
+                        Command="{Binding AddNewItem}"/>
+                    <MenuItem
+                        Header="Удалить покупку"
+                        Command="{Binding DeleteItem}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+</Window>
