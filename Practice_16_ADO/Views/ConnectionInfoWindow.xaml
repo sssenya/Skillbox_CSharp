@@ -6,12 +6,9 @@
         xmlns:local="clr-namespace:Practice_16_ADO.Views"
         mc:Ignorable="d"
         Title="ConnectionInfoWindow" 
-        Height="300" Width="600">
+        Height="200" Width="500">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -54,38 +51,5 @@
             Margin="10"
             TextWrapping="Wrap"
             Text="{Binding ConnectionStateMSSQL}"/>
-
-
-        <TextBlock
-            Grid.Row="3"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="5"
-            FontWeight="Bold"
-            Text="Подключение к MS Access:"/>
-
-        <TextBlock
-            Grid.Row="4"
-            Grid.Column="0"
-            Margin="10"
-            Text="Строка подключения:"/>
-        <TextBlock
-            Grid.Row="4"
-            Grid.Column="1"
-            Margin="10"
-            TextWrapping="Wrap"
-            Text="{Binding ConnectionStringMSAccess}"/>
-
-        <TextBlock
-            Grid.Row="5"
-            Grid.Column="0"
-            Margin="10"
-            Text="Статус подключения:"/>
-        <TextBlock
-            Grid.Row="5"
-            Grid.Column="1"
-            Margin="10"
-            TextWrapping="Wrap"
-            Text="{Binding ConnectionStateMSAccess}"/>
     </Grid>
 </Window>
