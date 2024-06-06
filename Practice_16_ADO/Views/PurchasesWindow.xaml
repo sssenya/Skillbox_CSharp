@@ -10,8 +10,8 @@
             Margin="10"
             SelectionMode="Single"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding ClientsDataTable}"
-            SelectedItem="{Binding SelectedClient}">
+            ItemsSource="{Binding PurchasesDataTable}"
+            SelectedItem="{Binding SelectedPurchase}">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Header="ID"

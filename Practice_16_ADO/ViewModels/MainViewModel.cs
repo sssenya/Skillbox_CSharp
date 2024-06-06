@@ -20,15 +20,14 @@ namespace Practice_16_ADO.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private readonly string _filePath;
-
         private string _connectionStringMSSQL;
-        private string _connectionStringMSAccess;
 
         private DataRowView _selectedClient;
 
-        private SqlConnection _connection;
+        private SqlConnection _sqlConnection;
         private SqlDataAdapter _sqlDataAdapter;
-        private DataTable _dataTable;
+        private DataTable _sqlDataTable;
+
 
         public MainViewModel()
         {
@@ -37,7 +36,6 @@ namespace Practice_16_ADO.ViewModels
             _filePath = projectDirectory + "\\Database";
 
             SetMSSQLConnection();
-            SetAccessConnection();
 
             OpenInfoWindow = new RelayCommand(obj => OpenConnectionInfoWindow());
             DeleteClient = new RelayCommand(obj => DeleteSelectedClient());
@@ -62,7 +60,7 @@ namespace Practice_16_ADO.ViewModels
 
             SqlConnection connection = new SqlConnection(_connectionStringMSSQL);
 
-            _dataTable = new DataTable();
+            _sqlDataTable = new DataTable();
             _sqlDataAdapter = new SqlDataAdapter();
 
             string sqlSelect = @"SELECT * FROM Clients Order By Clients.Id";
@@ -99,44 +97,15 @@ namespace Practice_16_ADO.ViewModels
             _sqlDataAdapter.DeleteCommand.Parameters.Add("@Id", SqlDbType.Int, 4, "Id");
 
 
-            _sqlDataAdapter.Fill(_dataTable);
-            ClientsDataTable = _dataTable.DefaultView;
+            _sqlDataAdapter.Fill(_sqlDataTable);
+            ClientsDataTable = _sqlDataTable.DefaultView;
 
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
         }
 
-        public void SetAccessConnection() {
-            OleDbConnectionStringBuilder connectionStringBuilderMSAccess = new OleDbConnectionStringBuilder() {
-                DataSource = _filePath + @"\AccessLocalDB.mdb",
-                Provider = "Microsoft.Jet.OLEDB.4.0"
-            };
-
-            _connectionStringMSAccess = connectionStringBuilderMSAccess.ConnectionString;
-
-            OleDbConnection connection = new OleDbConnection() {
-                ConnectionString = _connectionStringMSAccess
-            }; 
-
-            connection.StateChange +=
-                (s, e) => { ConnectionStateMSAccess = (s as OleDbConnection).State.ToString(); };
-
-            try {
-                connection.Open();
-            }
-            catch(Exception e) {
-                ConnectionStateMSAccess = e.Message;
-            }
-            finally {
-                connection.Close();
-            }
-        }
-
         public string ConnectionStateMSSQL { get; set; }
-        public string ConnectionStateMSAccess { get; set; }
-
         public string ConnectionStringMSSQL => _connectionStringMSSQL;
-        public string ConnectionStringMSAccess => _connectionStringMSAccess;
 
         public DataRowView SelectedClient {
             get => _selectedClient;
@@ -153,17 +122,17 @@ namespace Practice_16_ADO.ViewModels
 
         public void DeleteSelectedClient() {
             SelectedClient.Row.Delete();
-            _sqlDataAdapter.Update(_dataTable);
+            _sqlDataAdapter.Update(_sqlDataTable);
         }
 
         public void OpenNewClientWindow() {            
-            NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _dataTable);
+            NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _sqlDataTable);
             AddClientWindow window = new AddClientWindow(newClientVM);
             window.ShowDialog();
         }
 
         public void ShowClientPurchases() {
-            PurchasesViewModel purchasesVM = new PurchasesViewModel();
+            PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClient);
             PurchasesWindow window = new PurchasesWindow(purchasesVM);
             window.ShowDialog();
         }
