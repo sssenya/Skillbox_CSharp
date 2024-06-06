@@ -1,15 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Controls;
 
 using Practice_10_1.ViewModels;
 using Practice_10_1.Commands;
@@ -22,7 +15,7 @@ namespace Practice_16_ADO.ViewModels
         private readonly string _filePath;
         private string _connectionStringMSSQL;
 
-        private DataRowView _selectedClient;
+        private DataRowView _selectedClientRow;
 
         private SqlConnection _sqlConnection;
         private SqlDataAdapter _sqlDataAdapter;
@@ -41,12 +34,16 @@ namespace Practice_16_ADO.ViewModels
             DeleteClient = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClient = new RelayCommand(obj => OpenNewClientWindow());
             ShowPurchases = new RelayCommand(obj => ShowClientPurchases());
+            CellChangedCommand = new RelayCommand(obj => CellChanged());
+            EditCellEndingCommand = new RelayCommand(obj => EditCellEnding());
         }
 
         public ICommand OpenInfoWindow { get; set; }
         public ICommand DeleteClient { get; set; }
         public ICommand AddNewClient { get; set; }
         public ICommand ShowPurchases { get; set; }
+        public ICommand CellChangedCommand { get; set; }
+        public ICommand EditCellEndingCommand { get; set; }
 
         public void SetMSSQLConnection()
         {
@@ -67,8 +64,8 @@ namespace Practice_16_ADO.ViewModels
             _sqlDataAdapter.SelectCommand = new SqlCommand(sqlSelect, connection);
 
             string sqlInsert = @"INSERT INTO Clients (SecondName,  FirstName, MiddleName, PhoneNumber, Email) 
-                                 VALUES (@SecondName, @FirstName, @MiddleName, @PhoneNumber, @Email); 
-                     SET @id = @@IDENTITY;";
+                               VALUES (@SecondName, @FirstName, @MiddleName, @PhoneNumber, @Email); 
+                               SET @id = @@IDENTITY;";
             _sqlDataAdapter.InsertCommand = new SqlCommand(sqlInsert, connection);
             _sqlDataAdapter.InsertCommand.Parameters.Add("@Id", SqlDbType.Int, 4, "Id");
             _sqlDataAdapter.InsertCommand.Parameters.Add("@SecondName", SqlDbType.NVarChar, 20, "SecondName");
@@ -78,12 +75,12 @@ namespace Practice_16_ADO.ViewModels
             _sqlDataAdapter.InsertCommand.Parameters.Add("@Email", SqlDbType.NVarChar, 20, "Email");
 
             string sqlUpdate = @"UPDATE Clients SET 
-                           SecondName = @SecondName,
-                           FirstName = @FirstName, 
-                           MiddleName = @MiddleName, 
-                           PhoneNumber = @PhoneNumber 
-                           Email = @Email 
-                    WHERE Id = @Id";
+                               SecondName = @SecondName,
+                               FirstName = @FirstName, 
+                               MiddleName = @MiddleName, 
+                               PhoneNumber = @PhoneNumber,
+                               Email = @Email 
+                               WHERE Id = @Id";
             _sqlDataAdapter.UpdateCommand = new SqlCommand(sqlUpdate, connection);
             _sqlDataAdapter.UpdateCommand.Parameters.Add("@Id", SqlDbType.Int, 4, "Id");
             _sqlDataAdapter.UpdateCommand.Parameters.Add("@SecondName", SqlDbType.NVarChar, 20, "SecondName");
@@ -108,8 +105,8 @@ namespace Practice_16_ADO.ViewModels
         public string ConnectionStringMSSQL => _connectionStringMSSQL;
 
         public DataRowView SelectedClient {
-            get => _selectedClient;
-            set => RaiseAndSetIfChanged(ref _selectedClient, value);
+            get => _selectedClientRow;
+            set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
         }
 
         public DataView ClientsDataTable { get; set; }
@@ -132,9 +129,21 @@ namespace Practice_16_ADO.ViewModels
         }
 
         public void ShowClientPurchases() {
-            PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClient);
+            PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClientRow);
             PurchasesWindow window = new PurchasesWindow(purchasesVM);
             window.ShowDialog();
+        }
+
+        public void CellChanged() {
+            if(_selectedClientRow == null) {
+                return;
+            }
+            _selectedClientRow.EndEdit();
+            _sqlDataAdapter.Update(_sqlDataTable);
+        }
+
+        public void EditCellEnding() {
+            _selectedClientRow.BeginEdit();
         }
     }
 }
