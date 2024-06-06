@@ -21,7 +21,6 @@ namespace Practice_16_ADO.ViewModels
         private SqlDataAdapter _sqlDataAdapter;
         private DataTable _sqlDataTable;
 
-
         public MainViewModel()
         {
             string workingDirectory = Environment.CurrentDirectory;
@@ -30,20 +29,29 @@ namespace Practice_16_ADO.ViewModels
 
             SetMSSQLConnection();
 
-            OpenInfoWindow = new RelayCommand(obj => OpenConnectionInfoWindow());
-            DeleteClient = new RelayCommand(obj => DeleteSelectedClient());
-            AddNewClient = new RelayCommand(obj => OpenNewClientWindow());
-            ShowPurchases = new RelayCommand(obj => ShowClientPurchases());
+            OpenInfoWindowCommand = new RelayCommand(obj => OpenConnectionInfoWindow());
+            DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
+            AddNewClientCommand = new RelayCommand(obj => OpenNewClientWindow());
+            ShowPurchasesCommand = new RelayCommand(obj => ShowClientPurchases());
             CellChangedCommand = new RelayCommand(obj => CellChanged());
             EditCellEndingCommand = new RelayCommand(obj => EditCellEnding());
         }
 
-        public ICommand OpenInfoWindow { get; set; }
-        public ICommand DeleteClient { get; set; }
-        public ICommand AddNewClient { get; set; }
-        public ICommand ShowPurchases { get; set; }
+        public ICommand OpenInfoWindowCommand { get; set; }
+        public ICommand DeleteClientCommand { get; set; }
+        public ICommand AddNewClientCommand { get; set; }
+        public ICommand ShowPurchasesCommand { get; set; }
         public ICommand CellChangedCommand { get; set; }
         public ICommand EditCellEndingCommand { get; set; }
+
+        public string ConnectionStateMSSQL { get; set; }
+        public string ConnectionStringMSSQL => _connectionStringMSSQL;
+
+        public DataView ClientsDataTable { get; set; }
+        public DataRowView SelectedClient {
+            get => _selectedClientRow;
+            set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
+        }
 
         public void SetMSSQLConnection()
         {
@@ -100,16 +108,6 @@ namespace Practice_16_ADO.ViewModels
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
         }
-
-        public string ConnectionStateMSSQL { get; set; }
-        public string ConnectionStringMSSQL => _connectionStringMSSQL;
-
-        public DataRowView SelectedClient {
-            get => _selectedClientRow;
-            set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
-        }
-
-        public DataView ClientsDataTable { get; set; }
 
         public void OpenConnectionInfoWindow() {
             ConnectionInfoViewModel connectionInfoVM = new ConnectionInfoViewModel(this);

@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Data.OleDb;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Practice_10_1.ViewModels;
-using Practice_10_1.Commands;
-using Practice_16_ADO.Views;
 
 namespace Practice_16_ADO.ViewModels {
     public class PurchasesViewModel : BaseViewModel {

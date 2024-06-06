@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Practice_16_ADO"
         mc:Ignorable="d"
-        Height="800" Width="800">
+        Height="500" Width="650">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
             Grid.Row="0"
             Grid.Column="1"
             Content="Информация о подключении"
-            Command="{Binding OpenInfoWindow}"
+            Command="{Binding OpenInfoWindowCommand}"
             Margin="10"/>
 
         <DataGrid
@@ -54,36 +54,36 @@
                 <DataGridTextColumn
                     Header="Фамилия"
                     Binding="{Binding SecondName}"
-                    Width="150"/>
+                    Width="130"/>
                 <DataGridTextColumn
                     Header="Имя"
                     Binding="{Binding FirstName}"
-                    Width="150"/>
+                    Width="120"/>
                 <DataGridTextColumn
                     Header="Отчество"
                     Binding="{Binding MiddleName}"
-                    Width="150"/>
+                    Width="120"/>
                 <DataGridTextColumn
-                    Header="Номер телефона"
+                    Header="Телефон"
                     Binding="{Binding PhoneNumber}"
-                    Width="150"/>
+                    Width="100"/>
                 <DataGridTextColumn
                     Header="Email"
                     Binding="{Binding Email}"
-                    Width="150"/>
+                    Width="130"/>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
                     <MenuItem
                         Header="Добавить клиента"
-                        Command="{Binding AddNewClient}"/>
+                        Command="{Binding AddNewClientCommand}"/>
                     <MenuItem
                         Header="Удалить клиента"
-                        Command="{Binding DeleteClient}"/>
+                        Command="{Binding DeleteClientCommand}"/>
                     <MenuItem
                         Header="Показать покупки"
-                        Command="{Binding ShowPurchases}"/>
+                        Command="{Binding ShowPurchasesCommand}"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
