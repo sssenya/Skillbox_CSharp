@@ -81,7 +81,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_16_ADO", "Practice
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_17_Entity", "Practice_17_Entity", "{31FCEBBD-DB99-4D72-8B3E-9FA11BB8194D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_17_1_Entity", "Practice_16_1_Entity\Practice_17_1_Entity.csproj", "{4EE3ADC2-6BEE-4B10-A260-5092C9032072}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_17_1_Entity", "Practice_17_1_Entity\Practice_17_1_Entity.csproj", "{4EE3ADC2-6BEE-4B10-A260-5092C9032072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
