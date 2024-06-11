@@ -10,15 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Practice_16_1_Entity {
+namespace Practice_17_1_Entity {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ConnectionInfoWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class ConnectionInfoWindow : Window {
+        public ConnectionInfoWindow(ConnectionInfoViewModel viewModel) {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

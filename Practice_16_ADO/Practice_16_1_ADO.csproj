@@ -124,8 +124,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\AccessLocalDB\" />
-    <Folder Include="Database\MSSQLLocalDB\" />
+    <Folder Include="Database\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

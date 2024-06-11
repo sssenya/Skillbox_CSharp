@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Practice_16_1_Entity {
+namespace Practice_17_1_Entity {
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
