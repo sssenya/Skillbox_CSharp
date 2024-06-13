@@ -29,7 +29,6 @@ namespace Practice_17_Entity
 
             SetMSSQLConnection();
 
-            OpenInfoWindowCommand = new RelayCommand(obj => OpenConnectionInfoWindow());
             //DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClientCommand = new RelayCommand(obj => OpenNewClientWindow());
             //ShowPurchasesCommand = new RelayCommand(obj => ShowClientPurchases());
@@ -37,7 +36,6 @@ namespace Practice_17_Entity
             //EditCellEndingCommand = new RelayCommand(obj => EditCellEnding());
         }
 
-        public ICommand OpenInfoWindowCommand { get; set; }
         public ICommand DeleteClientCommand { get; set; }
         public ICommand AddNewClientCommand { get; set; }
         public ICommand ShowPurchasesCommand { get; set; }
@@ -107,12 +105,6 @@ namespace Practice_17_Entity
 
             connection.StateChange +=
                 (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
-        }
-
-        public void OpenConnectionInfoWindow() {
-            ConnectionInfoViewModel connectionInfoVM = new ConnectionInfoViewModel(this);
-            ConnectionInfoWindow window = new ConnectionInfoWindow(connectionInfoVM);
-            window.ShowDialog();
         }
 
         //public void DeleteSelectedClient() {

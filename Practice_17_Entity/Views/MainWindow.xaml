@@ -9,26 +9,7 @@
         Height="500" Width="650">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
-        <Button
-            Grid.Row="0"
-            Grid.Column="1"
-            Content="Информация о подключении"
-            Command="{Binding OpenInfoWindowCommand}"
-            Margin="10"/>
-
         <DataGrid
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
             Margin="10"
             SelectionMode="Single"
             AutoGenerateColumns="False"
