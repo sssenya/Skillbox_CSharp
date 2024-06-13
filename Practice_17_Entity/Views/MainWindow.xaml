@@ -32,7 +32,7 @@
             Margin="10"
             SelectionMode="Single"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding ClientsDataTable}"
+            ItemsSource="{Binding Clients}"
             SelectedItem="{Binding SelectedClient}">
 
             <i:Interaction.Triggers>

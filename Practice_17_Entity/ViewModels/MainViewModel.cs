@@ -12,13 +12,17 @@ namespace Practice_17_Entity
         private readonly string _filePath;
         private string _connectionStringMSSQL;
 
-        private DataRowView _selectedClientRow;
+        private Client _selectedClientRow;
 
         private SqlDataAdapter _sqlDataAdapter;
         private DataTable _sqlDataTable;
 
+
         public MainViewModel()
         {
+            MsqltestContext context = new MsqltestContext();
+            Clients = context.Clients.ToList();
+
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
             _filePath = projectDirectory + "\\Database";
@@ -26,11 +30,11 @@ namespace Practice_17_Entity
             SetMSSQLConnection();
 
             OpenInfoWindowCommand = new RelayCommand(obj => OpenConnectionInfoWindow());
-            DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
+            //DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClientCommand = new RelayCommand(obj => OpenNewClientWindow());
-            ShowPurchasesCommand = new RelayCommand(obj => ShowClientPurchases());
-            CellChangedCommand = new RelayCommand(obj => CellChanged());
-            EditCellEndingCommand = new RelayCommand(obj => EditCellEnding());
+            //ShowPurchasesCommand = new RelayCommand(obj => ShowClientPurchases());
+            //CellChangedCommand = new RelayCommand(obj => CellChanged());
+            //EditCellEndingCommand = new RelayCommand(obj => EditCellEnding());
         }
 
         public ICommand OpenInfoWindowCommand { get; set; }
@@ -40,11 +44,12 @@ namespace Practice_17_Entity
         public ICommand CellChangedCommand { get; set; }
         public ICommand EditCellEndingCommand { get; set; }
 
+        public List<Client> Clients { get; set; }
         public string ConnectionStateMSSQL { get; set; }
         public string ConnectionStringMSSQL => _connectionStringMSSQL;
 
         public DataView ClientsDataTable { get; set; }
-        public DataRowView SelectedClient {
+        public Client SelectedClient {
             get => _selectedClientRow;
             set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
         }
@@ -110,10 +115,10 @@ namespace Practice_17_Entity
             window.ShowDialog();
         }
 
-        public void DeleteSelectedClient() {
-            SelectedClient.Row.Delete();
-            _sqlDataAdapter.Update(_sqlDataTable);
-        }
+        //public void DeleteSelectedClient() {
+        //    SelectedClient.Row.Delete();
+        //    _sqlDataAdapter.Update(_sqlDataTable);
+        //}
 
         public void OpenNewClientWindow() {
             NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _sqlDataTable);
@@ -121,22 +126,22 @@ namespace Practice_17_Entity
             window.ShowDialog();
         }
 
-        public void ShowClientPurchases() {
-            PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClientRow);
-            PurchasesWindow window = new PurchasesWindow(purchasesVM);
-            window.ShowDialog();
-        }
+        //public void ShowClientPurchases() {
+        //    PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClientRow);
+        //    PurchasesWindow window = new PurchasesWindow(purchasesVM);
+        //    window.ShowDialog();
+        //}
 
-        public void CellChanged() {
-            if(_selectedClientRow == null) {
-                return;
-            }
-            _selectedClientRow.EndEdit();
-            _sqlDataAdapter.Update(_sqlDataTable);
-        }
+        //public void CellChanged() {
+        //    if(_selectedClientRow == null) {
+        //        return;
+        //    }
+        //    _selectedClientRow.EndEdit();
+        //    _sqlDataAdapter.Update(_sqlDataTable);
+        //}
 
-        public void EditCellEnding() {
-            _selectedClientRow.BeginEdit();
-        }
+        //public void EditCellEnding() {
+        //    _selectedClientRow.BeginEdit();
+        //}
     }
 }
