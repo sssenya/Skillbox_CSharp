@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Practice_17_1_Entity {
+namespace Practice_17_Entity {
     public partial class AddClientWindow : Window {
         public AddClientWindow(NewClientViewModel newClientViewModel) {
             InitializeComponent();

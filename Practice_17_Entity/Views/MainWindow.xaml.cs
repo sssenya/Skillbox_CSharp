@@ -7,7 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Practice_17_1_Entity {
+namespace Practice_17_Entity {
     public partial class MainWindow : Window
     {
         public MainWindow()

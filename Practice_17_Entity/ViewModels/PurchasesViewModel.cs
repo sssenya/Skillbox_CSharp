@@ -1,9 +1,7 @@
 ﻿using System.Data;
 using System.Data.OleDb;
 
-using Practice_10_1.ViewModels;
-
-namespace Practice_17_1_Entity {
+namespace Practice_17_Entity {
     public class PurchasesViewModel : BaseViewModel {
         private DataRowView _selectedPurchase;
 
@@ -11,7 +9,6 @@ namespace Practice_17_1_Entity {
 
         private string _connectionStringMSAccess;
 
-        private OleDbConnection _oledbConnection;
         private OleDbDataAdapter _oledbDataAdapter;
         private DataTable _oledbDataTable;
 

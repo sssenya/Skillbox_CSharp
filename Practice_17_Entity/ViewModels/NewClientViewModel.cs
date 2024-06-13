@@ -1,11 +1,9 @@
 ﻿using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Input;
 
-using Practice_10_1.Commands;
-using Practice_10_1.ViewModels;
+using Microsoft.Data.SqlClient;
 
-namespace Practice_17_1_Entity {
+namespace Practice_17_Entity {
     public class NewClientViewModel : BaseViewModel {
 
         private readonly SqlDataAdapter _sqlDataAdapter;

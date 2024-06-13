@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Input;
 
-using Practice_10_1.ViewModels;
-using Practice_10_1.Commands;
+using Microsoft.Data.SqlClient;
 
-namespace Practice_17_1_Entity
+namespace Practice_17_Entity
 {
     public class MainViewModel : BaseViewModel
     {
@@ -16,7 +14,6 @@ namespace Practice_17_1_Entity
 
         private DataRowView _selectedClientRow;
 
-        private SqlConnection _sqlConnection;
         private SqlDataAdapter _sqlDataAdapter;
         private DataTable _sqlDataTable;
 
@@ -52,8 +49,7 @@ namespace Practice_17_1_Entity
             set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
         }
 
-        public void SetMSSQLConnection()
-        {
+        public void SetMSSQLConnection() {
             SqlConnectionStringBuilder connectionStringBuilderMSSQL = new SqlConnectionStringBuilder() {
                 DataSource = @"(localdb)\MSSQLLocalDB",
                 InitialCatalog = "MSQLTest",
@@ -119,7 +115,7 @@ namespace Practice_17_1_Entity
             _sqlDataAdapter.Update(_sqlDataTable);
         }
 
-        public void OpenNewClientWindow() {            
+        public void OpenNewClientWindow() {
             NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _sqlDataTable);
             AddClientWindow window = new AddClientWindow(newClientVM);
             window.ShowDialog();
