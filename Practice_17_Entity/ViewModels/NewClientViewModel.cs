@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections.ObjectModel;
+using System.Data;
 using System.Windows.Input;
 
 using Microsoft.Data.SqlClient;
@@ -6,8 +7,7 @@ using Microsoft.Data.SqlClient;
 namespace Practice_17_Entity {
     public class NewClientViewModel : BaseViewModel {
 
-        private readonly SqlDataAdapter _sqlDataAdapter;
-        private readonly DataTable _dataTable;
+        private readonly ObservableCollection<Client> _clients;
 
         private string _secondName;
         private string _firstName;
@@ -15,9 +15,8 @@ namespace Practice_17_Entity {
         private string _phoneNumber;
         private string _email;
 
-        public NewClientViewModel(SqlDataAdapter sqlDataAdapter, DataTable dataTable) {
-            _sqlDataAdapter = sqlDataAdapter;
-            _dataTable = dataTable;
+        public NewClientViewModel(ObservableCollection<Client> сlients) {
+            _clients = сlients;
 
             AddNewClientCommand = new RelayCommand(obj => AddNewClient());            
         }
@@ -50,16 +49,15 @@ namespace Practice_17_Entity {
         }
 
         public void AddNewClient() {
-            DataRow newRow = _dataTable.NewRow();
+            Client newClient = new Client();
 
-            newRow["SecondName"] = SecondName;
-            newRow["FirstName"] = FirstName;
-            newRow["MiddleName"] = MiddleName;
-            newRow["PhoneNumber"] = int.Parse(PhoneNumber);
-            newRow["Email"] = Email;
+            newClient.SecondName = SecondName;
+            newClient.FirstName = FirstName;
+            newClient.MiddleName = MiddleName;
+            newClient.PhoneNumber = int.Parse(PhoneNumber);
+            newClient.Email = Email;
 
-            _dataTable.Rows.Add(newRow);
-            _sqlDataAdapter.Update(_dataTable);
+            _clients.Add(newClient);
         }
     }
 }

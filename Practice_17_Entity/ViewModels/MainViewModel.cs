@@ -114,9 +114,10 @@ namespace Practice_17_Entity
         }
 
         public void OpenNewClientWindow() {
-            NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _sqlDataTable);
+            NewClientViewModel newClientVM = new NewClientViewModel(Clients);
             AddClientWindow window = new AddClientWindow(newClientVM);
             window.ShowDialog();
+            _contextdb.SaveChanges();
         }
 
         //public void ShowClientPurchases() {
