@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Windows.Input;
 
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace Practice_17_Entity
 {
@@ -17,11 +20,14 @@ namespace Practice_17_Entity
         private SqlDataAdapter _sqlDataAdapter;
         private DataTable _sqlDataTable;
 
+        private MsqltestContext _contextdb;
 
         public MainViewModel()
         {
-            MsqltestContext context = new MsqltestContext();
-            Clients = context.Clients.ToList();
+            _contextdb = new MsqltestContext();
+
+            _contextdb.Clients.Load<Client>();
+            Clients = _contextdb.Clients.Local.ToObservableCollection();
 
             string workingDirectory = Environment.CurrentDirectory;
             string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
@@ -29,7 +35,7 @@ namespace Practice_17_Entity
 
             SetMSSQLConnection();
 
-            //DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
+            DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClientCommand = new RelayCommand(obj => OpenNewClientWindow());
             //ShowPurchasesCommand = new RelayCommand(obj => ShowClientPurchases());
             //CellChangedCommand = new RelayCommand(obj => CellChanged());
@@ -42,9 +48,7 @@ namespace Practice_17_Entity
         public ICommand CellChangedCommand { get; set; }
         public ICommand EditCellEndingCommand { get; set; }
 
-        public List<Client> Clients { get; set; }
-        public string ConnectionStateMSSQL { get; set; }
-        public string ConnectionStringMSSQL => _connectionStringMSSQL;
+        public ObservableCollection<Client> Clients { get; set; }
 
         public DataView ClientsDataTable { get; set; }
         public Client SelectedClient {
@@ -102,15 +106,12 @@ namespace Practice_17_Entity
 
             _sqlDataAdapter.Fill(_sqlDataTable);
             ClientsDataTable = _sqlDataTable.DefaultView;
-
-            connection.StateChange +=
-                (s, e) => { ConnectionStateMSSQL = (s as SqlConnection).State.ToString(); };
         }
 
-        //public void DeleteSelectedClient() {
-        //    SelectedClient.Row.Delete();
-        //    _sqlDataAdapter.Update(_sqlDataTable);
-        //}
+        public void DeleteSelectedClient() {
+            _contextdb.Clients.Remove(_selectedClientRow);
+            _contextdb.SaveChanges();
+        }
 
         public void OpenNewClientWindow() {
             NewClientViewModel newClientVM = new NewClientViewModel(_sqlDataAdapter, _sqlDataTable);
