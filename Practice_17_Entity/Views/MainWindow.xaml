@@ -21,10 +21,6 @@
                     <i:InvokeCommandAction
                         Command="{Binding CellChangedCommand}" />
                 </i:EventTrigger>
-                <i:EventTrigger EventName="CellEditEnding">
-                    <i:InvokeCommandAction
-                        Command="{Binding EditCellEndingCommand}" />
-                </i:EventTrigger>
             </i:Interaction.Triggers>  
 
             <DataGrid.Columns>

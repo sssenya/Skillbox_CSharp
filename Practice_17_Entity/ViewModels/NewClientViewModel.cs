@@ -1,8 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using System.Data;
 using System.Windows.Input;
-
-using Microsoft.Data.SqlClient;
 
 namespace Practice_17_Entity {
     public class NewClientViewModel : BaseViewModel {

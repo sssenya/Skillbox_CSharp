@@ -12,10 +12,10 @@ namespace Practice_17_Entity {
         private OleDbDataAdapter _oledbDataAdapter;
         private DataTable _oledbDataTable;
 
-        public PurchasesViewModel(string filepath, DataRowView client)
+        public PurchasesViewModel(string filepath, Client client)
         {
             _filePath = filepath;
-            string clientEmail = client.Row["Email"].ToString();
+            string clientEmail = client.Email;
 
             SetAccessConnection(clientEmail);
         }
