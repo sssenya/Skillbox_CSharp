@@ -6,40 +6,29 @@
         xmlns:local="clr-namespace:Practice_17_Entity"
         mc:Ignorable="d"
         Title="PurchasesWindow" Height="450" Width="500">
+
         <DataGrid
             Margin="10"
             SelectionMode="Single"
             AutoGenerateColumns="False"
-            ItemsSource="{Binding PurchasesDataTable}"
-            SelectedItem="{Binding SelectedPurchase}">
-            <DataGrid.Columns>
-                <DataGridTextColumn
+            ItemsSource="{Binding Purchases}">
+        <DataGrid.Columns>
+            <DataGridTextColumn
                     Header="ID"
-                    Binding="{Binding Код}"
+                    Binding="{Binding Id}"
                     Width="30"/>
-                <DataGridTextColumn
+            <DataGridTextColumn
                     Header="Email"
                     Binding="{Binding Email}"
                     Width="150"/>
-                <DataGridTextColumn
+            <DataGridTextColumn
                     Header="Код товара"
-                    Binding="{Binding ItemNumber}"
+                    Binding="{Binding ItemId}"
                     Width="100"/>
-                <DataGridTextColumn
+            <DataGridTextColumn
                     Header="Наименование товара"
                     Binding="{Binding ItemName}"
                     Width="200"/>
         </DataGrid.Columns>
-
-            <DataGrid.ContextMenu>
-                <ContextMenu>
-                    <MenuItem
-                        Header="Добавить поупку"
-                        Command="{Binding AddNewItem}"/>
-                    <MenuItem
-                        Header="Удалить покупку"
-                        Command="{Binding DeleteItem}"/>
-                </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
+    </DataGrid>
 </Window>

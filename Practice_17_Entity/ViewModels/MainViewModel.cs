@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Data;
-using System.IO;
 using System.Windows.Input;
 
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +8,7 @@ namespace Practice_17_Entity
 {
     public class MainViewModel : BaseViewModel
     {
-        private readonly string _filePath;
         private readonly MsqltestContext _contextdb;
-
         private  Client _selectedClientRow;
 
         public MainViewModel()
@@ -21,10 +17,6 @@ namespace Practice_17_Entity
 
             _contextdb.Clients.Load<Client>();
             Clients = _contextdb.Clients.Local.ToObservableCollection();
-
-            string workingDirectory = Environment.CurrentDirectory;
-            string projectDirectory = Directory.GetParent(workingDirectory).Parent.FullName;
-            _filePath = projectDirectory + "\\Database";
 
             DeleteClientCommand = new RelayCommand(obj => DeleteSelectedClient());
             AddNewClientCommand = new RelayCommand(obj => OpenNewClientWindow());
@@ -38,8 +30,6 @@ namespace Practice_17_Entity
         public ICommand CellChangedCommand { get; set; }
 
         public ObservableCollection<Client> Clients { get; set; }
-
-        public DataView ClientsDataTable { get; set; }
         public Client SelectedClient {
             get => _selectedClientRow;
             set => RaiseAndSetIfChanged(ref _selectedClientRow, value);
@@ -58,7 +48,7 @@ namespace Practice_17_Entity
         }
 
         public void ShowClientPurchases() {
-            PurchasesViewModel purchasesVM = new PurchasesViewModel(_filePath, _selectedClientRow);
+            PurchasesViewModel purchasesVM = new PurchasesViewModel(_selectedClientRow);
             PurchasesWindow window = new PurchasesWindow(purchasesVM);
             window.ShowDialog();
         }

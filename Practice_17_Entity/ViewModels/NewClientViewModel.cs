@@ -51,7 +51,9 @@ namespace Practice_17_Entity {
             newClient.SecondName = SecondName;
             newClient.FirstName = FirstName;
             newClient.MiddleName = MiddleName;
-            newClient.PhoneNumber = int.Parse(PhoneNumber);
+            if(int.TryParse(PhoneNumber, out int result)) {
+                newClient.PhoneNumber = result;
+            }
             newClient.Email = Email;
 
             _clients.Add(newClient);

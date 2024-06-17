@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Practice_17_Entity;
+﻿namespace Practice_17_Entity;
 
 public partial class Purchase
 {
