@@ -9,6 +9,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Practice_18_Patterns.ViewModels;
+
 namespace Practice_18_Patterns {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -16,6 +18,8 @@ namespace Practice_18_Patterns {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
+
+            DataContext = new MainViewModel();
         }
     }
 }

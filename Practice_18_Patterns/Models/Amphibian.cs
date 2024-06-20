@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Practice_18_Patterns.Models
+﻿namespace Practice_18_Patterns.Models
 {
-    class Amphibian : IAnimal {
+    class Amphibian : IAnimal 
+    {
+        public Amphibian() {
+            Class = "Земноводные";
+        }
+
         public string Class { get; set; }
         public string Order { get; set; }
         public string Family { get; set; }

@@ -7,6 +7,91 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <ListBox
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5"
+            ItemsSource="{Binding Animals}"
+            SelectedItem="{Binding SelectedAnimal}"/>
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="5"
+            Content="Добавить"
+            Command="{Binding AddAnimal}"/>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            Grid.RowSpan="2"
+            Margin="5"
+            DataContext="{Binding SelectedAnimal}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="5"
+                Text="Класс:"/>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding Class}"/>
+            
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="5"
+                Text="Отряд:"/>
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding Order}"/>
+            
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="0"
+                Margin="5"
+                Text="Семейство:"/>
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding Family}"/>
+
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="0"
+                Margin="5"
+                Text="Вид:"/>
+            <TextBlock
+                Grid.Row="3"
+                Grid.Column="1"
+                Margin="5"
+                Text="{Binding Species}"/>
+        </Grid>
     </Grid>
 </Window>
