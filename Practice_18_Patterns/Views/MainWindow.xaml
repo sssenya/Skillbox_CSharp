@@ -29,7 +29,7 @@
             Grid.Column="0"
             Margin="5"
             Content="Добавить"
-            Command="{Binding AddAnimal}"/>
+            Command="{Binding AddNewAnimalCommand}"/>
 
         <Grid
             Grid.Row="0"

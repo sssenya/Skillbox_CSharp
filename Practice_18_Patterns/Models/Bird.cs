@@ -3,9 +3,11 @@
     class Bird : IAnimal
     {
 
-        public Bird()
-        {
+        public Bird(string order, string family, string species) {
             Class = "Птицы";
+            Order = order;
+            Family = family;
+            Species = species;
         }
 
         public string Class { get; set; }

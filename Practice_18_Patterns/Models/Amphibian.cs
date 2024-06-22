@@ -2,8 +2,11 @@
 {
     class Amphibian : IAnimal 
     {
-        public Amphibian() {
+        public Amphibian(string order, string family, string species) {
             Class = "Земноводные";
+            Order = order;
+            Family = family;
+            Species = species;
         }
 
         public string Class { get; set; }

@@ -2,8 +2,11 @@
 {
     class Mammal : IAnimal 
     {
-        public Mammal() {
+        public Mammal(string order, string family, string species) {
             Class = "Млекопитающие";
+            Order = order;
+            Family = family;
+            Species = species;
         }
 
         public string Class { get; set; }
