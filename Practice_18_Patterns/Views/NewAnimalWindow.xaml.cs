@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Practice_18_Patterns.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,8 +20,9 @@ namespace Practice_18_Patterns.Views
     /// </summary>
     public partial class NewAnimalWindow : Window
     {
-        public NewAnimalWindow()
+        public NewAnimalWindow(NewAnimalViewModel newAnimaVM)
         {
+            DataContext = newAnimaVM;
             InitializeComponent();
         }
         private void ButtonOk_Click(object sender, RoutedEventArgs e)

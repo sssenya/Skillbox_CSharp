@@ -1,6 +1,6 @@
 ﻿namespace Practice_18_Patterns.Models
 {
-    interface IAnimal
+    public interface IAnimal
     {
         string Class { get; set; }
         string Order { get; set; }
