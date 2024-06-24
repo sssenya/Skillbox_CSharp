@@ -6,5 +6,6 @@
         string Order { get; set; }
         string Family { get; set; }
         string Species { get; set; }
+        public string Name { get; }
     }
 }

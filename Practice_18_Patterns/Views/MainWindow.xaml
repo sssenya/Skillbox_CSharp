@@ -22,9 +22,16 @@
             Grid.Column="0"
             Margin="5"
             ItemsSource="{Binding Animals}"
-            SelectedItem="{Binding SelectedAnimal}"/>
+            SelectedItem="{Binding SelectedAnimal}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock
+                        Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-        <Button
+            <Button
             Grid.Row="1"
             Grid.Column="0"
             Margin="5"

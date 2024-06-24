@@ -13,5 +13,6 @@
         public string Order { get; set; }
         public string Family { get; set; }
         public string Species { get; set; }
+        public string Name => $"{Class} {Order} {Family} {Species}";
     }
 }
