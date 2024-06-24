@@ -11,7 +11,7 @@
                 case "Земноводные": return new Amphibian(order, family, species);
                 case "Млекопитающие": return new Mammal(order, family, species);
                 case "Птицы": return new Bird(order, family, species);
-                default: return null;
+                default: return new NullAnimal();
             }
         }
     }
