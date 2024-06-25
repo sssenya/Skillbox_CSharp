@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:Practice_18_Patterns"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -13,12 +15,33 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
 
-        <ListBox
+        <Menu
             Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Height="25" 
+            VerticalAlignment="Top">
+            <MenuItem 
+                Header="Файл">
+                <MenuItem 
+                    Header="Сохранить как .json" 
+                    Command="{Binding ExportToJsonCommand}"/>
+                <MenuItem 
+                    Header="Сохранить как .txt" 
+                    Command="{Binding ExportToTxtCommand}"/>
+                <MenuItem 
+                    Header="Выход"
+                    Click="ExitButton_Click"/>
+            </MenuItem>
+        </Menu>
+        
+        <ListBox
+            Grid.Row="1"
             Grid.Column="0"
             Margin="5"
             ItemsSource="{Binding Animals}"
@@ -31,15 +54,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-            <Button
-            Grid.Row="1"
+        <Button
+            Grid.Row="2"
             Grid.Column="0"
             Margin="5"
             Content="Добавить"
             Command="{Binding OpenNewAnimalWindowCommand}"/>
 
         <Grid
-            Grid.Row="0"
+            Grid.Row="1"
             Grid.Column="1"
             Grid.RowSpan="2"
             Margin="5"

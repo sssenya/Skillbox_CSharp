@@ -21,5 +21,10 @@ namespace Practice_18_Patterns {
 
             DataContext = new MainViewModel();
         }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
