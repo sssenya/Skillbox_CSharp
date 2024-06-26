@@ -15,9 +15,11 @@ namespace Practice_18_Patterns.ViewModels {
         public NewAnimalViewModel(ObservableCollection<IAnimal> animals) {
             _animals = animals;
             AddNewAnimalCommand = new RelayCommand(obj => AddNewAnimal());
+            ExportToJsonCommand = new RelayCommand(obj => ExportToJson());
         }
 
         public ICommand AddNewAnimalCommand { get; set; }
+        public ICommand ExportToJsonCommand { get; set; }
 
         public string Class {
             get => _class;
@@ -41,6 +43,10 @@ namespace Practice_18_Patterns.ViewModels {
 
         public void AddNewAnimal() {
             _animals.Add(AnimalFactory.GetAnimal(_class, _order, _family, _species));
+        }
+
+        public void ExportToJson() { 
+            
         }
     }
 }
