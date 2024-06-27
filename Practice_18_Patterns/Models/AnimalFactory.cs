@@ -1,7 +1,5 @@
-﻿namespace Practice_18_Patterns.Models
-{
-    internal class AnimalFactory
-    {
+﻿namespace Practice_18_Patterns.Models {
+    internal class AnimalFactory {
         public static IAnimal GetAnimal(string animalClass,
                                         string order,
                                         string family,

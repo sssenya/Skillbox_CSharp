@@ -1,7 +1,5 @@
-﻿namespace Practice_18_Patterns.Models
-{
-    class Bird : IAnimal
-    {
+﻿namespace Practice_18_Patterns.Models {
+    class Bird : IAnimal {
         public Bird(string order, string family, string species) {
             Class = "Птицы";
             Order = order;

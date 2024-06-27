@@ -1,9 +1,6 @@
-﻿namespace Practice_18_Patterns.Models
-{
-    internal class NullAnimal : IAnimal
-    {
-        public NullAnimal()
-        {
+﻿namespace Practice_18_Patterns.Models {
+    internal class NullAnimal : IAnimal {
+        public NullAnimal() {
             Class = "Неизвестно";
             Order = "Неизвестно";
             Family = "Неизвестно";

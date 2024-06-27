@@ -1,7 +1,5 @@
-﻿namespace Practice_18_Patterns.Models
-{
-    class Mammal : IAnimal 
-    {
+﻿namespace Practice_18_Patterns.Models {
+    class Mammal : IAnimal {
         public Mammal(string order, string family, string species) {
             Class = "Млекопитающие";
             Order = order;

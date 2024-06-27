@@ -1,7 +1,5 @@
-﻿namespace Practice_18_Patterns.Models
-{
-    class Amphibian : IAnimal 
-    {
+﻿namespace Practice_18_Patterns.Models {
+    class Amphibian : IAnimal {
         public Amphibian(string order, string family, string species) {
             Class = "Земноводные";
             Order = order;
