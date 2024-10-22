@@ -1,8 +1,30 @@
-﻿<html>
-	<head>
-		<title>Name of the page</title>
-	</head>
-	<body>
-		"text text text"
-	</body>
-</html>
+﻿@model IEnumerable<Practice_19_ASP.Models.Contact>
+
+<h2>Contacts</h2>
+
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Middle Name</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model) {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.LastName</td>
+                <td>@item.MiddleName</td>
+                <td>@item.Phone</td>
+                <td>@item.Address</td>
+                <td>@item.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
