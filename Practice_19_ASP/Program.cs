@@ -1,6 +1,15 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+public class Program {
+    public static void Main(string[] args) {
+        var builder = WebApplication.CreateBuilder(args);
 
-app.MapGet("/", () => "Hello World!");
+        builder.Services.AddControllersWithViews();
 
-app.Run();
+        var app = builder.Build();
+
+        app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=StartView}/{action=Index}");
+
+        app.Run();
+    }
+}
