@@ -89,7 +89,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice_18_Patterns", "Pra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_19_ASP", "Practice_19_ASP", "{FE7DE47B-F68C-440D-9AEA-469E5CB3FD39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_19_ASP", "Practice_19_ASP\Practice_19_ASP.csproj", "{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice_19_ASP", "Practice_19_ASP\Practice_19_ASP.csproj", "{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
