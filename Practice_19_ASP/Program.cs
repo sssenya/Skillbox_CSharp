@@ -8,7 +8,7 @@ public class Program {
 
         app.MapControllerRoute(
             name: "default",
-            pattern: "{controller=StartView}/{action=Index}");
+            pattern: "{controller=StartView}/{action=Index}/{id?}");
 
         app.Run();
     }

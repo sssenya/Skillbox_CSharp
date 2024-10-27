@@ -3,14 +3,23 @@ using Practice_19_ASP.Models;
 
 namespace Practice_19_ASP.Controllers {
     public class StartViewController : Controller {
-        public IActionResult Index() {
-            List<Contact> contacts = new List<Contact>() {
-                new Contact() { Id = 1000, Name = "hanme1ef", LastName = "sdfsdf" },
-                new Contact() { Id = 1001, Name = "gdfg", LastName = "sdfsf" },
-                new Contact() { Id = 1002, Name = "hanme1ef", LastName = "sfdf" },
-                new Contact() { Id = 1003, Name = "hanme1ef", LastName = "dsf" }
+        private List<Contact> _contacts = new List<Contact>() {
+                new Contact() { Id = 1000, Name = "Ivan", LastName = "Ivanov" },
+                new Contact() { Id = 1001, Name = "Nina", LastName = "Ninova" },
+                new Contact() { Id = 1002, Name = "Alexey", LastName = "Alexeev" }
             };
-            return View(contacts);
+
+        public IActionResult Index() {
+            return View(_contacts);
+        }
+
+        public IActionResult ContactInfo(int id) {
+            var person = _contacts.FirstOrDefault(c => c.Id == id);
+            if(person == null) {
+                return NotFound();
+            }
+
+            return View(person);
         }
     }
 }
