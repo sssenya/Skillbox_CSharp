@@ -7,7 +7,7 @@ namespace Practice_19_ASP.Context {
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
             optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\ContactsDB;
+                @"Server=(localdb)\MSSQLLocalDB;
                 DataBase=_contactsTest;
                 Trusted_Connection=True;"
                 );
