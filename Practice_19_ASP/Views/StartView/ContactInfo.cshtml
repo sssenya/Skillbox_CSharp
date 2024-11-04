@@ -1,4 +1,9 @@
-﻿@model Practice_19_ASP.Models.Contact
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Информация о контакте";
+}
+
+@model Practice_19_ASP.Models.Contact
 
 <h2>@Model.Id</h2>
 <p>Name: @Model.Name</p>

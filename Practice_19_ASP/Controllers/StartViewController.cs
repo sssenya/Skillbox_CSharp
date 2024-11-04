@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Models;
+using Practice_19_ASP.Context;
 
 namespace Practice_19_ASP.Controllers {
     public class StartViewController : Controller {
@@ -20,6 +21,14 @@ namespace Practice_19_ASP.Controllers {
             }
 
             return View(person);
+        }
+
+        public IActionResult GetDataFromField() {
+            using(var db = new DataContext()) {
+                db.Contacts.Add(new Contact());
+            }
+
+            return Redirect("/");
         }
     }
 }
