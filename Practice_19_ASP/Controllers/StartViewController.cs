@@ -23,6 +23,14 @@ namespace Practice_19_ASP.Controllers {
             return View(person);
         }
 
+        public IActionResult Information() {
+            return View();
+        }
+
+        public IActionResult AddNewContact() {
+            return View();
+        }
+
         public IActionResult GetDataFromField() {
             using(var db = new DataContext()) {
                 db.Contacts.Add(new Contact());
