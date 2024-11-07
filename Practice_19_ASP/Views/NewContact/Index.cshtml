@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Новый контакт";
+}
+
+<body>
+    <div class="brd">
+        <form action="~/NewContact/GetDataFromViewField" method="post">
+            <label>Имя</label><br />
+            <input type="text" name="name" /><br />
+            <label>Фамилия</label><br />
+            <input type="text" name="lastName" /><br />
+            <label>Отчество</label><br />
+            <input type="text" name="middleName" /><br />
+            <label>Телефон</label><br />
+            <input type="text" name="phone" /><br />
+            <label>Адрес</label><br />
+            <input type="text" name="address" /><br />
+            <label>Описание</label><br />
+            <input type="text" name="description" /><br />
+            <p><input type="submit" value="Отправить" /></p>
+        </form>
+    </div>
+</body>
