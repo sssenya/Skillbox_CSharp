@@ -4,18 +4,15 @@ using Practice_19_ASP.Context;
 
 namespace Practice_19_ASP.Controllers {
     public class StartViewController : Controller {
-        private List<Contact> _contacts = new List<Contact>() {
-                new Contact() { Id = 1000, Name = "Ivan", LastName = "Ivanov" },
-                new Contact() { Id = 1001, Name = "Nina", LastName = "Ninova" },
-                new Contact() { Id = 1002, Name = "Alexey", LastName = "Alexeev" }
-            };
 
         public IActionResult Index() {
-            return View(_contacts);
+            ViewBag.Contacts = new DataContext().Contacts;
+            return View();
         }
 
         public IActionResult ContactInfo(int id) {
-            var person = _contacts.FirstOrDefault(c => c.Id == id);
+            List<Contact> contacts = ViewBag.Contacts;
+            var person = contacts.FirstOrDefault(c => c.Id == id);
             if(person == null) {
                 return NotFound();
             }
@@ -29,14 +26,6 @@ namespace Practice_19_ASP.Controllers {
 
         public IActionResult AddNewContact() {
             return View();
-        }
-
-        public IActionResult GetDataFromField() {
-            using(var db = new DataContext()) {
-                db.Contacts.Add(new Contact());
-            }
-
-            return Redirect("/");
         }
     }
 }
