@@ -8,6 +8,7 @@ namespace Practice_19_ASP.Controllers {
             return View();
         }
 
+        [HttpPost]
         public IActionResult GetDataFromViewField(string name, 
                                             string lastName, 
                                             string middleName, 
@@ -27,6 +28,10 @@ namespace Practice_19_ASP.Controllers {
 
                 db.SaveChanges();
             }
+            return Redirect("~/");
+        }
+
+        public IActionResult DeleteData() {
             return Redirect("~/");
         }
     }

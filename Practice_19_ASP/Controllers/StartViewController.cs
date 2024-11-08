@@ -10,14 +10,31 @@ namespace Practice_19_ASP.Controllers {
             return View();
         }
 
+        [HttpGet]
         public IActionResult ContactInfo(int id) {
-            List<Contact> contacts = ViewBag.Contacts;
-            var person = contacts.FirstOrDefault(c => c.Id == id);
+            var person = new DataContext().Contacts.FirstOrDefault(c => c.Id == id);
             if(person == null) {
                 return NotFound();
             }
 
             return View(person);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteData(int id) {
+            using(var db = new DataContext()) {
+                var person = db.Contacts.FirstOrDefault(c => c.Id == id);
+
+                if(person == null) {
+                    return NotFound();
+                }
+                else {
+                    db.Contacts.Remove(person);
+                    db.SaveChanges();
+                }
+
+            }
+            return Redirect("~/");
         }
 
         public IActionResult Information() {
