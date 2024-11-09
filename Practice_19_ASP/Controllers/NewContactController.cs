@@ -10,11 +10,11 @@ namespace Practice_19_ASP.Controllers {
 
         [HttpPost]
         public IActionResult GetDataFromViewField(string name, 
-                                            string lastName, 
-                                            string middleName, 
-                                            string phone, 
-                                            string address,
-                                            string description) {
+                                                  string lastName, 
+                                                  string middleName, 
+                                                  string phone, 
+                                                  string address,
+                                                  string description) {
             using(var db = new DataContext()) {
                 db.Contacts.Add(
                     new Contact() {

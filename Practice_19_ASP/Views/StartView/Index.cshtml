@@ -23,7 +23,7 @@
     <tbody>
         @foreach(var item in ViewBag.Contacts) {
             <tr>
-                <td><a asp-action="ContactInfo" asp-route-id="@item.Id">@item.Id</a></td>
+                <td><a asp-controller="ContactInfo" asp-action="Index" asp-route-id="@item.Id">@item.Id</a></td>
                 <td>@item.Name</td>
                 <td>@item.LastName</td>
                 <td>@item.MiddleName</td>

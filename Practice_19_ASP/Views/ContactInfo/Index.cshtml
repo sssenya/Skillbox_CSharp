@@ -1,0 +1,27 @@
+﻿@using Practice_19_ASP.Models
+@model Contact
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Редактировать контакт";
+}
+
+<body>
+    <div class="brd">
+        <form action="~/ContactInfo/UpdateData" method="post">
+            <label>Имя</label><br />
+            <input type="text" name="name" value=@Model.Name /><br />
+            <label>Фамилия</label><br />
+            <input type="text" name="lastName" value=@Model.LastName /><br />
+            <label>Отчество</label><br />
+            <input type="text" name="middleName" value=@Model.MiddleName /><br />
+            <label>Телефон</label><br />
+            <input type="text" name="phone" value=@Model.Phone /><br />
+            <label>Адрес</label><br />
+            <input type="text" name="address" value=@Model.Address /><br />
+            <label>Описание</label><br />
+            <input type="text" name="description" value=@Model.Description /><br />
+            <p><input type="submit" value="Обновить" /></p>
+        </form>
+    </div>
+</body>
