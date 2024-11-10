@@ -9,6 +9,8 @@
 <body>
     <div class="brd">
         <form action="~/ContactInfo/UpdateData" method="post">
+            <label>Id</label><br />
+            <input type="number" name="id" value=@Model.Id /><br />
             <label>Имя</label><br />
             <input type="text" name="name" value=@Model.Name /><br />
             <label>Фамилия</label><br />
