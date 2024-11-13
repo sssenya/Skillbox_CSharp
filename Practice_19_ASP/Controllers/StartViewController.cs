@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Models;
 using Practice_19_ASP.Context;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Practice_19_ASP.Controllers {
     public class StartViewController : Controller {
@@ -9,8 +10,6 @@ namespace Practice_19_ASP.Controllers {
             ViewBag.Contacts = new DataContext().Contacts;
             return View();
         }
-
-
 
         [HttpGet]
         public IActionResult DeleteData(int id) {
@@ -29,11 +28,8 @@ namespace Practice_19_ASP.Controllers {
             return Redirect("~/");
         }
 
+        [Authorize]
         public IActionResult Information() {
-            return View();
-        }
-
-        public IActionResult AddNewContact() {
             return View();
         }
     }

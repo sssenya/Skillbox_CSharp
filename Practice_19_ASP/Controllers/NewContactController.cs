@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Context;
 using Practice_19_ASP.Models;
 
@@ -28,10 +29,6 @@ namespace Practice_19_ASP.Controllers {
 
                 db.SaveChanges();
             }
-            return Redirect("~/");
-        }
-
-        public IActionResult DeleteData() {
             return Redirect("~/");
         }
     }
