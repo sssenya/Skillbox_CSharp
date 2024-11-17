@@ -5,6 +5,7 @@ using Practice_19_ASP.Models;
 
 namespace Practice_19_ASP.Controllers {
     public class NewContactController : Controller {
+        [Authorize]
         public IActionResult Index() {
             return View();
         }
