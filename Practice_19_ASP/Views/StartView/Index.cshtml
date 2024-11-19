@@ -1,4 +1,5 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Practice_19_ASP.Models.Contact>
 
 @{
     Layout = "_Layout";
@@ -21,7 +22,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in ViewBag.Contacts) {
+        @foreach(var item in Model) {
             <tr>
                 <td><a asp-controller="ContactInfo" asp-action="Index" asp-route-id="@item.Id">@item.Id</a></td>
                 <td>@item.Name</td>

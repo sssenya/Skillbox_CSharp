@@ -1,10 +1,15 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Context;
 using Practice_19_ASP.Models;
 
 namespace Practice_19_ASP.Controllers {
     public class NewContactController : Controller {
+        private readonly DataContext _context;
+
+        public NewContactController(DataContext context) {
+            _context = context;
+        }
+
         public IActionResult Index() {
             return View();
         }
@@ -16,19 +21,18 @@ namespace Practice_19_ASP.Controllers {
                                                   string phone, 
                                                   string address,
                                                   string description) {
-            using(var db = new DataContext()) {
-                db.Contacts.Add(
-                    new Contact() {
-                        Name = name,
-                        LastName = middleName,
-                        MiddleName = middleName,
-                        Phone = phone,
-                        Address = address,
-                        Description = description
-                    });
+            _context.Contacts.Add(
+                new Contact() {
+                    Name = name,
+                    LastName = middleName,
+                    MiddleName = middleName,
+                    Phone = phone,
+                    Address = address,
+                    Description = description
+                });
 
-                db.SaveChanges();
-            }
+            _context.SaveChanges();
+
             return Redirect("~/");
         }
     }
