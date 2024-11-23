@@ -8,6 +8,6 @@ namespace Practice_19_ASP.Authentication {
         [Required, DataType(DataType.Password)]
         public string Password { get; set; }
 
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
     }
 }

@@ -32,6 +32,7 @@ namespace Practice_19_ASP.Controllers {
             return Redirect("~/");
         }
 
+        [Authorize]
         public IActionResult Information() {
             return View();
         }
