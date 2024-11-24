@@ -13,8 +13,10 @@ namespace Practice_19_ASP.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Login() {
-            return View();
+        public IActionResult Login(string returnUrl = "/") {
+            return View(new UserLogin() {
+                ReturnUrl = returnUrl
+            });
         }
 
         [HttpPost]
@@ -27,7 +29,11 @@ namespace Practice_19_ASP.Controllers {
                     lockoutOnFailure: false);
 
                 if(result.Succeeded) {
-                    return RedirectToAction("Index", "Contacts");
+                    if(Url.IsLocalUrl(userLogin.ReturnUrl)) {
+                        return Redirect(userLogin.ReturnUrl);
+                    }
+
+                    return RedirectToAction("Index", "StartView");
                 }
 
                 ModelState.AddModelError(string.Empty, "Invalid login attempt.");
@@ -48,7 +54,7 @@ namespace Practice_19_ASP.Controllers {
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if(result.Succeeded) {
                     await _signInManager.SignInAsync(user, isPersistent: false);
-                    return Redirect("StartView");
+                    return RedirectToAction("Index", "StartView");
                 }
                 foreach(var error in result.Errors) {
                     ModelState.AddModelError(string.Empty, error.Description);

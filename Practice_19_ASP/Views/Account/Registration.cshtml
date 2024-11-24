@@ -1,6 +1,12 @@
 ﻿@model Practice_19_ASP.Authentication.UserRegistration
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Регистрация";
+}
+
+
 <h1>Регистрация</h1>
 
 <form asp-action="Registration" method="post">

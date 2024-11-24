@@ -25,10 +25,15 @@ public class Program {
                 .AddCookie(options => {
                     options.LoginPath = "/Account/Login";
                     options.AccessDeniedPath = "/Account/AccessDenied";
-            });
+                    options.Cookie.Name = "YourAppCookie";
+                    options.Cookie.HttpOnly = true;
+                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                    options.Cookie.SameSite = SameSiteMode.Strict;
+                    options.ExpireTimeSpan = TimeSpan.FromDays(14);
+                    options.SlidingExpiration = true;
+                });
 
-        builder.Services.AddAuthorization(options =>
-        {
+        builder.Services.AddAuthorization(options => {
             options.AddPolicy("RequireLoggedIn", policy => policy.RequireAuthenticatedUser());
         });
 
@@ -36,13 +41,7 @@ public class Program {
 
         var app = builder.Build();
 
-        if(app.Environment.IsDevelopment()) {
-            app.UseDeveloperExceptionPage();
-        }
-        else {
-            app.UseExceptionHandler("/Home/Error");
-            app.UseHsts();
-        }
+        app.UseHttpsRedirection();
 
         app.UseAuthentication();
         app.UseAuthorization();

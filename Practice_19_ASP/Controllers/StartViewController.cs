@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Practice_19_ASP.Controllers {
+    [Authorize]
     public class StartViewController : Controller {
         private readonly DataContext _context;
 
@@ -32,7 +33,6 @@ namespace Practice_19_ASP.Controllers {
             return Redirect("~/");
         }
 
-        [Authorize]
         public IActionResult Information() {
             return View();
         }
