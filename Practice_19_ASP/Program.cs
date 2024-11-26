@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+
 using Practice_19_ASP.Authentication;
 using Practice_19_ASP.Context;
 using System;
@@ -17,21 +16,12 @@ public class Program {
             .AddEntityFrameworkStores<DataContext>()
             .AddDefaultTokenProviders();
 
-        builder.Services.AddAuthentication(options => {
-                options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-            })
-                .AddCookie(options => {
-                    options.LoginPath = "/Account/Login";
-                    options.AccessDeniedPath = "/Account/AccessDenied";
-                    options.Cookie.Name = "YourAppCookie";
-                    options.Cookie.HttpOnly = true;
-                    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-                    options.Cookie.SameSite = SameSiteMode.Strict;
-                    options.ExpireTimeSpan = TimeSpan.FromDays(14);
-                    options.SlidingExpiration = true;
-                });
+
+        builder.Services.ConfigureApplicationCookie(options => {
+            options.LoginPath = "/Account/Login";
+            options.AccessDeniedPath = "/Account/AccessDenied";
+            options.SlidingExpiration = true;
+        });
 
         builder.Services.AddAuthorization(options => {
             options.AddPolicy("RequireLoggedIn", policy => policy.RequireAuthenticatedUser());
@@ -41,10 +31,11 @@ public class Program {
 
         var app = builder.Build();
 
-        app.UseHttpsRedirection();
 
         app.UseAuthentication();
         app.UseAuthorization();
+
+        app.UseHttpsRedirection();
 
         app.MapControllerRoute(
             name: "default",

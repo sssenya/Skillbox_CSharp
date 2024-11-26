@@ -29,6 +29,7 @@ namespace Practice_19_ASP.Controllers {
                     lockoutOnFailure: false);
 
                 if(result.Succeeded) {
+                    Console.WriteLine("Authentication succeeded. Redirecting...");
                     if(Url.IsLocalUrl(userLogin.ReturnUrl)) {
                         return Redirect(userLogin.ReturnUrl);
                     }
@@ -66,6 +67,12 @@ namespace Practice_19_ASP.Controllers {
         [HttpGet]
         public IActionResult AccessDenied() {
             return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout() {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "StartView");
         }
     }
 }
