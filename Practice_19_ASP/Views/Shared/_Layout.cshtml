@@ -6,11 +6,17 @@
     <title>@ViewData["Title"]</title>
 </head>
 <body>
-    <div>
-        [ <a href="/Account/Login">Войти</a>  ]
-        [ <a href="/Account/Registration">Регистрация</a>  ]
-        [ <a href="/Account/Logout">Выйти</a>  ]
-    </div>
+    @if(User.Identity.IsAuthenticated) {
+        <div>
+            [ <a href="/Account/Logout">Выйти</a>  ]
+        </div>
+    }
+    else {
+        <div>
+            [ <a href="/Account/Login">Войти</a>  ]
+            [ <a href="/Account/Registration">Регистрация</a>  ]
+        </div>
+    }
     <div>
         @RenderBody()
     </div>
