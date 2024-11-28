@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace Practice_19_ASP.Controllers {
-    [Authorize]
+namespace Practice_19_ASP.Controllers {    
     public class StartViewController : Controller {
         private readonly DataContext _context;
 
@@ -19,6 +18,7 @@ namespace Practice_19_ASP.Controllers {
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteData(int id) {
             var person = _context.Contacts.FirstOrDefault(c => c.Id == id);
 

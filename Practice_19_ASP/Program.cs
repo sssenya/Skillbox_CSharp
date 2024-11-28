@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Practice_19_ASP.Authentication;
 using Practice_19_ASP.Context;
 using System;
+using static System.Formats.Asn1.AsnWriter;
 
 public class Program {
     public static void Main(string[] args) {
@@ -14,8 +15,7 @@ public class Program {
 
         builder.Services.AddIdentity<User, IdentityRole>()
             .AddEntityFrameworkStores<DataContext>()
-            .AddDefaultTokenProviders();
-
+        .AddDefaultTokenProviders();
 
         builder.Services.ConfigureApplicationCookie(options => {
             options.LoginPath = "/Account/Login";

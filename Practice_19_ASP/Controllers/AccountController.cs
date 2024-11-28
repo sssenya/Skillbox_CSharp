@@ -29,7 +29,6 @@ namespace Practice_19_ASP.Controllers {
                     lockoutOnFailure: false);
 
                 if(result.Succeeded) {
-                    Console.WriteLine("Authentication succeeded. Redirecting...");
                     if(Url.IsLocalUrl(userLogin.ReturnUrl)) {
                         return Redirect(userLogin.ReturnUrl);
                     }

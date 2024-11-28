@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Context;
 using System.Net;
 using System.Numerics;
@@ -12,6 +13,7 @@ namespace Practice_19_ASP.Controllers {
         }
 
         [HttpGet]
+        [Authorize(Roles = "User")]
         public IActionResult Index(int id) {
             var person = _context.Contacts.FirstOrDefault(c => c.Id == id);
             if(person == null) {
