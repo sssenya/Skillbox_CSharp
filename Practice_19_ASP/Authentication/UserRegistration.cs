@@ -10,5 +10,7 @@ namespace Practice_19_ASP.Authentication {
 
         [DataType(DataType.Password), Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
+
+        public string Role { get; set; }
     }
 }

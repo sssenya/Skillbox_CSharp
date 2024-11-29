@@ -6,11 +6,16 @@ namespace Practice_19_ASP.Controllers {
     public class AccountController : Controller {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager) {
+        public AccountController(
+            UserManager<User> userManager, 
+            SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager) {
             _userManager = userManager;
             _signInManager = signInManager;
-        }
+            _roleManager = roleManager;
+    }
 
         [HttpGet]
         public IActionResult Login(string returnUrl = "/") {
@@ -52,7 +57,14 @@ namespace Practice_19_ASP.Controllers {
             if(ModelState.IsValid) {
                 var user = new User { UserName = model.UserName };
                 var result = await _userManager.CreateAsync(user, model.Password);
+
                 if(result.Succeeded) {
+                    if(!await _roleManager.RoleExistsAsync(model.Role)) {
+                        await _roleManager.CreateAsync(new IdentityRole(model.Role));
+                    }
+
+                    await _userManager.AddToRoleAsync(user, model.Role);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "StartView");
                 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Practice_19_ASP.Context;
 using Practice_19_ASP.Models;
 
@@ -10,6 +11,7 @@ namespace Practice_19_ASP.Controllers {
             _context = context;
         }
 
+        [Authorize(Roles = "User")]
         public IActionResult Index() {
             return View();
         }
