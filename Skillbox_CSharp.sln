@@ -91,6 +91,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Practice_19_ASP", "Practice
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Practice_19_ASP", "Practice_19_ASP\Practice_19_ASP.csproj", "{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Practice_21_ASP_API", "Practice_21_ASP_API\Practice_21_ASP_API.csproj", "{77F5EF7C-C55E-49FB-A15D-BB1C80CFEAB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -209,6 +211,10 @@ Global
 		{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{888E6FA2-C183-4FD1-BDC1-9605079A7DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77F5EF7C-C55E-49FB-A15D-BB1C80CFEAB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77F5EF7C-C55E-49FB-A15D-BB1C80CFEAB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77F5EF7C-C55E-49FB-A15D-BB1C80CFEAB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77F5EF7C-C55E-49FB-A15D-BB1C80CFEAB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
